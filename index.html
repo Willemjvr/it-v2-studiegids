@@ -15,7 +15,8 @@
   .wrap{max-width:860px;margin:0 auto;padding:0 14px}
 
   /* Sticky header */
-  header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#101826 0%,#0f1520 100%);border-bottom:1px solid var(--line);padding:12px 14px 10px}
+  header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#101826 0%,#0f1520 100%);border-bottom:1px solid var(--line);padding:12px 14px 10px;transition:transform .3s ease}
+  header.hidden{transform:translateY(-100%)}
   .wrap-head{max-width:860px;margin:0 auto}
   h1{font-size:20px;margin:0 0 2px;letter-spacing:.3px}
   .sub{color:var(--mut);font-size:13px;margin:0 0 10px}
@@ -462,6 +463,16 @@ CloseFile(sFile);              // maak toe</pre>
       h.style.display=visible?'':'none';
     });
   });
+
+  // hide header on scroll down, show on scroll up
+  var lastY=window.pageYOffset||0;
+  var headerEl=document.querySelector('header');
+  window.addEventListener('scroll',function(){
+    var y=window.pageYOffset||0;
+    if(y>80 && y>lastY){headerEl.classList.add('hidden');}
+    else{headerEl.classList.remove('hidden');}
+    lastY=y;
+  },{passive:true});
 
   update();
 })();
