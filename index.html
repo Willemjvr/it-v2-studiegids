@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="af">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT V2 — Eksamen Goudmyn</title>
+<style>
+  :root{
+    --bg:#0f1520; --card:#182231; --line:#2b3a52; --txt:#e8eef7;
+    --mut:#9fb2cc; --acc:#4cc9f0; --acc2:#f72585; --ok:#3ddc97; --warn:#ffd166;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.5;padding-bottom:80px}
+  .wrap{max-width:860px;margin:0 auto;padding:0 14px}
+
+  /* Sticky header */
+  header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#101826 0%,#0f1520 100%);border-bottom:1px solid var(--line);padding:12px 14px 10px}
+  .wrap-head{max-width:860px;margin:0 auto}
+  h1{font-size:20px;margin:0 0 2px;letter-spacing:.3px}
+  .sub{color:var(--mut);font-size:13px;margin:0 0 10px}
+  .bar-bg{background:var(--line);border-radius:20px;height:14px;overflow:hidden}
+  .bar{background:linear-gradient(90deg,var(--acc),var(--ok));height:100%;width:0%;transition:width .3s;border-radius:20px}
+  .bar-label{font-size:12px;color:var(--mut);margin-top:4px;text-align:center}
+
+  /* Controls */
+  .controls{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+  .btn{flex:1;min-width:120px;padding:12px;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;color:#0b0f16}
+  .btn-test{background:var(--acc)}
+  .btn-test.on{background:var(--acc2);color:#fff}
+  .btn-reset{background:var(--line);color:var(--txt);font-weight:600}
+  .btn-reset:active,.btn-test:active{transform:scale(.98)}
+  input.search{width:100%;margin-top:8px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--txt);font-size:15px}
+  input.search::placeholder{color:var(--mut)}
+
+  /* Sections */
+  details{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:12px 0;overflow:hidden}
+  details[open]{border-color:var(--acc)}
+  summary{cursor:pointer;padding:14px 16px;font-size:16px;font-weight:700;display:flex;align-items:center;gap:10px;list-style:none;user-select:none}
+  summary::-webkit-details-marker{display:none}
+  summary .tag{flex-shrink:0;background:var(--acc);color:#0b0f16;border-radius:8px;padding:2px 8px;font-size:12px;font-weight:800}
+  summary .tag.f{background:var(--acc2);color:#fff}
+  summary .chev{margin-left:auto;color:var(--mut);transition:transform .2s;font-size:14px}
+  details[open] .chev{transform:rotate(90deg)}
+  summary .master{margin-left:auto;display:flex;align-items:center;gap:6px;color:var(--mut);font-size:13px;font-weight:600;cursor:pointer;user-select:none}
+  .inner{padding:4px 16px 16px;border-top:1px solid var(--line)}
+  .note{background:#1d2c44;border-left:3px solid var(--warn);border-radius:8px;padding:10px 12px;margin:12px 0;font-size:14px;color:var(--txt)}
+  .note b{color:var(--warn)}
+
+  /* Tables */
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+  th{background:#22314d;color:var(--acc);text-align:left;padding:9px 10px;font-size:13px}
+  td{padding:9px 10px;border-top:1px solid var(--line);vertical-align:top}
+  tr:nth-child(even) td{background:#1b2940}
+  td:first-child,th:first-child{font-weight:700;color:#dbe7ff;white-space:nowrap}
+  th:first-child{color:var(--txt)}
+
+  /* Gloss lists */
+  ul.gloss{margin:8px 0;padding:0;list-style:none}
+  ul.gloss li{padding:8px 4px;border-bottom:1px solid var(--line);font-size:15px}
+  ul.gloss li:last-child{border-bottom:none}
+  ul.gloss li b{color:var(--acc)}
+  h3{color:var(--acc);font-size:15px;margin:16px 0 4px;text-transform:uppercase;letter-spacing:.5px}
+  code{background:#0b0f16;padding:2px 6px;border-radius:6px;font-size:13px;color:var(--warn)}
+  pre{background:#0b0f16;border:1px solid var(--line);border-radius:10px;padding:12px;overflow-x:auto;font-size:13px;line-height:1.5}
+  .hit{display:block}
+
+  /* Self-test reveal */
+  .reveal{color:var(--warn);font-weight:700}
+  body.self-test .reveal{filter:blur(6px);cursor:pointer;transition:filter .15s;user-select:none}
+  body.self-test .reveal.shown{filter:none}
+  body.self-test .reveal:active{filter:none}
+
+  footer{text-align:center;color:var(--mut);font-size:12px;margin-top:24px;padding:0 14px}
+  .footer-note{margin-top:6px}
+  @media(min-width:600px){h1{font-size:24px}.inner{padding:6px 20px 20px}summary{padding:16px 18px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap-head">
+    <h1>IT V2 · Eksamen Goudmyn</h1>
+    <p class="sub">Graad 12 · 150 punte · A:20 B:25 C:30 D:20 E:25 F:30 · SEPT 2025 + 2024</p>
+    <div class="bar-bg"><div class="bar" id="bar"></div></div>
+    <div class="bar-label" id="barLabel">0 / 6 afdelings gemeester</div>
+    <div class="controls">
+      <button class="btn btn-test" id="testBtn">👁 Self-toets-modus AAN</button>
+      <button class="btn btn-reset" id="resetBtn">↺ Herstel alles</button>
+    </div>
+    <input class="search" id="q" type="search" placeholder="🔍 Soek 'n term of konsep…">
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="note"><b>Hoe om te studeer:</b> Maak elke afdeling oop, lees die tabelle en gloss. Skakel <b>Self-toets-modus</b> aan — die <span class="reveal">goue antwoorde</span> vervaag; tik daarop om hulle te wys. Merk <b>✓ Gemeester</b> bo-aan 'n afdeling sodra jy dit ken. Soek bo vir enige term.</div>
+
+  <!-- ============ AFDELING A ============ -->
+  <details id="sA" open>
+    <summary><span class="tag">A · 20</span>Hardeware, Geheue &amp; Terme<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="A">Gemeester</span></summary>
+    <div class="inner">
+      <h3>Netwerk-hardeware</h3>
+      <table>
+        <tr><th>Term</th><th>Definisie</th></tr>
+        <tr><td>Router</td><td>Beheer dataverkeer tussen <span class="reveal">verskillende netwerke</span>; kies die beste pad vir datapakkies.</td></tr>
+        <tr><td>Switch</td><td>Koppel toestelle binne <span class="reveal">dieselfde</span> netwerk; stuur data direk na die regte toestel.</td></tr>
+        <tr><td>Modem</td><td>Skakel <span class="reveal">digitaal ↔ analoog</span> sodat data oor telefoon-/kabellyne reis.</td></tr>
+        <tr><td>NIC</td><td>Kaart wat 'n rekenaar <span class="reveal">aan 'n netwerk koppel</span>; stuur/ontvang data.</td></tr>
+        <tr><td>Access Point</td><td>Laat <span class="reveal">draadlose</span> toestelle aan 'n bekabelde netwerk koppel.</td></tr>
+      </table>
+      <h3>Geheue</h3>
+      <ul class="gloss">
+        <li><b>RAM</b> — <span class="reveal">vlugtig</span>; stoor data tydelik, <span class="reveal">verdwyn as krag afgaan</span>.</li>
+        <li><b>VRAM</b> — geheue <span class="reveal">op die grafikakaart</span>, spesifiek vir beelddata/GPU.</li>
+        <li><b>Cache</b> — klein, <span class="reveal">baie vinnige</span> geheue tussen SVE en RAM vir gereeld-gebruikte data.</li>
+        <li><b>Virtuele geheue</b> — skyfarea wat as <span class="reveal">"ekstra RAM"</span> dien wanneer RAM vol is.</li>
+        <li><b>Bit vs Byte</b> — <span class="reveal">bis</span> = kleinste eenheid (0/1); <span class="reveal">greep</span> = 8 bisse, stel 'n karakter voor.</li>
+      </ul>
+      <div class="note">Spoedhiërargie: SVE-register → <b>Cache</b> → RAM → Skyf. Diagram toevoeging: <b>Berging → RAM → <span class="reveal">Cache</span> → SVE</b></div>
+      <h3>Foute &amp; verskynsels</h3>
+      <ul class="gloss">
+        <li><b>Integer Overflow</b> — waarde te groot vir die toegewese <span class="reveal">bisse</span>.</li>
+        <li><b>Thrashing</b> — te veel tyd spandeer om data tussen <span class="reveal">RAM en skyf</span> te ruil → werkverrigting daal.</li>
+        <li><b>Plug &amp; Play</b> — <span class="reveal">outomatiese</span> herkenning + drywer-installasie van nuwe hardeware.</li>
+      </ul>
+      <h3>Sekuriteit</h3>
+      <ul class="gloss">
+        <li><b>Rootkit</b> — stel kwaadwillige nutsmiddels wat <span class="reveal">versteekte afstandbeheer</span> gee.</li>
+        <li><b>Zombie</b> — toestel deur malware besmet, <span class="reveal">op afstand deur 'n hacker</span> beheer (botnet).</li>
+        <li><b>Spoofing</b> — voorgee om <span class="reveal">'n ander (vertroude) bron</span> te wees.</li>
+        <li><b>Phishing</b> — bedrog-e-posse met skakels na <span class="reveal">kwaadwillige webwerwe</span>.</li>
+        <li><b>Spam</b> — ongewenste <span class="reveal">gemorspos</span>.</li>
+      </ul>
+      <h3>Ander terme</h3>
+      <ul class="gloss">
+        <li><b>Ergonomie</b> — studie van <span class="reveal">mens &amp; toestel interaksie</span> vir gemak/veiligheid.</li>
+        <li><b>Groen rekenarisering</b> — <span class="reveal">omgewingsvriendelike</span> rekenaarpraktyke.</li>
+        <li><b>Data-ontginning</b> — deursoek groot datastelle vir <span class="reveal">patrone</span>.</li>
+        <li><b>Data-pakhuis</b> — <span class="reveal">gesentraliseerde</span> bewaarplek van data vir analise.</li>
+        <li><b>2D-skikking</b> — rye &amp; kolomme; GUI: <span class="reveal">TStringGrid</span>.</li>
+        <li><b>Semantiese soek</b> — soek op <span class="reveal">betekenis/doel</span>, nie net woorde nie.</li>
+        <li><b>Order By</b> — <span class="reveal">sorteer</span>; <b>Group By</b> — <span class="reveal">groepeer</span> vir totale.</li>
+        <li><b>Append</b> — voeg by die <span class="reveal">einde</span> van 'n tekslêer.</li>
+      </ul>
+      <h3>OOP-basisterme</h3>
+      <ul class="gloss">
+        <li><b>Enkapsulering</b> — beperk direkte toegang tot <span class="reveal">attribute</span>; toegang via metodes.</li>
+        <li><b>Klas</b> — die <span class="reveal">"bloudruk"</span>; <b>Objek</b> — 'n <span class="reveal">instansie</span> van 'n klas.</li>
+        <li><b>Instansïëring</b> — proses om <span class="reveal">'n nuwe objek te skep</span>.</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- ============ AFDELING B ============ -->
+  <details id="sB">
+    <summary><span class="tag">B · 25</span>Stelseltegnologieë<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="B">Gemeester</span></summary>
+    <div class="inner">
+      <h3>Compiler vs Interpreteerder ⭐</h3>
+      <table>
+        <tr><th></th><th>Compiler</th><th>Interpreteerder</th></tr>
+        <tr><td>Vertaal</td><td><span class="reveal">Volledige</span> kode in een keer</td><td><span class="reveal">Lyn-vir-lyn</span> tydens uitvoering</td></tr>
+        <tr><td>Uitset</td><td>Skep <span class="reveal">.exe-lêer</span></td><td><span class="reveal">Geen</span> uitvoerbare lêer</td></tr>
+        <tr><td>Spoed</td><td><span class="reveal">Vinniger</span></td><td><span class="reveal">Stadiger</span></td></tr>
+        <tr><td>Foute</td><td>Na <span class="reveal">volledige</span> kompilering</td><td><span class="reveal">Onmiddellik</span> by die lyn</td></tr>
+        <tr><td>Voorbeelde</td><td>C++, Delphi/Pascal</td><td>Python, JavaScript</td></tr>
+      </table>
+      <h3>Klein terme</h3>
+      <ul class="gloss">
+        <li><b>Patch</b> — klein, spesifieke regstelling; <b>Service Pack</b> — <span class="reveal">versameling</span> regstellings.</li>
+        <li><b>VGA</b> — analoog, <span class="reveal">slegs video</span>; <b>HDMI</b> — digitaal, <span class="reveal">video + oudio</span>, hoër resolusie.</li>
+        <li><b>API</b> — stel reëls wat programme laat <span class="reveal">kommunikeer</span> sonder om interne werking te verstaan.</li>
+        <li><b>Firewall</b> — filter netwerkverkeer; voorkom <span class="reveal">NIE virusse</span> nie (antivirus doen dit). ⚠️</li>
+      </ul>
+      <h3>Wolkberging</h3>
+      <ul class="gloss">
+        <li><b>Voordele:</b> toeganklik enige plek, outomatiese rugsteun, maklike deel, bespaar plek.</li>
+        <li><b>Nadele:</b> benodig internet, sekuriteitsrisiko, lopende koste.</li>
+      </ul>
+      <h3>Verwerker</h3>
+      <ul class="gloss">
+        <li><b>Funksie</b> — voer berekeninge/instruksies uit ("brein").</li>
+        <li><b>Multi-tasking</b> — verskeie <span class="reveal">programme</span> gelyktydig.</li>
+        <li><b>Multi-threading</b> — ÉEN program verdeel in <span class="reveal">drade/threads</span> wat op kerne loop.</li>
+      </ul>
+      <h3>SSD / Kompressie / Rugsteun</h3>
+      <ul class="gloss">
+        <li><b>SSD voordele:</b> vinniger, <span class="reveal">geen bewegende dele</span> (duursaam), stil, minder krag.</li>
+        <li><b>Verliesloos</b> — geen data verlore (<span class="reveal">teks/dokumente</span>); <b>Verliesgewend</b> — data verwyder (<span class="reveal">foto's/oudio/video</span>, bv. JPEG/MP3).</li>
+        <li><b>Rugsteun</b> — afskrif <span class="reveal">apart</span> gestoor vir herstel.</li>
+      </ul>
+      <h3>Kraggebruiker &amp; sagteware</h3>
+      <ul class="gloss">
+        <li><b>Kraggebruiker</b> — gevorderde gebruiker, intensiewe take; gradeer eerste <span class="reveal">GPU/SVE</span> op.</li>
+        <li><b>Toepassingsagteware</b> — <span class="reveal">spesifieke taak</span> (Word, spel); <b>Stelselsagteware</b> — bestuur <span class="reveal">al</span> aktiwiteite/hardeware (OS).</li>
+        <li><b>GUI doel</b> — maak dit <span class="reveal">maklik/intuïtief</span> via ikone i.p.v. teksopdragte.</li>
+        <li><b>Disk Cleanup</b> — verwyder <span class="reveal">onnodige/tydelike</span> lêers.</li>
+        <li><b>Drywer</b> — laat OS met <span class="reveal">spesifieke hardeware</span> kommunikeer.</li>
+      </ul>
+      <h3>VM / SaaS / VR-AR / POST</h3>
+      <ul class="gloss">
+        <li><b>VM-uitdagings:</b> benodig baie hulpbronne (RAM/krag), kan werkverrigting verlaag, kompleks, lisensies.</li>
+        <li><b>SaaS:</b> wolk-gehuisves; gebruiker <span class="reveal">hoef nie te installeer/onderhou</span> nie.</li>
+        <li><b>VR</b> — <span class="reveal">volledig gesimuleerde</span> omgewing (headset); <b>AR</b> — <span class="reveal">voeg digitale inligting bo-op</span> die werklike wêreld (foon) — nuttig waar jy met die <span class="reveal">fisiese omgewing</span> moet omgaan.</li>
+        <li><b>POST</b> — kort diagnostiese toets by <span class="reveal">aanskakeling</span>; <b>Booting</b> — <span class="reveal">volledige</span> opstartproses tot OS gelaai.</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- ============ AFDELING C ============ -->
+  <details id="sC">
+    <summary><span class="tag">C · 30</span>Kommunikasie &amp; Netwerke<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="C">Gemeester</span></summary>
+    <div class="inner">
+      <h3>Protokol &amp; e-pos</h3>
+      <ul class="gloss">
+        <li><b>Protokol</b> — <span class="reveal">stel reëls</span> vir netwerkkommunikasie.</li>
+        <li><b>SMTP</b> — <span class="reveal">stuur</span> e-pos; <b>POP3</b> — <span class="reveal">aflaai/verwyder</span> na een toestel; <b>IMAP</b> — <span class="reveal">sinchroniseer oor verskeie toestelle</span> (bly op bediener).</li>
+        <li><b>VPN</b> — veilige, <span class="reveal">versleutelde</span> koppeling van 'n afgeleë ligging.</li>
+        <li><b>Enkripsie</b> — data na <span class="reveal">gekodeerde formaat</span> sodat onbevoegdes dit nie kan lees nie.</li>
+        <li><b>Vlog</b> — <span class="reveal">videoblog</span>; <b>Bandwydte</b> — gemeet in <span class="reveal">bps/Mbps</span> (bisse/sek).</li>
+        <li><b>Bandwydte-diefstal</b> — iemand koppel onwettig aan jou <span class="reveal">Wi-Fi</span>, of malware gebruik dit agtergrond.</li>
+        <li><b>Ekstranet</b> — privaat netwerk met <span class="reveal">beperkte toegang</span> aan eksterne partye.</li>
+      </ul>
+      <h3>Fiber vs UTP ⭐</h3>
+      <table>
+        <tr><th></th><th>Veselopties</th><th>UTP</th></tr>
+        <tr><td>Sein</td><td><span class="reveal">Ligpulse</span></td><td><span class="reveal">Elektries</span></td></tr>
+        <tr><td>Spoed</td><td>Baie vinniger</td><td>Stadiger</td></tr>
+        <tr><td>Afstand</td><td>Lang, min verlies</td><td>Kort</td></tr>
+        <tr><td>Interferensie</td><td><span class="reveal">Immuun</span></td><td>Vatbaar</td></tr>
+        <tr><td>Koste</td><td>Duurder</td><td>Goedkoper</td></tr>
+      </table>
+      <h3>Dun vs Vet Kliënt ⭐</h3>
+      <table>
+        <tr><th></th><th>Dun kliënt</th><th>Vet kliënt</th></tr>
+        <tr><td>Verwerking</td><td><span class="reveal">Min plaaslik</span>, afhanklik van bediener</td><td><span class="reveal">Plaaslik</span></td></tr>
+        <tr><td>Hardeware</td><td>Goedkoop</td><td>Kragtig/duur</td></tr>
+        <tr><td>Bediener</td><td><span class="reveal">Hoog</span> afhanklik</td><td>Laag, kan aflyn</td></tr>
+        <tr><td>Onderhoud</td><td>Maklik (gesentraliseer)</td><td>Moeiliker</td></tr>
+      </table>
+      <h3>Smoring vs Vorming ⭐</h3>
+      <table>
+        <tr><th></th><th>Smoring (Throttling)</th><th>Vorming (Shaping)</th></tr>
+        <tr><td>Doen</td><td><span class="reveal">Verminder algehele spoed</span></td><td><span class="reveal">Prioritiseer</span> sekere verkeer</td></tr>
+        <tr><td>Doel</td><td>Beheer bandwydtegebruik</td><td>Vlot vir <span class="reveal">belangrike</span> verkeer</td></tr>
+        <tr><td>Nadeel/Voordeel</td><td>Nadeel: vertraag wettige gebruik</td><td>Voordeel: beter netwerkwerkverrigting</td></tr>
+      </table>
+      <h3>Res van Afdeling C</h3>
+      <ul class="gloss">
+        <li><b>VoIP</b> — stem via internet; nadeel: benodig <span class="reveal">stabiele verbinding</span>.</li>
+        <li><b>Netiket</b> — reëls vir beskaafde aanlyn-gedrag (moenie <span class="reveal">HOOFLETTERS</span> skryf nie).</li>
+        <li><b>WLAN voordele:</b> mobiliteit, geen kabels; <b>nadele:</b> sekuriteitsrisiko, interferensie.</li>
+        <li><b>NIC funksie</b> — laat rekenaar <span class="reveal">aan netwerk koppel</span>.</li>
+        <li><b>Web 3.0</b> — gedesentraliseer, <span class="reveal">semanties</span>, persoonlik. <b>KI in semantiese soek</b> — ontleed <span class="reveal">konteks/betekenis</span>.</li>
+        <li><b>CSS voordeel</b> — konsekwente styl van <span class="reveal">een plek</span>, maklik onderhou.</li>
+        <li><b>Multi-laag (MFA)</b> — 2+ metodes (wagwoord + kode + vingerafdruk); <b>Biometries</b> — <span class="reveal">vingerafdruk/gesig/iris</span>.</li>
+        <li><b>Stroom</b> — speel <span class="reveal">intyds</span>, stoor nie volledige lêer; <b>Aflaai</b> — volledige lêer eers oorgedra.</li>
+        <li><b>BitTorrent</b> — P2P; verdeel lêer in stukkies, laai <span class="reveal">gelyktydig van verskeie gebruikers</span>.</li>
+        <li><b>SSL</b> — <span class="reveal">enkripteer data</span> tussen blaaier en bediener (https, bankwese).</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- ============ AFDELING D ============ -->
+  <details id="sD">
+    <summary><span class="tag">D · 20</span>Data- &amp; Inligtingbestuur<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="D">Gemeester</span></summary>
+    <div class="inner">
+      <h3>Getallestelsels</h3>
+      <ul class="gloss">
+        <li><b>Binêr</b> (basis 2) — 0/1; <b>Denêr</b> (10) — 0–9; <b>Heksadesimaal</b> (16) — 0–9 <span class="reveal">+ A–F</span>.</li>
+        <li>Getal "1D1" het 'n <b>D</b> → dis <span class="reveal">heksadesimaal</span> (binêr/denêr gebruik geen letters).</li>
+      </ul>
+      <h3>Sleutels &amp; integriteit</h3>
+      <ul class="gloss">
+        <li><b>Primêre sleutel</b> — <span class="reveal">uniek</span> identifiseer elke rekord; nie leeg/dupliseer nie.</li>
+        <li><b>Vreemde sleutel</b> — veld wat <span class="reveal">verwys na die primêre sleutel</span> van 'n ander tabel (skep skakel).</li>
+        <li><b>Referensiële integriteit</b> — vreemde sleutel <span class="reveal">moet ooreenstem</span> met 'n bestaande primêre sleutel.</li>
+        <li><b>Relasionele databasis</b> — data in <span class="reveal">verskeie verwante tabelle</span> via sleutels.</li>
+      </ul>
+      <h3>Anomalieë ⭐</h3>
+      <table>
+        <tr><th>Tipe</th><th>Beskrywing</th></tr>
+        <tr><td>Invoeg</td><td>Kan nie nuwe data byvoeg sonder <span class="reveal">onnodige</span> data nie.</td></tr>
+        <tr><td>Skrap</td><td>Skrap een rekord, verloor <span class="reveal">per ongeluk</span> ander data.</td></tr>
+        <tr><td>Opdatering</td><td>Dieselfde data <span class="reveal">op meerdere plekke</span>; raak onkonsekwent.</td></tr>
+        <tr><td>Oortolligheid</td><td>Data <span class="reveal">onnodig herhaal</span> (bv. naam 3×).</td></tr>
+      </table>
+      <h3>ERD</h3>
+      <ul class="gloss">
+        <li><b>1:1</b> — een hoort by een; <b>1:N</b> — een het <span class="reveal">baie</span> (een verkoper, baie advertensies); <b>M:N</b> — benodig <span class="reveal">tussentabel</span>.</li>
+        <li>Teken: benoem tabelle, lys veldname, merk <span class="reveal">primêre/vreemde sleutels</span>, trek lyne met kardinaliteit.</li>
+      </ul>
+      <h3>Validering (outomaties)</h3>
+      <table>
+        <tr><th>Tegniek</th><th>Beskrywing</th></tr>
+        <tr><td>Omvang</td><td>Waarde binne toelaatbare reeks (0–120).</td></tr>
+        <tr><td>Formaat</td><td>Korrekte patroon (datum jjjj/mm/dd).</td></tr>
+        <tr><td>Teenwoordigheid</td><td>Verpligte veld nie leeg nie.</td></tr>
+        <tr><td>Tipe</td><td>Korrekte datatipe (slegs syfers).</td></tr>
+        <tr><td>Lengte</td><td>Spesifieke aantal karakters.</td></tr>
+        <tr><td>Kontrolesyfer</td><td>Ekstra syfer om intikfoute op te spoor.</td></tr>
+      </table>
+      <ul class="gloss">
+        <li><b>Verifikasie</b> — <span class="reveal">handmatige</span> dubbelkontrole (dubbele-invoer, proeflees) — verskil van outomatiese validering.</li>
+        <li><b>Ouditspoor</b> — hou <span class="reveal">wie, wat, wanneer</span> by; tipes: toevoeging/opdatering/skrapping. Nadeel van nasporing: baie stoorplek, privaatheidskwessies.</li>
+        <li><b>DBA</b> — sekuriteit, rugsteun/herstel, werkverrigting, ontwerp, integriteit.</li>
+        <li><b>Enkripsie</b> — data na gekodeerde vorm.</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- ============ AFDELING E ============ -->
+  <details id="sE">
+    <summary><span class="tag">E · 25</span>Oplossingsontwikkeling (Delphi)<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="E">Gemeester</span></summary>
+    <div class="inner">
+      <h3>Fouttipes ⭐</h3>
+      <table>
+        <tr><th>Tipe</th><th>Beskrywing</th><th>Voorbeeld</th></tr>
+        <tr><td>Sintaks</td><td>Oortree grammatika — <span class="reveal">kompileer nie</span>.</td><td>Ontbrekende <code>;</code></td></tr>
+        <tr><td>Uitvoering</td><td>Kompileer maar <span class="reveal">faal tydens loop</span>.</td><td>Deel deur nul, range check</td></tr>
+        <tr><td>Logies</td><td>Loop maar <span class="reveal">verkeerde antwoord</span>.</td><td><code>&gt;</code> i.p.v. <code>&lt;</code></td></tr>
+      </table>
+      <div class="note"><b>Range check error:</b> indeks/waarde buite grense. <b>Oplossing:</b> kyk na skikking se grense/lus-toestand; voeg 'n voorwaardelike kontrole by.</div>
+      <h3>Tekslêer (Delphi)</h3>
+      <pre>{ Deklarasie: var sFile: TextFile; }
+AssignFile(sFile,'staff.txt'); // koppel aan lêer op skyf
+Reset(sFile);                  // open vir LEES
+While not eof(sFile) do
+Begin
+  Readln(sFile, sStaff);
+  redOutput.Lines.Add(sStaff);
+End;
+CloseFile(sFile);              // maak toe</pre>
+      <h3>Reset vs Rewrite vs Append ⭐</h3>
+      <table>
+        <tr><th>Stelling</th><th>Effek</th></tr>
+        <tr><td>Reset</td><td>Open vir <span class="reveal">LEES</span>.</td></tr>
+        <tr><td>Rewrite</td><td>Skryf; <span class="reveal">skep nuut of vee alles uit</span>.</td></tr>
+        <tr><td>Append</td><td>Voeg <span class="reveal">by die einde</span> by, vee niks uit.</td></tr>
+      </table>
+      <ul class="gloss">
+        <li>Reset→Append: <span class="reveal">uitvoeringsfout</span> (kan nie uit skryf-modus lees nie). Reset→Rewrite: <span class="reveal">geen afvoer</span> (lêer is leeg, eof onmiddellik).</li>
+      </ul>
+      <h3>UML &amp; metodes</h3>
+      <ul class="gloss">
+        <li><b>+</b> publiek, <b>−</b> privaat. <b>Accessor</b> — lees terug (Get); <b>Mutator</b> — verander (Set); <b>Konstruktor (Create)</b> — skep objek + initialiseer; <b>toString</b> — stringvoorstelling.</li>
+        <li><b>Funksie</b> — gee 'n waarde terug (<code>Length, Copy, Power</code>); <b>Prosedure</b> — geen waarde (<code>Writeln, ShowMessage, CloseFile</code>).</li>
+      </ul>
+      <h3>Datastrukture &amp; ewekansig</h3>
+      <ul class="gloss">
+        <li><b>1D</b> — enkele lys; <b>2D</b> — rooster, GUI: <span class="reveal">TStringGrid</span>.</li>
+        <li>Ewekansig 45–75: <code>iRandom := Random(75-45+1)+45;</code></li>
+        <li>Onewe: <code>If (n mod 2) &lt;&gt; 0 Then</code></li>
+        <li><b>For</b> — jy ken die aantal; <b>While</b> — aantal onbekend, hang van toestand af (lees lêer tot eof).</li>
+      </ul>
+      <h3>Nasporing — metode</h3>
+      <ul class="gloss">
+        <li>Kolom per veranderlike + lus-toestand + afvoer. Werk reël-vir-reël; toets toestand <span class="reveal">elke keer</span>.</li>
+      </ul>
+      <div class="note"><b>Logiese fout-les:</b> lus loop glad nie (0-afvoer)? Kyk <span class="reveal">eers na die vergelykingsoperator</span> — <code>var1 &gt; var2</code> (2&gt;6 onwaar) moet <code>var1 &lt; var2</code> wees → Totaal = 14.</div>
+    </div>
+  </details>
+
+  <!-- ============ AFDELING F ============ -->
+  <details id="sF">
+    <summary><span class="tag">F · 30</span>Geïntegreerde Scenario<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="F">Gemeester</span></summary>
+    <div class="inner">
+      <h3>Kernkonsepte</h3>
+      <ul class="gloss">
+        <li><b>GIGO</b> — <span class="reveal">swak invoer → swak uitvoer</span>, ongeag verwerking. Voorkom: validering, opleiding, dubbelkontrole.</li>
+        <li><b>Digitale kloof</b> — <span class="reveal">ongelykheid in toegang/vaardighede</span>. Oorbrug: gratis internet/toestelle, digitale geletterdheidsopleiding.</li>
+        <li><b>Digitale burgerskap</b> — <span class="reveal">verantwoordelike, etiese</span> tegnologiegebruik.</li>
+        <li><b>Gig-ekonomie</b> — korttermyn, buigsame kontrakwerk; nadele: geen werksekerheid/voordele.</li>
+        <li><b>Kantooroutomatisering</b> — outomatiseer roetine-take. <b>Robotte voordele:</b> hoër produktiwiteit, 24/7, veilig vir gevaarlike take.</li>
+        <li><b>KI</b> — stelsels wat menslike intelligensie-take verrig. <b>Voordele:</b> vinnig, 24/7. <b>Nadele:</b> hallusinasies, geen ware begrip, etiese kwessies, werkverliese.</li>
+        <li><b>Kripto</b> — gedesentraliseer, laer koste; nadele: wisselvallig, geen regulering, hacking, hoë energie.</li>
+        <li><b>Digitale voetspoor</b> — data-spoor van aanlyn-aktiwiteit; aktief/passief.</li>
+        <li><b>Blokkeerketting</b> — <span class="reveal">gedesentraliseerde digitale grootboek</span>, rekords kan nie agterna gewysig word nie; gebruik: finansies, voorsieningsketting.</li>
+        <li><b>Big Data "V's"</b> — <span class="reveal">Volume, Snelheid (Velocity), Verskeidenheid (Variety), Waarheidsgetrouheid (Veracity)</span>.</li>
+        <li><b>IoT</b> — slimhuis-toestelle, fiksheidsmonitors. Uitdaging: swak/verstek-sekuriteit, vatbaar vir hacking/botnet.</li>
+        <li><b>DoS</b> — <span class="reveal">oorlaai stelsel met verkeer</span> sodat wettige gebruikers toegang geweier word.</li>
+        <li><b>Data-sekuriteit</b> — sterk wagwoorde/MFA, firewalls, antivirus, enkripsie, rugsteun, toegangsregte, opdaterings, opleiding.</li>
+        <li><b>Multi-platform OS</b> — loop oor <span class="reveal">verskeie toesteltipes/platforms</span> (Windows/macOS/Linux, foon/tablet).</li>
+      </ul>
+      <div class="note"><b>GPU:</b> verseker goeie gebruikerservaring (grafika). <b>Virtualisering:</b> hardeware na verskeie virtuele masjiene. <b>4IR:</b> digitale transformasie.</div>
+    </div>
+  </details>
+
+  <div class="note" style="border-left-color:var(--acc)"><b>Eksamentendense:</b> memoriseer die ⭐-tabelle woord-vir-woord (Compiler/Interpreter, Thin/Fat, Shaping/Throttling, Fiber/UTP, Reset/Rewrite/Append). Verwags UML-/kode-analise, databasis-herontwerp met ERD, en scenario-vrae in Afdeling F. By "noem/verduidelik" — skryf <b>volsinne</b>, nie net 'n woord nie.</div>
+
+  <footer>
+    IT V2 · Voorbereiding vir môre se eksamen · Gemaak uit Sept 2025 (Oos-Kaap) &amp; Sept 2024 proefvraestelle
+    <div class="footer-note">Self-toets: skakel die modus aan en tik op vervaagde antwoorde. Jou vordering bly op hierdie toestel gestoor.</div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var testBtn=document.getElementById('testBtn');
+  var resetBtn=document.getElementById('resetBtn');
+  var q=document.getElementById('q');
+  var bar=document.getElementById('bar');
+  var barLabel=document.getElementById('barLabel');
+  var boxes=[].slice.call(document.querySelectorAll('.c'));
+  var KEY='itv2_master';
+
+  // load progress
+  var saved={};try{saved=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){}
+  boxes.forEach(function(b){b.checked=!!saved[b.dataset.s];});
+  function update(){
+    var n=boxes.filter(function(b){return b.checked}).length;
+    var pct=Math.round(n/boxes.length*100);
+    bar.style.width=pct+'%';
+    barLabel.textContent=n+' / '+boxes.length+' afdelings gemeester ('+pct+'%)';
+  }
+  boxes.forEach(function(b){
+    b.addEventListener('change',function(){
+      saved[b.dataset.s]=b.checked;
+      localStorage.setItem(KEY,JSON.stringify(saved));
+      update();
+    });
+  });
+
+  // self-test mode
+  var on=false;
+  testBtn.addEventListener('click',function(){
+    on=!on;
+    document.body.classList.toggle('self-test',on);
+    testBtn.textContent=on?'👁 Self-toets-modus AF':'👁 Self-toets-modus AAN';
+    testBtn.classList.toggle('on',on);
+  });
+  // tap a blurred answer to reveal
+  document.addEventListener('click',function(e){
+    var t=e.target;
+    if(t.classList && t.classList.contains('reveal')){
+      t.classList.add('shown');
+    }
+  });
+  resetBtn.addEventListener('click',function(){
+    document.querySelectorAll('.reveal.shown').forEach(function(r){r.classList.remove('shown');});
+  });
+
+  // search filter
+  q.addEventListener('input',function(){
+    var term=q.value.trim().toLowerCase();
+    var items=[].slice.call(document.querySelectorAll('li,tr,td .reveal, .note'));
+    // simpler: operate on gloss li and table rows
+    var gloss=[].slice.call(document.querySelectorAll('ul.gloss li'));
+    var rows=[].slice.call(document.querySelectorAll('tbody tr, table tr'));
+    // hide everything first
+    document.querySelectorAll('details .inner > *').forEach(function(el){el.style.display='';});
+    if(!term){document.querySelectorAll('details').forEach(function(d){d.style.display='';});return;}
+    document.querySelectorAll('details').forEach(function(d){d.style.display='';});
+    gloss.forEach(function(li){
+      li.style.display=(li.textContent.toLowerCase().indexOf(term)>-1)?'':'none';
+    });
+    rows.forEach(function(tr){
+      tr.style.display=(tr.textContent.toLowerCase().indexOf(term)>-1)?'':'none';
+    });
+    document.querySelectorAll('details h3').forEach(function(h){
+      var parent=h.parentElement;
+      var visible=[].slice.call(parent.querySelectorAll('li,tr')).filter(function(el){return el.style.display!=='none'}).length;
+      h.style.display=visible?'':'none';
+    });
+  });
+
+  update();
+})();
+</script>
+</body>
+</html>
