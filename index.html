@@ -421,11 +421,32 @@
         <tr><td>Opdatering</td><td>Dieselfde data <span class="reveal">op baie plekke</span>; nie almal verander → teenstrydig.</td></tr>
         <tr><td>Oortolligheid</td><td>Data <span class="reveal">onnodig herhaal</span>.</td></tr>
       </table>
-      <h3>ERD</h3>
+      <h3>ERD — databasis-diagram teken ⭐</h3>
       <ul class="gloss">
         <li><b>1:1</b> — een by een. <b>1:N</b> — een het <span class="reveal">baie</span> (een verkoper → baie advertensies). <b>M:N</b> — vra <span class="reveal">tussentabel</span>.</li>
-        <li>Teken: tabelle met veldname, merk PK/FK, trek lyne met kardinaliteit (1, ∞).</li>
+        <li><b>Stap-vir-stap:</b> (1) trek 'n <span class="reveal">blokkie vir elke tabel</span> met die tabelnaam bo, (2) lys slegs die <span class="reveal">veldname</span> (geen datatipes nie, tensy gevra), (3) <span class="reveal">onderstreep die PK of sit ★ daarna</span>, (4) merk elke FK, (5) trek 'n lyn tussen die <span class="reveal">FK-kant en die PK-kant</span> met die regte kardinaliteit (1 of ∞/baie).</li>
       </ul>
+      <div class="note"><b>So lyk 'n korrekte ERD (1:N — een verkoper, baie advertensies):</b></div>
+      <pre>┌───────────────┐         ┌──────────────────┐
+│  TBSellers    │         │  TBAdverts       │
+├───────────────┤         ├──────────────────┤
+│ ★ SellerID    │1        │ AdvertID         │
+│ SellerNaam    │─────────│ ★ AdvertID...    │
+│ KontakNommer  │         │ AdvertDate       │
+│ ...           │         │ FK SellerID      │
+└───────────────┘         └──────────────────┘
+      (die 1 staan by die PK-kant;
+       die ∞/baie staan by die FK-kant)
+</pre>
+      <div class="note"><b>M:N — benodig 'n tussentabel (bemiddelingstabel):</b> bv. Lede ↔ Kursusse</div>
+      <pre>┌──────────┐     ┌───────────────────┐     ┌────────────┐
+│  Lede    │     │  LidKursus (tussen)│     │  Kursusse  │
+├──────────┤     ├───────────────────┤     ├────────────┤
+│ ★ LidID  │1    │ FK LidID          │     │ ★ KursusID │
+│ Naam     │─────│ FK KursusID       │─────│ KursusNaam │
+└──────────┘     └───────────────────┘     └────────────┘
+      Die tussentabel het TWEE fremde sleutels en
+      breek die M:N op in twee 1:N-verwantskappe.</pre>
       <h3>SQL-kernstellings</h3>
       <ul class="gloss">
         <li><b>SELECT velde FROM tabel WHERE voorwaarde</b> — haal data uit.</li>
@@ -547,10 +568,33 @@ CloseFile(sFile);</pre>
         <li>Reset→Append: uitvoeringsfout (kan nie lees uit skryf-modus nie). Reset→Rewrite: geen afvoer (lêer is leeg).</li>
         <li>Hoekom <b>while not eof</b>? Jy weet nie vooraf hoeveel reëls daar is nie.</li>
       </ul>
-      <h3>UML &amp; komponente (Nov 2025)</h3>
+      <h3>UML-klasdiagram teken ⭐</h3>
       <ul class="gloss">
-        <li><b>+</b> publiek, <b>−</b> privaat. <b>Accessor</b> — lees terug (Get). <b>Mutator</b> — verander (Set, kry 'n parameter). <b>Konstruktor (Create)</b> — skep + initialiseer. <b>toString</b> — string-voorstelling.</li>
-        <li>ⓘ Nov 2025: UML met 5 attribute, konstruktor sonder parameters, 2 accessors, 1 mutator met parameter — +/− en datatipes vir alles.</li>
+        <li><b>+</b> publiek (van buite toeganklik), <b>−</b> privaat (slegs binne die klas).</li>
+        <li><b>Stap-vir-stap:</b> (1) teken <span class="reveal">DRIE blokkies bo-op mekaar</span>, (2) blokkie 1 = klasnaam, (3) blokkie 2 = attribute (eienskappe) met datatipes, (4) blokkie 3 = metodes met datatipes, (5) sit <span class="reveal">+ of − voor ELKE lid</span>.</li>
+        <li><b>Accessor</b> — lees terug (Get); <b>Mutator</b> — verander (Set, kry 'n parameter); <b>Konstruktor (Create)</b> — skep + initialiseer; <b>toString</b> — string-voorstelling.</li>
+      </ul>
+      <div class="note"><b>So lyk 'n korrekte UML-klasdiagram (Nov 2025-voorbeeld — TSighting):</b></div>
+      <pre>┌──────────────────────────────────┐
+│            TSighting             │  ← blokkie 1: klasnaam
+├──────────────────────────────────┤
+│ - sAnimal : String               │  ← blokkie 2: attribute
+│ - sLocation : String             │     (− = privaat)
+│ - dDate : TDateTime              │
+│ - iDuration : Integer            │
+│ - bConfirmed : Boolean           │
+├──────────────────────────────────┤
+│ + Create()                       │  ← blokkie 3: metodes
+│ + GetAnimal() : String           │     (+ = publiek)
+│ + GetLocation() : String         │
+│ + SetDuration(iNew : Integer)    │
+│ + ToString() : String            │
+└──────────────────────────────────┘
+      Reëls: attribute met −, metodes met +;
+      elke lid het ŉ datatipe (String, Integer,
+      Boolean, TDateTime, ens.).</pre>
+      <h3>Komponente (Nov 2025)</h3>
+      <ul class="gloss">
         <li><b>DateTimePicker</b> — kies 'n datum in die regte formaat (doen validering).</li>
         <li><b>ComboBox / RadioGroup</b> — vaste lys opsies sodat die gebruiker net 'n GELDIGE plek kan kies.</li>
       </ul>
