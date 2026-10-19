@@ -255,6 +255,7 @@
         <li><b>ROM</b> (Read Only Memory) — <span class="reveal">nie-vlugtig</span>: permanente instruksies (firmware/BIOS).</li>
         <li><b>VRAM</b> (Video RAM) — geheue <span class="reveal">op die grafika-kaart (GPU)</span>, stoor beelddata.</li>
         <li><b>Cache (kasgeheue)</b> — klein, <span class="reveal">baie vinnige</span> geheue naby/op die SVE; hou data wat gereeld gebruik word. <span class="cite">Nov 2024 V2.1.2</span></li>
+        <li><b>Web-caching</b> — besoekte webwerwe se <span class="reveal">prente/inligting word op jou skyf gestoor</span>; volgende besoek laai net die veranderde data → <span class="reveal">spaar tyd en data</span>.</li>
         <li><b>Virtuele geheue</b> — <span class="reveal">skyf-ruimte wat as "ekstra RAM"</span> gebruik word as RAM vol is (stadiger — dit gaan deur stoor). <span class="cite">Nov 2025 V2.2.2</span></li>
         <li><b>Register</b> — kleinste, vinnigste stoorplek <span class="reveal">binne die SVE</span>.</li>
       </ul>
@@ -265,12 +266,19 @@
         <li><b>Hiërargie:</b> bit → byte → KB → MB → GB → TB (ongeveer ×1024 elke stap).</li>
         <li><b>ASCII</b> — kode wat karakters as getalle voorstel.</li>
       </ul>
+      <h3>Toevoer &amp; afvoer — metingeenhede</h3>
+      <ul class="gloss">
+        <li><b>Skandeerder / muis</b> — sensitiwiteit/kwaliteit in <span class="reveal">dpi (dots per inch)</span>.</li>
+        <li><b>Skerm-resolusie</b> — in <span class="reveal">pixels</span>; skerm-grootte in <span class="reveal">duim (diagonaal)</span>.</li>
+        <li><b>Drukker-resolusie</b> — <span class="reveal">dpi</span>; drukker-spoed — <span class="reveal">ppm (pages per minute)</span>.</li>
+      </ul>
       <h3>Moederbord (Nov 2025: TWEE funksies)</h3>
       <ul class="gloss">
         <li><b>Funksies:</b> (1) <span class="reveal">verbind al die komponente</span>, (2) <span class="reveal">versprei krag</span>, (3) verskaf <span class="reveal">gleuwe/poorte</span>, (4) vervoer data via busse. <span class="cite">Nov 2025 V2.1.1</span></li>
         <li><b>Bus-pad vs punt-tot-punt:</b> 'n bus is <span class="reveal">een gedeelde pad vir baie toestelle</span> → net een kan op 'n slag praat → stadiger. Punt-tot-punt is <span class="reveal">'n direkte verbinding tussen twee toestelle</span> → vinniger. <span class="cite">Nov 2025 V2.1.2</span></li>
         <li><b>Waarom GPU werkverrigting verbeter:</b> die GPU neem <span class="reveal">grafika-take oor van die SVE</span>; baie klein kerne doen dit <span class="reveal">parallel</span>. <span class="cite">Nov 2025 V2.1.3</span></li>
         <li><b>Poorte:</b> USB, HDMI (video + oudio, digitaal), VGA (ouer, analoog, slegs video), Thunderbolt (een kabel, baie vinnig).</li>
+        <li><b>Gleuwe (uitbreidingskaarte):</b> <span class="reveal">ZIF-socket = SVE; DIMM-gleuwe = DDR RAM; PCI Express = grafika-kaart</span> (vinnige data-oordrag).</li>
       </ul>
       <h3>Foute &amp; verskynsels</h3>
       <ul class="gloss">
@@ -292,6 +300,10 @@
         <tr><td>Spoofing</td><td>Maak of jy <span class="reveal">'n ander (vertroude) bron</span> is. <span class="cite">Nov 2024 V6.6.1</span></td></tr>
         <tr><td>Phishing</td><td>Bedrog-e-posse met <span class="reveal">vals skakels</span> om inligting te steel.</td></tr>
         <tr><td>Spam</td><td>Ongewenste <span class="reveal">gemorspos</span>.</td></tr>
+        <tr><td>Ransomware</td><td>Enkripteer <span class="reveal">jou lêers</span> en eis losprys (ransom) om dit te ontsluit.</td></tr>
+        <tr><td>Spyware</td><td>Installeer <span class="reveal">in die geheim</span> en monitor jou aktiwiteit.</td></tr>
+        <tr><td>Adware</td><td>Wys <span class="reveal">ongewenste advertensies</span>.</td></tr>
+        <tr><td>Fake news / Hoax</td><td><span class="reveal">Vals nuus / poets</span> wat versprei word om te mislei.</td></tr>
       </table>
       <h3>Lisensies</h3>
       <table>
@@ -301,6 +313,9 @@
         <tr><td>Freeware</td><td>Heeltemal <span class="reveal">gratis</span> (mag nie verander word nie).</td></tr>
         <tr><td>EULA</td><td>Jy koop die <span class="reveal">reg om te gebruik</span>, nie die program nie.</td></tr>
         <tr><td>Creative Commons</td><td>Vir <span class="reveal">kreatiewe werk</span>; eienaar sê wat jy mag doen.</td></tr>
+        <tr><td>Copyleft</td><td>Laat ander toe om te <span class="reveal">kopieer/gebruik</span> mits reëls gevolg word (bv. nie-winsgewend).</td></tr>
+        <tr><td>Terreinlisensie (site)</td><td>Een lisensie vir <span class="reveal">baie gebruikers op een terrein</span> (skool/besigheid).</td></tr>
+        <tr><td>Enkelgebruiker-lisensie</td><td>Lisensie vir <span class="reveal">slegs een gebruiker</span> op een toestel.</td></tr>
       </table>
       <h3>Algemene terme</h3>
       <ul class="gloss">
@@ -351,11 +366,13 @@
         <li><b>Multiverwerking</b> — SVE met <span class="reveal">VEEL kerne (multi-core)</span> laat die OS veel take gelyk doen. <span class="cite">Nov 2024 V1.2.2 · Nov 2025 V2.2.1</span></li>
         <li><b>Disk Cleanup</b> — verwyder <span class="reveal">onnodige/temporêre lêers</span>.</li>
         <li><b>Modulêre ontwerp van 'n rekenaar (voordele):</b> <span class="reveal">maklik herstel, maklik opgradeer, spesifikasies aanpas, goedkoper om een deel te vervang</span>. <span class="cite">Nov 2024 V2.3.1</span></li>
+        <li><b>Alfa vs Beta-weergawe:</b> Alfa = <span class="reveal">vroeër, minder gepoleer, intern</span>; Beta = <span class="reveal">nader aan die finale weergawe, ekstern vir breër toetsing</span>.</li>
       </ul>
       <h3>BIOS &amp; selflaai ⭐</h3>
       <ul class="gloss">
         <li><b>BIOS-funksies:</b> (1) <span class="reveal">beheer hardeware op die laagste vlak</span>, (2) <span class="reveal">POST</span> (kontroleer hardeware is teenwoordig en werk), (3) <span class="reveal">vind en laai die OS</span>, (4) bied konfigurasie-opsies (CMOS). <span class="cite">Nov 2024 V2.3.2</span></li>
         <li><b>Hoekom BIOS op nie-vlugtige geheue?</b> sodat dit <span class="reveal">data behou as krag af is</span> en instellings die volgende keer herlaai. <span class="cite">Nov 2024 V2.3.3</span></li>
+        <li><b>CMOS</b> — <span class="reveal">stoor die BIOS-instellings</span>. Firmware/BIOS word op <span class="reveal">ROM</span> gestoor.</li>
         <li><b>POST</b> — kort toets by <span class="reveal">aanskakeling</span>. <b>Booting</b> — die <span class="reveal">volledige opstartproses</span>.</li>
       </ul>
       <h3>Opdaterings</h3>
@@ -370,6 +387,7 @@
         <li><b>Kerne</b> — fisiese verwerkers; meer = meer gelyktydige werk. <b>Klokspoed</b> (GHz) — die SVE se spoed.</li>
         <li><b>Faktore wat 'n GPU se rekenkrag bepaal:</b> <span class="reveal">VRAM-grootte, geheue-tipe/bandwydte, klokspoed, aantal kerne, generasie</span>. <span class="cite">Nov 2024 V2.2</span></li>
         <li><b>Virtuele geheue maak rekenaar stadiger:</b> dit word <span class="reveal">vanaf stoor (skyf) gelees</span>, en die ruiling tussen RAM en skyf is stadig. <span class="cite">Nov 2024 V2.1.3</span></li>
+        <li><b>Paging</b> — die proses om <span class="reveal">"bladsye" geheue tussen RAM en hardeskyf</span> te ruil. <b>Thrashing</b> — as die rekenaar <span class="reveal">aanhoudend ruil</span> en "hak".</li>
       </ul>
       <h3>Sekuriteit</h3>
       <ul class="gloss">
@@ -379,6 +397,20 @@
         <li><b>MFA</b> — 2+ metodes: <span class="reveal">iets wat jy weet + het + is</span>.</li>
         <li><b>Biometries:</b> <span class="reveal">vingerafdruk, gesigsherkenning, iris-skandering, stem</span>. <span class="cite">Nov 2025 V2.5.1</span></li>
       </ul>
+      <h3>Rekenaarmisdadigers &amp; onetiese gebruikers</h3>
+      <table>
+        <tr><th>Term</th><th>Wat dit is</th></tr>
+        <tr><td>Threat actor</td><td>Persoon/groep wat <span class="reveal">opsetlik 'n kuberbedreiging</span> skep of uitvoer.</td></tr>
+        <tr><td>Ethical hacker</td><td>Gemagtigde deskundige wat stelsels <span class="reveal">vir kwesbaarhede toets</span> om sekuriteit te verbeter.</td></tr>
+        <tr><td>Virus author</td><td>Skryf <span class="reveal">kwaadwillige sagteware</span> (virusse/wurms).</td></tr>
+        <tr><td>Script kiddie</td><td>Onervare persoon wat <span class="reveal">voorafgemaakte hacking-gereedskap</span> gebruik.</td></tr>
+        <tr><td>Cybergang</td><td><span class="reveal">Georganiseerde groep</span> kubermisdadigers.</td></tr>
+        <tr><td>Cyber terrorist</td><td>Gebruik kubertegnologie vir <span class="reveal">politieke/ideologiese</span> doelwitte.</td></tr>
+        <tr><td>Kuberboelie (cyberbully)</td><td><span class="reveal">Herhaalde intimidasie</span> via digitale platforms.</td></tr>
+        <tr><td>Piggybacking</td><td><span class="reveal">Ongemagtigde gebruik</span> van iemand anders se Wi-Fi.</td></tr>
+        <tr><td>Click farms</td><td>Groep/bots wat <span class="reveal">kunsmatig op advertensies/skakels klik</span>.</td></tr>
+        <tr><td>Cyberslacking</td><td>Werknemers doen <span class="reveal">persoonlike internet-take</span> in werksure.</td></tr>
+      </table>
       <h3>SSD vs HDD ⭐</h3>
       <table>
         <tr><th></th><th>SSD</th><th>HDD</th></tr>
@@ -428,6 +460,11 @@
         <li><b>Bandwydte</b> — <span class="reveal">hoeveel data per sekonde</span> oor die netwerk beweeg; gemeet in <span class="reveal">bps / Mbps / Gbps</span>. <span class="cite">Nov 2024 V3.1.2</span></li>
         <li><b>Reikafstand vs bandwydte:</b> reikafstand = <span class="reveal">hoe ver die sein strek</span>; bandwydte = <span class="reveal">hoeveel data per sekonde</span>.</li>
         <li><b>Kliënt-bediener (redes):</b> <span class="reveal">sentrale sekuriteit/toegangsbeheer, sentrale rugsteun, hulpbronne gedeel, enige plek inteken, skaalbaar</span>.</li>
+        <li><b>NOS</b> (Network Operating System) — bedryfstelsel wat <span class="reveal">netwerk-hulpbronne bestuur</span>.</li>
+        <li><b>HAN</b> — tuisnetwerk; <b>WLAN</b> — draadlose LAN. <b>Node</b> — enige toestel op die netwerk.</li>
+        <li><b>AUP</b> (Acceptable Use Policy) — dokument wat <span class="reveal">korrekte gebruik van die netwerk</span> verduidelik.</li>
+        <li><b>Breëband</b> — <span class="reveal">hoëspoed, altyd-aan</span> verbinding. <b>Ruggraat</b> — die internet se <span class="reveal">hoofdata-pad</span>.</li>
+        <li><b>FTTH</b> — Fiber To The Home — vesel <span class="reveal">tot by jou huis</span>.</li>
       </ul>
       <div class="note"><b>Intranet vs Ekstranet vs Internet:</b> Intranet = <span class="reveal">privaat, slegs werknemers</span>; Ekstranet = <span class="reveal">privaat + beperkte toegang vir kliënte/verskaffers</span>; Internet = vir almal. <span class="cite">Nov 2025 V1.1.3</span></div>
       <h3>Netwerk-topologie (Nov 2024 het STAR gevra)</h3>
@@ -448,6 +485,7 @@
       <h3>VPN, enkripsie &amp; draadlose tegnologie</h3>
       <ul class="gloss">
         <li><b>VPN</b> — veilige, versleutelde koppeling na 'n privaat netwerk.</li>
+        <li><b>Afgeleë rekenaar (bv. AnyDesk)</b> — jy <span class="reveal">beheer 'n ander rekenaar op afstand</span>; teenoor VPN wat net 'n <span class="reveal">veilige konneksie na 'n netwerk</span> maak.</li>
         <li><b>Draadlose tegnologieë:</b> <span class="reveal">WiFi, Bluetooth, Satelliet, Cellular (3G/4G/5G), WiMAX</span>. <span class="cite">Nov 2024 V3.2.1</span></li>
         <li><b>Koppel aan 'n draadlose netwerk:</b> <span class="reveal">skakel WiFi aan, kies die netwerknaam, tik die korrekte wagwoord in</span>. <span class="cite">Nov 2024 V3.2.2</span></li>
       </ul>
@@ -475,6 +513,14 @@
         <li><b>Stroom (streaming)</b> — speel <span class="reveal">intyds</span>. <b>Op aanvraag (on-demand)</b> — <span class="reveal">vooraf opgeneem, enige tyd</span>. <span class="cite">Nov 2024 V3.5.1</span></li>
         <li><b>VoIP</b> — stem-oproepe via die internet; nadele: stabiele verbinding nodig, latensie.</li>
         <li><b>BitTorrent</b> — P2P: lêer in stukkies van baie gebruikers.</li>
+      </ul>
+      <h3>E-kommunikasie terme</h3>
+      <ul class="gloss">
+        <li><b>SMS</b> — kort teksboodskappe (±160 karakters) via selfoonnetwerk. <b>IM</b> — <span class="reveal">intydse teks</span> (WhatsApp, Teams).</li>
+        <li><b>Blog</b> — gereelde artikels; <b>Mikroblog</b> — kort plasings (X); <b>Vlog</b> — video-blog.</li>
+        <li><b>Podcast</b> — oudio-program (episodes); <b>Vodcast</b> — podcast in video.</li>
+        <li><b>Videokonferensie</b> — <span class="reveal">intydse video + oudio</span> met baie deelnemers.</li>
+        <li><b>e-leer</b> — leer via <span class="reveal">digitale platforms, op afstand</span>.</li>
       </ul>
       <h3>Webtuistes &amp; web-dienste</h3>
       <ul class="gloss">
@@ -516,6 +562,8 @@
         <li><b>Referensiële integriteit</b> — die FK <span class="reveal">moet ooreenstem met 'n bestaande PK</span>.</li>
         <li><b>Alternatiewe sleutel</b> — 'n ander veld wat ook uniek is (kan PK gewees het). <span class="cite">Nov 2024 V4.3.2</span></li>
         <li><b>Relasionele databasis</b> — data in <span class="reveal">verskeie verwante tabelle</span>.</li>
+        <li><b>Saamgestelde sleutel</b> — 'n PK wat uit <span class="reveal">twee of meer velde</span> bestaan.</li>
+        <li><b>Entiteit-integriteit</b> — die PK kan <span class="reveal">nie null wees nie</span>. <b>Verwysingsintegriteit</b> — die FK moet <span class="reveal">na 'n bestaande PK verwys</span>.</li>
       </ul>
       <h3>Data-eienskappe &amp; datatipes</h3>
       <ul class="gloss">
@@ -582,6 +630,10 @@
         <li><b>Oopbron-DBMS:</b> <span class="reveal">MySQL, PostgreSQL</span>. Proprietêr: SQL Server, Oracle, Access.</li>
         <li><b>Data-ontginning</b> — <span class="reveal">patrone soek</span>. <b>Data-pakhuis</b> — <span class="reveal">gesentraliseerde stoor</span>.</li>
         <li><b>Kundige-stelsel vs besluitsteunstelsel:</b> kundige stelsel <span class="reveal">gee 'n oplossing</span>; besluitsteunstelsel gee net <span class="reveal">inligting om self te besluit</span>. <span class="cite">Nov 2024 V4.5</span></li>
+        <li><b>DBMS-tipes:</b> Desktop (Access) · <span class="reveal">Bediener/gesentraliseerd</span> (MySQL, Oracle, SQL Server) · <span class="reveal">Verspreid</span> (MongoDB, Cassandra).</li>
+        <li><b>Databasisloopbane:</b> DBA (bestuur + rugsteun) · <span class="reveal">Programmeerder (skryf SQL/kode)</span> · <span class="reveal">Ontleder (interpreteer data vir besluite)</span> · Projekbestuurder (koördineer).</li>
+        <li><b>Rekordslot</b> — <span class="reveal">sluit 'n rekord</span> sodat twee gebruikers nie gelyk verander nie. <b>Terugrol (rollback)</b> — <span class="reveal">maak veranderinge ongedaan</span> ná 'n fout. <span class="cite">Nov 2024 V1.2.1</span> <b>Parallelle datastelle</b> — <span class="reveal">kopieë wat gelyk</span> bygehou word.</li>
+        <li><b>Data → inligting → kennis → besluitneming:</b> rou data word <span class="reveal">verwerk tot inligting</span>, wat begrip (kennis) en besluite moontlik maak.</li>
       </ul>
     </div>
   </details>
