@@ -1,28 +1,26 @@
 <!DOCTYPE html>
-<html lang="af">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IT V2 · Eksamen-kits — NSC IT Paper 2</title>
+<title>IT Paper 2 · Exam Pack — NSC IT Theory</title>
 <style>
   :root{
     --bg:#f3eee2;          /* warm room */
-    --card:#fbf7ec;        /* ligter room-kaart */
-    --line:#e0d7c0;        /* sagte sandlyn */
-    --txt:#2e2a24;         /* houtskool */
-    --mut:#6f6759;         /* gedempte taupe */
-    --acc:#8a5b2f;         /* warm oker/bruin */
-    --acc2:#a84b3a;        /* sagte baksteenrooi */
-    --ok:#4d7c5f;          /* sagte groen */
-    --warn:#8a6d1f;        /* sagte goud */
+    --card:#fbf7ec;        /* lighter card */
+    --line:#e0d7c0;        /* soft sand line */
+    --txt:#2e2a24;         /* charcoal */
+    --mut:#6f6759;         /* muted taupe */
+    --acc:#8a5b2f;         /* warm ochre/brown */
+    --acc2:#a84b3a;        /* soft brick red */
+    --ok:#4d7c5f;          /* soft green */
+    --warn:#8a6d1f;        /* soft gold */
     --head-bg:rgba(243,238,226,.97);
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{margin:0;padding:0}
   body{background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.55;padding-bottom:80px}
   .wrap{max-width:880px;margin:0 auto;padding:0 14px}
-
-  /* Sticky header */
   header{position:sticky;top:0;z-index:50;background:var(--head-bg);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);padding:12px 14px 10px;transition:transform .3s ease;box-shadow:0 2px 8px rgba(46,42,36,.06)}
   header.hidden{transform:translateY(-100%)}
   .wrap-head{max-width:880px;margin:0 auto}
@@ -31,8 +29,6 @@
   .bar-bg{background:var(--line);border-radius:20px;height:14px;overflow:hidden}
   .bar{background:linear-gradient(90deg,var(--acc),var(--ok));height:100%;width:0%;transition:width .3s;border-radius:20px}
   .bar-label{font-size:12px;color:var(--mut);margin-top:4px;text-align:center}
-
-  /* Controls */
   .controls{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
   .btn{flex:1;min-width:120px;padding:12px;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;color:#fff;box-shadow:0 1px 3px rgba(46,42,36,.15)}
   .btn-test{background:var(--acc)}
@@ -41,8 +37,6 @@
   .btn-reset:active,.btn-test:active{transform:scale(.98)}
   input.search{width:100%;margin-top:8px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--txt);font-size:15px}
   input.search::placeholder{color:var(--mut)}
-
-  /* Topic index (TOC) */
   nav.toc{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:14px 0;padding:12px 14px}
   nav.toc h2{margin:0 0 8px;font-size:14px;color:var(--acc);text-transform:uppercase;letter-spacing:.5px}
   nav.toc ol{margin:0;padding-left:20px;columns:2;column-gap:24px;font-size:14px}
@@ -50,8 +44,6 @@
   nav.toc a{color:var(--txt);text-decoration:none;border-bottom:1px dashed var(--line)}
   nav.toc a:hover{color:var(--acc)}
   @media(max-width:520px){nav.toc ol{columns:1}}
-
-  /* Sections */
   details{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:12px 0;overflow:hidden;box-shadow:0 1px 4px rgba(46,42,36,.05)}
   details[open]{border-color:var(--acc)}
   summary{cursor:pointer;padding:14px 16px;font-size:16px;font-weight:700;display:flex;align-items:center;gap:10px;list-style:none;user-select:none}
@@ -71,16 +63,12 @@
   .note.green{border-left-color:var(--ok);background:#e7f0e8}
   .new{background:#efe0d3;border:1px solid #dcbfa8;border-radius:8px;padding:10px 12px;margin:12px 0;font-size:14px}
   .new b{color:var(--acc2)}
-
-  /* Tables */
   table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
   th{background:#e9dfc6;color:#5c4323;text-align:left;padding:9px 10px;font-size:13px}
   td{padding:9px 10px;border-top:1px solid var(--line);vertical-align:top}
   tr:nth-child(even) td{background:#f5efdf}
   td:first-child,th:first-child{font-weight:700;color:var(--acc);white-space:nowrap}
   th:first-child{color:#5c4323}
-
-  /* Gloss lists */
   ul.gloss{margin:8px 0;padding:0;list-style:none}
   ul.gloss li{padding:8px 4px;border-bottom:1px solid var(--line);font-size:15px}
   ul.gloss li:last-child{border-bottom:none}
@@ -89,33 +77,22 @@
   h4{color:var(--txt);font-size:14px;margin:12px 0 4px}
   code{background:#ebe3cd;padding:2px 6px;border-radius:6px;font-size:13px;color:#6b4a2f}
   pre{background:#f6f1e3;border:1px solid var(--line);border-radius:10px;padding:12px;overflow-x:auto;font-size:13px;line-height:1.5}
-
-  /* Citation tag */
   .cite{font-size:11px;color:var(--mut);font-weight:600;background:#e9dfc6;border-radius:6px;padding:1px 6px;margin-left:4px;white-space:nowrap;display:inline-block;vertical-align:middle}
-
-  /* Priority tiers */
   .tier{display:inline-block;font-size:11px;font-weight:800;border-radius:8px;padding:1px 7px;color:#fff}
   .tier.t1{background:var(--acc2)}
   .tier.t2{background:var(--acc)}
   .tier.t3{background:var(--ok)}
-
-  /* Formula boxes */
   .formula{background:#f6f1e3;border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:8px;padding:10px 12px;margin:10px 0;font-size:14px}
   .formula .f-name{font-weight:800;color:var(--acc)}
   .formula .f-in{color:var(--mut);font-size:13px}
-
-  /* Question bank */
   .qbank{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:12px 0;overflow:hidden}
   .qbank .q{padding:10px 14px;font-weight:700;border-bottom:1px dashed var(--line)}
   .qbank .a{padding:10px 14px;font-size:14px}
   .qbank .a ul{margin:6px 0 0;padding-left:18px}
-
-  /* Self-test reveal */
   .reveal{color:var(--acc);font-weight:700}
   body.self-test .reveal{filter:blur(6px);cursor:pointer;transition:filter .15s;user-select:none}
   body.self-test .reveal.shown{filter:none}
   body.self-test .reveal:active{filter:none}
-
   footer{text-align:center;color:var(--mut);font-size:12px;margin-top:24px;padding:0 14px}
   .footer-note{margin-top:6px}
   @media(min-width:600px){h1{font-size:24px}.inner{padding:6px 20px 20px}summary{padding:16px 18px}}
@@ -124,591 +101,600 @@
 <body>
 <header>
   <div class="wrap-head">
-    <h1>IT V2 · Eksamen-kits</h1>
-    <p class="sub">Graad 12 · 150 punte · Gebaseer op NSC <b>Nov 2020–2025</b> + Sept 2024/2025 · A:20 · B:25 · C:25–30 · D:20 · E:22–30 · F:30–40</p>
+    <h1>IT Paper 2 · Exam Pack</h1>
+    <p class="sub">Grade 12 · 150 marks · Based on NSC <b>Nov 2020–2025</b> + Sept 2024/2025 · A:20 · B:25 · C:25–30 · D:20 · E:22–30 · F:30–40</p>
     <div class="bar-bg"><div class="bar" id="bar"></div></div>
-    <div class="bar-label" id="barLabel">0 / 9 afdelings gemeester</div>
+    <div class="bar-label" id="barLabel">0 / 9 sections mastered</div>
     <div class="controls">
-      <button class="btn btn-test" id="testBtn">👁 Self-toets-modus AAN</button>
-      <button class="btn btn-reset" id="resetBtn">↺ Herstel alles</button>
+      <button class="btn btn-test" id="testBtn">👁 Self-test mode ON</button>
+      <button class="btn btn-reset" id="resetBtn">↺ Reset all</button>
     </div>
-    <input class="search" id="q" type="search" placeholder="🔍 Soek 'n term of konsep…">
+    <input class="search" id="q" type="search" placeholder="🔍 Search a term or concept…">
   </div>
 </header>
 
 <div class="wrap">
 
   <nav class="toc">
-    <h2>Inhoudsopgawe</h2>
+    <h2>Contents</h2>
     <ol>
-      <li><a href="#s0">📌 Een-bladsy finale opsomming</a></li>
-      <li><a href="#s1">🥇 Onderwerp-prioriteitslys</a></li>
-      <li><a href="#sA">A · Kortvrae &amp; terme</a></li>
-      <li><a href="#sB">B · Stelseltegnologieë</a></li>
-      <li><a href="#sC">C · Netwerke &amp; kommunikasie</a></li>
-      <li><a href="#sD">D · Databasisse &amp; SQL</a></li>
-      <li><a href="#sE">E · Oplossingsontwikkeling</a></li>
-      <li><a href="#sF">F · Geïntegreerde scenario</a></li>
-      <li><a href="#s3">🧭 Antwoordformules</a></li>
-      <li><a href="#s4">🎯 Punte-per-vraag</a></li>
-      <li><a href="#s5">⚠️ Algemene foute</a></li>
-      <li><a href="#s6">📚 Vraagbank</a></li>
+      <li><a href="#s0">📌 One-page final summary</a></li>
+      <li><a href="#s1">🥇 Topic priority list</a></li>
+      <li><a href="#sA">A · Short questions &amp; terms</a></li>
+      <li><a href="#sB">B · Systems technologies</a></li>
+      <li><a href="#sC">C · Networks &amp; communication</a></li>
+      <li><a href="#sD">D · Databases &amp; SQL</a></li>
+      <li><a href="#sE">E · Solution development</a></li>
+      <li><a href="#sF">F · Integrated scenario</a></li>
+      <li><a href="#s3">🧭 Answer formulas</a></li>
+      <li><a href="#s4">🎯 Marks per question</a></li>
+      <li><a href="#s5">⚠️ Common mistakes</a></li>
+      <li><a href="#s6">📚 Question bank</a></li>
     </ol>
   </nav>
 
-  <div class="note blue"><b>HOE OM HIERDIE TE GEBRUIK:</b> Leer eers die <b>finale opsomming (§0)</b> en die <b>prioriteitslys (§1)</b>, dan die <b>⭐-tabelle</b> woord-vir-woord. Gebruik <b>self-toets-modus</b> (👁) om jou kennis te toets — tik op vervaagde antwoorde. Kyk na die <b>puntetoekenning</b> (2 punte = 2 feite). Skryf akronieme <b>voluit</b>. <b>Definieer</b> = kernfeit in 'n volsin; <b>"gee TWEE"</b> = twee volledige feite.</div>
+  <div class="note blue"><b>HOW TO USE THIS:</b> Learn the <b>final summary (§0)</b> and the <b>priority list (§1)</b> first, then the <b>⭐ tables</b> word-for-word. Use <b>self-test mode</b> (👁) to test yourself — tap blurred answers. Watch the <b>mark allocation</b> (2 marks = 2 facts). Write acronyms <b>in full</b>. <b>Define</b> = core fact in a full sentence; <b>"give TWO"</b> = two complete facts.</div>
 
-  <!-- ============ §0: FINALE OPSOMMING ============ -->
+  <!-- ============ §0: FINAL SUMMARY ============ -->
   <details id="s0" open>
-    <summary><span class="tag p">📌</span>Een-bladsy finale opsomming<span class="chev">▸</span></summary>
+    <summary><span class="tag p">📌</span>One-page final summary<span class="chev">▸</span></summary>
     <div class="inner">
-      <div class="note red"><b>DIE 150 PUNTE — waar hulle sit (Nov 2020–2025):</b> F·Geïntegreerde scenario ±33–40 (≈24%) · C·Netwerke ±25–30 (≈19%) · B·Stelsels 25 (≈17%) · E·Oplossingsontw ±20–30 (≈15%) · D·Databasisse ±20–24 (≈14%) · A·Kortvrae ±15–20 (≈12%).</div>
+      <div class="note red"><b>THE 150 MARKS — where they sit (Nov 2020–2025):</b> F·Integrated scenario ±33–40 (≈24%) · C·Networks ±25–30 (≈19%) · B·Systems 25 (≈17%) · E·Solution dev ±20–30 (≈15%) · D·Databases ±20–24 (≈14%) · A·Short questions ±15–20 (≈12%).</div>
 
-      <h3>Die 10 goue antwoordreëls (elke vraestel)</h3>
+      <h3>The 10 golden answer rules (every paper)</h3>
       <ul class="gloss">
-        <li><b>1.</b> <span class="reveal">Kyk eers na die punte</span>: (2) = 2 feite, (4) = 4 feite of 2 feite + 2 redes. Moenie 1 lang sin vir 3 punte gee nie.</li>
-        <li><b>2.</b> <span class="reveal">Definieer = 1 kernfeit in 'n volsin</span>; "noem/gee/lys" = net die feit, GEEN verduideliking.</li>
-        <li><b>3.</b> <span class="reveal">Explain/verduidelik = feit + rede</span> (hoekom). Net die feit = ½ punt.</li>
-        <li><b>4.</b> <span class="reveal">Skryf akronieme voluit</span>: URL, SMTP, RAM, VPN, GPL … anders verloor jy die punt.</li>
-        <li><b>5.</b> <span class="reveal">"Gee TWEE" = presies twee</span>, nie een nie, nie drie nie.</li>
-        <li><b>6.</b> Scenario-vraag (F): <span class="reveal">definisie + pas dit op die scenario toe</span>. Verwys na die scenario om vol punte te kry.</li>
-        <li><b>7.</b> Vergelyk/onderskei: <span class="reveal">gee BEIDE kante</span> (A is … terwyl B …).</li>
-        <li><b>8.</b> Motiveer/regverdig: <span class="reveal">gee die rede (hoekom)</span>, nie net die stelling.</li>
-        <li><b>9.</b> ERD/UML: <span class="reveal">onderstreep of ★ die primêre sleutel, merk die FK</span>, dui kardinaliteit (1 / ∞) aan.</li>
-        <li><b>10.</b> Nasporing: <span class="reveal">werk reël-vir-reël, een kolom per veranderlike</span>, toets die toestand elke keer.</li>
+        <li><b>1.</b> <span class="reveal">Check the marks first</span>: (2) = 2 facts, (4) = 4 facts or 2 facts + 2 reasons. Don't give 1 long sentence for 3 marks.</li>
+        <li><b>2.</b> <span class="reveal">Define = 1 core fact in a full sentence</span>; "state/give/list" = just the fact, NO explanation.</li>
+        <li><b>3.</b> <span class="reveal">Explain = fact + reason</span> (why). Just the fact = ½ mark.</li>
+        <li><b>4.</b> <span class="reveal">Write acronyms in full</span>: URL, SMTP, RAM, VPN, GPL … otherwise you lose the mark.</li>
+        <li><b>5.</b> <span class="reveal">"Give TWO" = exactly two</span>, not one, not three.</li>
+        <li><b>6.</b> Scenario question (F): <span class="reveal">definition + apply it to the scenario</span>. Refer to the scenario to get full marks.</li>
+        <li><b>7.</b> Compare/differentiate: <span class="reveal">give BOTH sides</span> (A is … whereas B is …).</li>
+        <li><b>8.</b> Motivate/justify: <span class="reveal">give the reason (why)</span>, not just the statement.</li>
+        <li><b>9.</b> ERD/UML: <span class="reveal">underline or ★ the primary key, mark the FK</span>, show cardinality (1 / ∞).</li>
+        <li><b>10.</b> Trace table: <span class="reveal">work line-by-line, one column per variable</span>, test the condition every time.</li>
       </ul>
 
-      <h3>Ken hierdie ⭐-tabelle woord-vir-woord</h3>
+      <h3>Know these ⭐ tables word-for-word</h3>
       <ul class="gloss">
-        <li>Compiler vs Interpreteerder · Dun vs Vet kliënt · SSD vs HDD · Vesel vs UTP · Reset/Rewrite/Append · Validering vs Verifikasie · / vs DIV vs MOD · UpCase vs UpperCase.</li>
+        <li>Compiler vs Interpreter · Thin vs Fat client · SSD vs HDD · Fibre vs UTP · Reset/Rewrite/Append · Validation vs Verification · / vs DIV vs MOD · UpCase vs UpperCase.</li>
       </ul>
 
-      <h3>Top 20 terme om te memoriseer</h3>
+      <h3>Top 20 terms to memorise</h3>
       <ul class="gloss">
-        <li>Router, Switch, Modem, NIC, Access Point · RAM/ROM/VRAM/Cache/Virtuele geheue · Protokol, LAN/WAN/PAN, IP-adres, DNS, ISP · SMTP/POP3/IMAP/HTTP/FTP · Primêre/Vreemde sleutel, Normalisering, ERD · Validering vs Verifikasie · GIGO · Firewall vs Antivirus · Enkripsie, MFA · Wolkberekening, SaaS.</li>
+        <li>Router, Switch, Modem, NIC, Access Point · RAM/ROM/VRAM/Cache/Virtual memory · Protocol, LAN/WAN/PAN, IP address, DNS, ISP · SMTP/POP3/IMAP/HTTP/FTP · Primary/Foreign key, Normalisation, ERD · Validation vs Verification · GIGO · Firewall vs Antivirus · Encryption, MFA · Cloud computing, SaaS.</li>
       </ul>
 
-      <h3>Laaste-minuut-lys (kruis af)</h3>
+      <h3>Last-minute list (tick off)</h3>
       <ul class="gloss">
-        <li>☐ CEIL/TRUNC/ROUND reëls <span class="reveal">CEIL(−2.3) = −2; TRUNC(−2.3) = −2; ROUND(2.5) = 3</span></li>
-        <li>☐ RandomRange(A,B) <span class="reveal">gee A … B−1 (B NIE ingesluit)</span></li>
-        <li>☐ MOD werk <span class="reveal">net met Integer</span>; / gee <span class="reveal">Real</span></li>
-        <li>☐ CASE werk net met <span class="reveal">Integer/Char/Boolean (ordinaal)</span></li>
-        <li>☐ Firewall <span class="reveal">voorkom NIE virusse</span> nie — antivirus doen dit</li>
-        <li>☐ Spoedorde: <span class="reveal">Cache → VRAM → RAM → SSD → HDD</span></li>
-        <li>☐ PK <span class="reveal">kan nie null/duplikaat wees</span>; FK verwys na 'n PK</li>
-        <li>☐ 1:N — <span class="reveal">die "1" by die PK-kant, "baie" by die FK-kant</span></li>
+        <li>☐ CEIL/TRUNC/ROUND rules <span class="reveal">CEIL(−2.3) = −2; TRUNC(−2.3) = −2; ROUND(2.5) = 3</span></li>
+        <li>☐ RandomRange(A,B) <span class="reveal">gives A … B−1 (B NOT included)</span></li>
+        <li>☐ MOD works <span class="reveal">only with Integer</span>; / gives <span class="reveal">Real</span></li>
+        <li>☐ CASE works only with <span class="reveal">Integer/Char/Boolean (ordinal)</span></li>
+        <li>☐ Firewall <span class="reveal">does NOT prevent viruses</span> — antivirus does that</li>
+        <li>☐ Speed order: <span class="reveal">Cache → VRAM → RAM → SSD → HDD</span></li>
+        <li>☐ PK <span class="reveal">cannot be null/duplicate</span>; FK refers to a PK</li>
+        <li>☐ 1:N — <span class="reveal">the "1" at the PK side, "many" at the FK side</span></li>
       </ul>
     </div>
   </details>
 
-  <!-- ============ §1: PRIORITEITSLYS ============ -->
+  <!-- ============ §1: PRIORITY LIST ============ -->
   <details id="s1" open>
-    <summary><span class="tag p">🥇</span>Onderwerp-prioriteitslys (gerangskik)<span class="chev">▸</span></summary>
+    <summary><span class="tag p">🥇</span>Topic priority list (ranked)<span class="chev">▸</span></summary>
     <div class="inner">
-      <div class="note blue">Rangskik op <b>hoe gereeld + hoe swaar</b> dit oor Nov 2020–2025 getoets word. <span class="tier t1">Tier 1</span> = leer eerste (kom elke jaar, swaar). <span class="tier t2">Tier 2</span> = kom elke jaar. <span class="tier t3">Tier 3</span> = kom gereeld, kleiner deel.</div>
+      <div class="note blue">Ranked by <b>how often + how heavily</b> it is tested over Nov 2020–2025. <span class="tier t1">Tier 1</span> = learn first (every year, heavy). <span class="tier t2">Tier 2</span> = every year. <span class="tier t3">Tier 3</span> = regular, smaller part.</div>
       <table>
-        <tr><th>#</th><th>Onderwerp</th><th>Seksie</th><th>Gem. punte</th><th>≈%</th><th>Tier</th><th>Fokus</th></tr>
-        <tr><td>1</td><td><b>Oplossingsontwikkeling</b> (Delphi/algoritmes/nasporing/lêers/UML)</td><td>E</td><td>22–30</td><td>15%</td><td><span class="tier t1">T1</span></td><td>Nasporing, lusse, DIV/MOD, tekslêer, UML, string-funksies — kom élke jaar</td></tr>
-        <tr><td>2</td><td><b>Databasisse &amp; SQL</b></td><td>D</td><td>20–24</td><td>14%</td><td><span class="tier t1">T1</span></td><td>Sleutels, normalisering, ERD, SQL-SELECT, validering vs verifikasie</td></tr>
-        <tr><td>3</td><td><b>Netwerke &amp; Kommunikasie</b></td><td>C</td><td>25–30</td><td>19%</td><td><span class="tier t1">T1</span></td><td>Protokolle, hardeware, bandwydte, kabels, dun/vet kliënt, VPN</td></tr>
-        <tr><td>4</td><td><b>Stelseltegnologieë</b> (hardeware/geheue/sekuriteit)</td><td>B</td><td>25</td><td>17%</td><td><span class="tier t2">T2</span></td><td>RAM/ROM/VRAM/kas, SSD/HDD, SVE/GPU, malware, firewall, wolk</td></tr>
-        <tr><td>5</td><td><b>Geïntegreerde scenario</b> (sosiale implikasies + nuwe tegnologie)</td><td>F</td><td>30–40</td><td>24%</td><td><span class="tier t2">T2</span></td><td>IoT, RFID, KI, blokketting, grootdata, digitale kloof, GIGO, etiek</td></tr>
-        <tr><td>6</td><td><b>Internet &amp; e-kommunikasie / web</b></td><td>C+F</td><td>—</td><td>—</td><td><span class="tier t2">T2</span></td><td>E-pos-protokolle, statiese/dinamiese web, koekies, SEO, Web 1.0/2.0/3.0</td></tr>
-        <tr><td>7</td><td><b>Data &amp; inligtingbestuur</b> (datatipes, getallestelsels, metadata)</td><td>D</td><td>—</td><td>—</td><td><span class="tier t3">T3</span></td><td>Binêr/heks, datatipes, datakwaliteit, metadata, ouditspoor</td></tr>
-        <tr><td>8</td><td><b>Kortvrae</b> (algemene terme, alles)</td><td>A</td><td>15–20</td><td>12%</td><td><span class="tier t3">T3</span></td><td>Vinnige 1-punt-vrae oor AL die bogenoemde — wyd, nie diep</td></tr>
+        <tr><th>#</th><th>Topic</th><th>Section</th><th>Avg marks</th><th>≈%</th><th>Tier</th><th>Focus</th></tr>
+        <tr><td>1</td><td><b>Solution development</b> (Delphi/algorithms/tracing/files/UML)</td><td>E</td><td>22–30</td><td>15%</td><td><span class="tier t1">T1</span></td><td>Tracing, loops, DIV/MOD, text file, UML, string functions — every year</td></tr>
+        <tr><td>2</td><td><b>Databases &amp; SQL</b></td><td>D</td><td>20–24</td><td>14%</td><td><span class="tier t1">T1</span></td><td>Keys, normalisation, ERD, SQL-SELECT, validation vs verification</td></tr>
+        <tr><td>3</td><td><b>Networks &amp; Communication</b></td><td>C</td><td>25–30</td><td>19%</td><td><span class="tier t1">T1</span></td><td>Protocols, hardware, bandwidth, cables, thin/fat client, VPN</td></tr>
+        <tr><td>4</td><td><b>Systems technologies</b> (hardware/memory/security)</td><td>B</td><td>25</td><td>17%</td><td><span class="tier t2">T2</span></td><td>RAM/ROM/VRAM/cache, SSD/HDD, CPU/GPU, malware, firewall, cloud</td></tr>
+        <tr><td>5</td><td><b>Integrated scenario</b> (social implications + new tech)</td><td>F</td><td>30–40</td><td>24%</td><td><span class="tier t2">T2</span></td><td>IoT, RFID, AI, blockchain, big data, digital divide, GIGO, ethics</td></tr>
+        <tr><td>6</td><td><b>Internet &amp; e-communication / web</b></td><td>C+F</td><td>—</td><td>—</td><td><span class="tier t2">T2</span></td><td>Email protocols, static/dynamic web, cookies, SEO, Web 1.0/2.0/3.0</td></tr>
+        <tr><td>7</td><td><b>Data &amp; information management</b> (data types, number systems, metadata)</td><td>D</td><td>—</td><td>—</td><td><span class="tier t3">T3</span></td><td>Binary/hex, data types, data quality, metadata, audit trail</td></tr>
+        <tr><td>8</td><td><b>Short questions</b> (general terms, everything)</td><td>A</td><td>15–20</td><td>12%</td><td><span class="tier t3">T3</span></td><td>Quick 1-mark questions on ALL of the above — broad, not deep</td></tr>
       </table>
 
-      <div class="note green"><b>Waar jy die meeste punte maklik verloor/maak:</b> Afdeling A (kortvrae) is <span class="reveal">20 maklike punte</span> — moenie daar onnodig verloor nie. Afdeling E se <b>nasporingstabel + algoritme</b> is <span class="reveal">6–8 punte wat met oefening 'n volpunt word</span>. Afdeling F beloon jou as jy <b>die definisie + scenario-toepassing</b> gee.</div>
+      <div class="note green"><b>Where you easily lose/gain the most marks:</b> Section A (short questions) is <span class="reveal">20 easy marks</span> — don't lose them needlessly. Section E's <b>trace table + algorithm</b> is <span class="reveal">6–8 marks that become full marks with practice</span>. Section F rewards you when you give <b>the definition + scenario application</b>.</div>
 
-      <div class="note"><b>Seksie-punte per jaar (memo-geverifieer):</b></div>
+      <div class="note"><b>Section marks per year (memo-verified):</b></div>
       <table>
-        <tr><th>Seksie</th><th>2020</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th></tr>
-        <tr><td>A · Kortvrae</td><td>15</td><td>15</td><td>15</td><td>20</td><td>20</td><td>20</td></tr>
-        <tr><td>B · Stelseltegn.</td><td>25</td><td>25</td><td>25</td><td>25</td><td>25</td><td>25</td></tr>
-        <tr><td>C · Netwerke</td><td>30</td><td>30</td><td>30</td><td>30</td><td>26</td><td>25</td></tr>
-        <tr><td>D · Databasisse</td><td>20</td><td>20</td><td>20</td><td>20</td><td>24</td><td>20</td></tr>
-        <tr><td>E · Oplossingsontw.</td><td>20</td><td>20</td><td>20</td><td>22</td><td>22</td><td>30</td></tr>
+        <tr><th>Section</th><th>2020</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th></tr>
+        <tr><td>A · Short questions</td><td>15</td><td>15</td><td>15</td><td>20</td><td>20</td><td>20</td></tr>
+        <tr><td>B · Systems tech.</td><td>25</td><td>25</td><td>25</td><td>25</td><td>25</td><td>25</td></tr>
+        <tr><td>C · Networks</td><td>30</td><td>30</td><td>30</td><td>30</td><td>26</td><td>25</td></tr>
+        <tr><td>D · Databases</td><td>20</td><td>20</td><td>20</td><td>20</td><td>24</td><td>20</td></tr>
+        <tr><td>E · Solution dev.</td><td>20</td><td>20</td><td>20</td><td>22</td><td>22</td><td>30</td></tr>
         <tr><td>F · Scenario</td><td>40</td><td>40</td><td>40</td><td>33</td><td>33</td><td>30</td></tr>
       </table>
 
-      <div class="note"><b>Opdragwoorde wat die meeste voorkom (Nov 2020–2025, tel uit die vraestelle):</b> explain (91), state (86), give (59), name (55), identify (25), suggest (23), define (20), discuss (14), describe (14), motivate (11), differentiate (9). <b>Explain + state = 60% van die instruksies.</b> Leer hulle formule in <a href="#s3">§3 Antwoordformules</a>.</div>
+      <div class="note"><b>Command words that appear most (Nov 2020–2025, counted from the papers):</b> explain (91), state (86), give (59), name (55), identify (25), suggest (23), define (20), discuss (14), describe (14), motivate (11), differentiate (9). <b>Explain + state = 60% of the instructions.</b> Learn their formula in <a href="#s3">§3 Answer formulas</a>.</div>
     </div>
   </details>
 
-  <!-- ============ AFDELING A ============ -->
+  <!-- ============ SECTION A ============ -->
   <details id="sA">
-    <summary><span class="tag">A · 20</span>Kortvrae: Hardeware &amp; Terme<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="A">Gemeester</span></summary>
+    <summary><span class="tag">A · 20</span>Short questions: Hardware &amp; Terms<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="A">Mastered</span></summary>
     <div class="inner">
-      <h3>Netwerk-hardeware</h3>
+      <h3>Network hardware</h3>
       <table>
-        <tr><th>Term</th><th>Wat dit is / doen</th></tr>
-        <tr><td>Router</td><td>Koppel <span class="reveal">verskillende netwerke</span> (huisnetwerk → internet); kies die beste pad vir data. <span class="cite">Nov 2025 V1</span></td></tr>
-        <tr><td>Switch (skakelaar)</td><td>Koppel toestelle <span class="reveal">binne dieselfde netwerk</span>; stuur data net na die regte toestel.</td></tr>
-        <tr><td>Modem</td><td>Skakel <span class="reveal">digitaal ↔ analoog</span> sodat data oor telefoon-/kabelyne reis.</td></tr>
-        <tr><td>NIC</td><td>Network Interface Card — <span class="reveal">koppel die rekenaar aan 'n netwerk</span>. <span class="cite">Nov 2024 V2.4.1</span></td></tr>
-        <tr><td>Access Point (WAP)</td><td>Wireless Access Point — laat <span class="reveal">draadlose toestelle</span> by 'n bekabelde netwerk aansluit.</td></tr>
+        <tr><th>Term</th><th>What it is / does</th></tr>
+        <tr><td>Router</td><td>Connects <span class="reveal">different networks</span> (home network → internet); chooses the best path for data.</td></tr>
+        <tr><td>Switch</td><td>Connects devices <span class="reveal">within the same network</span>; sends data only to the correct device.</td></tr>
+        <tr><td>Modem</td><td>Converts <span class="reveal">digital ↔ analogue</span> so data can travel over phone/cable lines.</td></tr>
+        <tr><td>NIC (Network Interface Card)</td><td><span class="reveal">Connects the computer to a network</span>. <span class="cite">Nov 2024 Q2.4.1</span></td></tr>
+        <tr><td>Access Point (WAP — Wireless Access Point)</td><td>Lets <span class="reveal">wireless devices</span> join a wired network.</td></tr>
       </table>
-      <h3>Geheue &amp; berging</h3>
+      <h3>Memory &amp; storage</h3>
       <ul class="gloss">
-        <li><b>RAM</b> (Random Access Memory) — <span class="reveal">vlugtig</span>: hou programme/data tydelik vir die SVE. <span class="cite">Nov 2024 V2.1.1</span></li>
-        <li><b>ROM</b> (Read Only Memory) — <span class="reveal">nie-vlugtig</span>: permanente instruksies (firmware/BIOS).</li>
-        <li><b>VRAM</b> (Video RAM) — geheue <span class="reveal">op die grafika-kaart (GPU)</span>, stoor beelddata.</li>
-        <li><b>Cache (kasgeheue)</b> — klein, <span class="reveal">baie vinnige</span> geheue naby/op die SVE; hou data wat gereeld gebruik word. <span class="cite">Nov 2024 V2.1.2</span></li>
-        <li><b>Web-caching</b> — besoekte webwerwe se <span class="reveal">prente/inligting word op jou skyf gestoor</span>; volgende besoek laai net die veranderde data → <span class="reveal">spaar tyd en data</span>.</li>
-        <li><b>Virtuele geheue</b> — <span class="reveal">skyf-ruimte wat as "ekstra RAM"</span> gebruik word as RAM vol is (stadiger — dit gaan deur stoor). <span class="cite">Nov 2025 V2.2.2</span></li>
-        <li><b>Register</b> — kleinste, vinnigste stoorplek <span class="reveal">binne die SVE</span>.</li>
+        <li><b>RAM</b> (Random Access Memory) — <span class="reveal">volatile</span>: holds programs/data temporarily for the CPU. <span class="cite">Nov 2024 Q2.1.1</span></li>
+        <li><b>ROM</b> (Read Only Memory) — <span class="reveal">non-volatile</span>: permanent instructions (firmware/BIOS).</li>
+        <li><b>VRAM</b> (Video Random Access Memory) — memory <span class="reveal">on the graphics card (GPU)</span>, stores image data.</li>
+        <li><b>Cache</b> — small, <span class="reveal">very fast</span> memory near/on the CPU; holds frequently used data. <span class="cite">Nov 2024 Q2.1.2</span></li>
+        <li><b>Web caching</b> — visited websites' <span class="reveal">images/info are stored on your disk</span>; next visit loads only the changed data → <span class="reveal">saves time and data</span>.</li>
+        <li><b>Virtual memory</b> — <span class="reveal">disk space used as "extra RAM"</span> when RAM is full (slower — it goes through storage). <span class="cite">Nov 2025 Q2.2.2</span></li>
+        <li><b>Register</b> — smallest, fastest storage <span class="reveal">inside the CPU</span>.</li>
       </ul>
-      <div class="note"><b>Spoedorde (vinnigste → stadigste) — Nov 2025 het dit gevra:</b> <span class="reveal">SVE-kasgeheue → VRAM → RAM → SSD → HDD</span>. Hoekom VRAM voor RAM? Dit is direk op die grafika-kaart, nader aan die verwerker.</div>
-      <h3>Eenhede &amp; karakters</h3>
+      <div class="note"><b>Speed order (fastest → slowest) — Nov 2025 asked this:</b> <span class="reveal">CPU cache → VRAM → RAM → SSD → HDD</span>. Why VRAM before RAM? It is directly on the graphics card, closer to the processor.</div>
+      <h3>Units &amp; characters</h3>
       <ul class="gloss">
-        <li><b>Bit</b> — kleinste eenheid (0 of 1). <b>Byte</b> — <span class="reveal">8 bisse</span>; gewoonlik een karakter.</li>
-        <li><b>Hiërargie:</b> bit → byte → KB → MB → GB → TB (ongeveer ×1024 elke stap).</li>
-        <li><b>ASCII</b> — kode wat karakters as getalle voorstel.</li>
+        <li><b>Bit</b> — smallest unit (0 or 1). <b>Byte</b> — <span class="reveal">8 bits</span>; usually one character.</li>
+        <li><b>Hierarchy:</b> bit → byte → KB → MB → GB → TB (about ×1024 each step).</li>
+        <li><b>ASCII</b> (American Standard Code for Information Interchange) — code that represents characters as numbers.</li>
       </ul>
-      <h3>Toevoer &amp; afvoer — metingeenhede</h3>
+      <h3>Input &amp; output — units of measurement</h3>
       <ul class="gloss">
-        <li><b>Skandeerder / muis</b> — sensitiwiteit/kwaliteit in <span class="reveal">dpi (dots per inch)</span>.</li>
-        <li><b>Skerm-resolusie</b> — in <span class="reveal">pixels</span>; skerm-grootte in <span class="reveal">duim (diagonaal)</span>.</li>
-        <li><b>Drukker-resolusie</b> — <span class="reveal">dpi</span>; drukker-spoed — <span class="reveal">ppm (pages per minute)</span>.</li>
+        <li><b>Scanner / mouse</b> — sensitivity/quality in <span class="reveal">dpi (dots per inch)</span>.</li>
+        <li><b>Screen resolution</b> — in <span class="reveal">pixels</span>; screen size in <span class="reveal">inches (diagonal)</span>.</li>
+        <li><b>Printer resolution</b> — <span class="reveal">dpi</span>; printer speed — <span class="reveal">ppm (pages per minute)</span>.</li>
       </ul>
-      <h3>Moederbord (Nov 2025: TWEE funksies)</h3>
+      <h3>Motherboard (Nov 2025: TWO functions)</h3>
       <ul class="gloss">
-        <li><b>Funksies:</b> (1) <span class="reveal">verbind al die komponente</span>, (2) <span class="reveal">versprei krag</span>, (3) verskaf <span class="reveal">gleuwe/poorte</span>, (4) vervoer data via busse. <span class="cite">Nov 2025 V2.1.1</span></li>
-        <li><b>Bus-pad vs punt-tot-punt:</b> 'n bus is <span class="reveal">een gedeelde pad vir baie toestelle</span> → net een kan op 'n slag praat → stadiger. Punt-tot-punt is <span class="reveal">'n direkte verbinding tussen twee toestelle</span> → vinniger. <span class="cite">Nov 2025 V2.1.2</span></li>
-        <li><b>Waarom GPU werkverrigting verbeter:</b> die GPU neem <span class="reveal">grafika-take oor van die SVE</span>; baie klein kerne doen dit <span class="reveal">parallel</span>. <span class="cite">Nov 2025 V2.1.3</span></li>
-        <li><b>Poorte:</b> USB, HDMI (video + oudio, digitaal), VGA (ouer, analoog, slegs video), Thunderbolt (een kabel, baie vinnig).</li>
-        <li><b>Gleuwe (uitbreidingskaarte):</b> <span class="reveal">ZIF-socket = SVE; DIMM-gleuwe = DDR RAM; PCI Express = grafika-kaart</span> (vinnige data-oordrag).</li>
+        <li><b>Functions:</b> (1) <span class="reveal">connects all the components</span>, (2) <span class="reveal">distributes power</span>, (3) provides <span class="reveal">slots/ports</span>, (4) carries data via buses. <span class="cite">Nov 2025 Q2.1.1</span></li>
+        <li><b>Bus vs point-to-point:</b> a bus is <span class="reveal">one shared path for many devices</span> → only one can talk at a time → slower. Point-to-point is <span class="reveal">a direct connection between two devices</span> → faster. <span class="cite">Nov 2025 Q2.1.2</span></li>
+        <li><b>Why a GPU improves performance:</b> the GPU takes <span class="reveal">graphics tasks over from the CPU</span>; many small cores do it <span class="reveal">in parallel</span>. <span class="cite">Nov 2025 Q2.1.3</span></li>
+        <li><b>Ports:</b> USB (Universal Serial Bus), HDMI (High-Definition Multimedia Interface — video + audio, digital), VGA (Video Graphics Array — older, analogue, video only), Thunderbolt (one cable, very fast).</li>
+        <li><b>Slots (expansion cards):</b> <span class="reveal">ZIF (Zero Insertion Force) socket = CPU; DIMM (Dual In-line Memory Module) slots = DDR RAM; PCI Express (Peripheral Component Interconnect Express) = graphics card</span> (fast data transfer).</li>
       </ul>
-      <h3>Foute &amp; verskynsels</h3>
+      <h3>Errors &amp; phenomena</h3>
       <ul class="gloss">
-        <li><b>Integer overflow</b> — waarde te groot vir die <span class="reveal">aantal bisse</span> → verkeerde waarde.</li>
-        <li><b>Thrashing</b> — stelsel spandeer te veel tyd om data tussen <span class="reveal">RAM en skyf</span> te ruil → baie stadig.</li>
-        <li><b>PnP</b> (Plug and Play) — <span class="reveal">outomatiese</span> herkenning + drywer-installasie van nuwe hardeware.</li>
-        <li><b>Argivering (archiving)</b> — ou dokumente word <span class="reveal">uit primêre stoor na sekondêre stoor</span> geskuif (maak die hoofplek skoon); <span class="reveal">NIE dieselfde as rugsteun nie</span> (rugsteun = kopieer). <span class="cite">Nov 2025 V2.3</span></li>
+        <li><b>Integer overflow</b> — value too big for the <span class="reveal">number of bits</span> → wrong value.</li>
+        <li><b>Thrashing</b> — system spends too much time swapping data between <span class="reveal">RAM and disk</span> → very slow.</li>
+        <li><b>PnP</b> (Plug and Play) — <span class="reveal">automatic</span> recognition + driver installation of new hardware.</li>
+        <li><b>Archiving</b> — old documents are <span class="reveal">moved from primary to secondary storage</span> (frees the main location); <span class="reveal">NOT the same as backup</span> (backup = copy). <span class="cite">Nov 2025 Q2.3</span></li>
       </ul>
-      <h3>Malware &amp; sekuriteitsbedreigings</h3>
+      <h3>Malware &amp; security threats</h3>
       <table>
-        <tr><th>Bedreiging</th><th>Wat dit is</th></tr>
-        <tr><td>Virus</td><td>Heg aan lêers/programme; versprei wanneer dit loop.</td></tr>
-        <tr><td>Wurm (worm)</td><td>Vermeerder <span class="reveal">self oor netwerke</span>, sonder 'n gasheerlêer.</td></tr>
-        <tr><td>Trojaan</td><td>Maak of dit 'n regte program is, maar doen kwaad.</td></tr>
-        <tr><td>Rootkit</td><td>Gee <span class="reveal">versteekte afstandbeheer</span> oor 'n stelsel.</td></tr>
-        <tr><td>Zombie</td><td>'n Toestel wat deur malware gekaap is, <span class="reveal">op afstand beheer</span>.</td></tr>
-        <tr><td>Botnet</td><td>'n <span class="reveal">GROEP gekaapte rekenaars (zombies)</span> wat saam werk — bv. vir DDoS. <span class="cite">Nov 2024 V1.3.1 · Nov 2025 V1.1.7</span></td></tr>
-        <tr><td>Keylogger</td><td>Hou jou <span class="reveal">tipping dophou</span>.</td></tr>
-        <tr><td>Spoofing</td><td>Maak of jy <span class="reveal">'n ander (vertroude) bron</span> is. <span class="cite">Nov 2024 V6.6.1</span></td></tr>
-        <tr><td>Phishing</td><td>Bedrog-e-posse met <span class="reveal">vals skakels</span> om inligting te steel.</td></tr>
-        <tr><td>Spam</td><td>Ongewenste <span class="reveal">gemorspos</span>.</td></tr>
-        <tr><td>Ransomware</td><td>Enkripteer <span class="reveal">jou lêers</span> en eis losprys (ransom) om dit te ontsluit.</td></tr>
-        <tr><td>Spyware</td><td>Installeer <span class="reveal">in die geheim</span> en monitor jou aktiwiteit.</td></tr>
-        <tr><td>Adware</td><td>Wys <span class="reveal">ongewenste advertensies</span>.</td></tr>
-        <tr><td>Fake news / Hoax</td><td><span class="reveal">Vals nuus / poets</span> wat versprei word om te mislei.</td></tr>
+        <tr><th>Threat</th><th>What it is</th></tr>
+        <tr><td>Virus</td><td>Attaches to files/programs; spreads when it runs.</td></tr>
+        <tr><td>Worm</td><td>Replicates <span class="reveal">itself over networks</span>, without a host file.</td></tr>
+        <tr><td>Trojan</td><td>Pretends to be a real program, but does harm.</td></tr>
+        <tr><td>Rootkit</td><td>Gives <span class="reveal">hidden remote control</span> over a system.</td></tr>
+        <tr><td>Zombie</td><td>A device hijacked by malware, <span class="reveal">controlled remotely</span>.</td></tr>
+        <tr><td>Botnet</td><td>A <span class="reveal">GROUP of hijacked computers (zombies)</span> working together — e.g. for DDoS. <span class="cite">Nov 2024 Q1.3.1 · Nov 2025 Q1.1.7</span></td></tr>
+        <tr><td>Keylogger</td><td>Records your <span class="reveal">keystrokes</span>.</td></tr>
+        <tr><td>Spoofing</td><td>Pretends to be <span class="reveal">another (trusted) source</span>. <span class="cite">Nov 2024 Q6.6.1</span></td></tr>
+        <tr><td>Phishing</td><td>Fraudulent emails with <span class="reveal">fake links</span> to steal information.</td></tr>
+        <tr><td>Pharming</td><td>Redirects you to <span class="reveal">a fake website</span> even when you typed the correct URL (identity-theft scam). <span class="cite">EC Sept 2024 Q1.1.1</span></td></tr>
+        <tr><td>Spam</td><td>Unwanted <span class="reveal">junk mail</span>.</td></tr>
+        <tr><td>Ransomware</td><td>Encrypts <span class="reveal">your files</span> and demands a ransom to unlock them.</td></tr>
+        <tr><td>Spyware</td><td>Installs <span class="reveal">secretly</span> and monitors your activity.</td></tr>
+        <tr><td>Adware</td><td>Shows <span class="reveal">unwanted adverts</span>.</td></tr>
+        <tr><td>Fake news / Hoax</td><td><span class="reveal">False news / prank</span> spread to mislead.</td></tr>
       </table>
-      <h3>Lisensies</h3>
+      <h3>Licences</h3>
       <table>
-        <tr><th>Tipe</th><th>Wat dit beteken</th></tr>
-        <tr><td>GPL (General Public License)</td><td><span class="reveal">Oopbron</span>: mag redigeer, kopieer en versprei. <span class="cite">Nov 2025 V1.1.5</span></td></tr>
-        <tr><td>Shareware</td><td>Gratis vir 'n <span class="reveal">proeftydperk</span>; betaal later.</td></tr>
-        <tr><td>Freeware</td><td>Heeltemal <span class="reveal">gratis</span> (mag nie verander word nie).</td></tr>
-        <tr><td>EULA</td><td>Jy koop die <span class="reveal">reg om te gebruik</span>, nie die program nie.</td></tr>
-        <tr><td>Creative Commons</td><td>Vir <span class="reveal">kreatiewe werk</span>; eienaar sê wat jy mag doen.</td></tr>
-        <tr><td>Copyleft</td><td>Laat ander toe om te <span class="reveal">kopieer/gebruik</span> mits reëls gevolg word (bv. nie-winsgewend).</td></tr>
-        <tr><td>Terreinlisensie (site)</td><td>Een lisensie vir <span class="reveal">baie gebruikers op een terrein</span> (skool/besigheid).</td></tr>
-        <tr><td>Enkelgebruiker-lisensie</td><td>Lisensie vir <span class="reveal">slegs een gebruiker</span> op een toestel.</td></tr>
+        <tr><th>Type</th><th>What it means</th></tr>
+        <tr><td>GPL (General Public License)</td><td><span class="reveal">Open-source</span>: may edit, copy and distribute. <span class="cite">Nov 2025 Q1.1.5</span></td></tr>
+        <tr><td>Shareware</td><td>Free for a <span class="reveal">trial period</span>; pay later.</td></tr>
+        <tr><td>Freeware</td><td>Completely <span class="reveal">free</span> (may not be changed).</td></tr>
+        <tr><td>EULA (End User License Agreement)</td><td>You buy the <span class="reveal">right to use</span>, not the program itself.</td></tr>
+        <tr><td>Creative Commons (CC)</td><td>For <span class="reveal">creative work</span>; the owner says what you may do.</td></tr>
+        <tr><td>Copyleft</td><td>Lets others <span class="reveal">copy/use</span> provided rules are followed (e.g. non-profit).</td></tr>
+        <tr><td>Site licence</td><td>One licence for <span class="reveal">many users on one site</span> (school/business).</td></tr>
+        <tr><td>Single-user licence</td><td>Licence for <span class="reveal">only one user</span> on one device.</td></tr>
       </table>
-      <h3>Algemene terme</h3>
+      <h3>General terms</h3>
       <ul class="gloss">
-        <li><b>Algoritme</b> — 'n <span class="reveal">opeenvolging van stappe</span> om 'n probleem op te los. <span class="cite">Nov 2025 V1.2.1</span></li>
-        <li><b>Netiket</b> — <span class="reveal">goeie maniere aanlyn</span>. <span class="cite">Nov 2025 V1.2.2</span></li>
-        <li><b>URL</b> — Uniform Resource Locator — <span class="reveal">die volledige webadres</span>. <span class="cite">Nov 2025 V1.2.3</span></li>
-        <li><b>Drywer</b> — sagteware wat die OS met <span class="reveal">hardeware</span> laat praat. <span class="cite">Nov 2025 V1.2.4</span></li>
-        <li><b>Wiki</b> — webtuiste vir samewerking; gebruikers <span class="reveal">skep, wysig en skakel</span> inhoud. <span class="cite">Nov 2024 V6.4.1</span></li>
-        <li><b>Mikroblogs</b> — kort plasings, vinnig gedeel (X/Twitter); kan ook <span class="reveal">foto's/video's</span> bevat.</li>
-        <li><b>Konfigurasie</b> — die <span class="reveal">instellings van die stelsel</span> verander (streek/taal, datum/klok). <span class="cite">Nov 2025 V1.1.4</span></li>
-        <li><b>Ergonomie</b> — ontwerp sodat dit <span class="reveal">gemaklik en veilig</span> is. <span class="cite">Nov 2024 V1.3.2</span></li>
-        <li><b>Groen rekenarisering</b> — <span class="reveal">omgewing-vriendelike</span> rekenaargebruik.</li>
-        <li><b>Data-ontginning</b> — deursoek groot datastelle vir <span class="reveal">patrone</span>.</li>
-        <li><b>Data-pakhuis</b> — <span class="reveal">gesentraliseerde bewaarplek</span> van data uit verskeie bronne. <span class="cite">Nov 2024 V1.2.5</span></li>
-        <li><b>ORDER BY</b> — <span class="reveal">sorteer</span>; <b>GROUP BY</b> — <span class="reveal">groepeer</span> vir totale.</li>
-        <li><b>Append</b> — voeg by die <span class="reveal">einde</span> van 'n tekslêer.</li>
-        <li><b>Firmware</b> — sagteware <span class="reveal">vas in hardeware</span>.</li>
+        <li><b>Algorithm</b> — a <span class="reveal">sequence of steps</span> to solve a problem. <span class="cite">Nov 2025 Q1.2.1</span></li>
+        <li><b>Netiquette</b> — <span class="reveal">good manners online</span>. <span class="cite">Nov 2025 Q1.2.2</span></li>
+        <li><b>URL</b> (Uniform Resource Locator) — <span class="reveal">the full web address</span>. <span class="cite">Nov 2025 Q1.2.3</span></li>
+        <li><b>Driver</b> — software that lets the OS talk to <span class="reveal">hardware</span>. <span class="cite">Nov 2025 Q1.2.4</span></li>
+        <li><b>Wiki</b> — collaborative website; users <span class="reveal">create, edit and link</span> content. <span class="cite">Nov 2024 Q6.4.1</span></li>
+        <li><b>Microblog</b> — short posts, shared fast (X/Twitter); may also contain <span class="reveal">photos/videos</span>.</li>
+        <li><b>Configuration</b> — changing the <span class="reveal">system's settings</span> (region/language, date/clock). <span class="cite">Nov 2025 Q1.1.4</span></li>
+        <li><b>Ergonomics</b> — design so it is <span class="reveal">comfortable and safe</span>. <span class="cite">Nov 2024 Q1.3.2</span></li>
+        <li><b>Green computing</b> — <span class="reveal">environmentally friendly</span> computer use.</li>
+        <li><b>Data mining</b> — searching large datasets for <span class="reveal">patterns</span>.</li>
+        <li><b>Data warehouse</b> — <span class="reveal">centralised store</span> of data from various sources. <span class="cite">Nov 2024 Q1.2.5</span></li>
+        <li><b>ORDER BY</b> — <span class="reveal">sort</span>; <b>GROUP BY</b> — <span class="reveal">group</span> for totals.</li>
+        <li><b>Append</b> — add to the <span class="reveal">end</span> of a text file.</li>
+        <li><b>Firmware</b> — software <span class="reveal">fixed in hardware</span>.</li>
+        <li><b>Convergence</b> — the trend where <span class="reveal">separate technologies/functions combine into one multi-purpose device</span> (e.g. a smartphone). <span class="cite">EC Sept 2024 Q2.2.1</span></li>
+        <li><b>CSV</b> (Comma Separated Values) — a text format where <span class="reveal">fields are separated by commas</span> (used to transfer data between programs). <span class="cite">EC Sept 2024 Q1.2.1</span></li>
+        <li><b>Flashing (the ROM)</b> — <span class="reveal">updating the firmware</span> on a device such as a phone or tablet. <span class="cite">EC Sept 2025 Q1.2.4</span></li>
       </ul>
-      <h3>Waar/Onwaar-kolfies (Afdeling A)</h3>
+      <h3>True/False traps (Section A)</h3>
       <ul class="gloss">
-        <li><b>RandomRange(10,13)</b> gee 10, 11 of 12 — die boonste getal is <span class="reveal">NIE ingesluit nie</span>. <span class="cite">Nov 2025 V1.3.1</span></li>
-        <li><b>Ubuntu op slimfone?</b> ONWAAR — <span class="reveal">Android/iOS</span>. <span class="cite">Nov 2025 V1.3.2</span></li>
-        <li><b>Masjienkode is vir mense leesbaar?</b> ONWAAR — dit is <span class="reveal">bronkode</span>; masjienkode is 0'e en 1'e. <span class="cite">Nov 2025 V1.3.5</span></li>
-        <li><b>Compiler vertaal bronkode na masjienkode</b> → <span class="reveal">WAAR</span>. <span class="cite">Nov 2024 V1.1.5</span></li>
-        <li><b>Blokkeerketting</b> — gedesentraliseerde digitale grootboek. <span class="cite">Nov 2024 V1.1.8</span></li>
-        <li><b>HAVING</b> (nie WHERE) filtreer ná GROUP BY. <span class="cite">Nov 2024 V1.3.5</span></li>
+        <li><b>RandomRange(10,13)</b> gives 10, 11 or 12 — the upper number is <span class="reveal">NOT included</span>. <span class="cite">Nov 2025 Q1.3.1</span></li>
+        <li><b>Ubuntu on smartphones?</b> FALSE — <span class="reveal">Android/iOS</span>. <span class="cite">Nov 2025 Q1.3.2</span></li>
+        <li><b>Machine code is human-readable?</b> FALSE — that is <span class="reveal">source code</span>; machine code is 0s and 1s. <span class="cite">Nov 2025 Q1.3.5</span></li>
+        <li><b>Compiler translates source code to machine code</b> → <span class="reveal">TRUE</span>. <span class="cite">Nov 2024 Q1.1.5</span></li>
+        <li><b>Blockchain</b> — a decentralised digital ledger. <span class="cite">Nov 2024 Q1.1.8</span></li>
+        <li><b>HAVING</b> (not WHERE) filters after GROUP BY. <span class="cite">Nov 2024 Q1.3.5</span></li>
       </ul>
     </div>
   </details>
 
-  <!-- ============ AFDELING B ============ -->
+  <!-- ============ SECTION B ============ -->
   <details id="sB">
-    <summary><span class="tag">B · 25</span>Stelseltegnologieë<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="B">Gemeester</span></summary>
+    <summary><span class="tag">B · 25</span>Systems technologies<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="B">Mastered</span></summary>
     <div class="inner">
-      <h3>Compiler vs Interpreteerder ⭐</h3>
+      <h3>Compiler vs Interpreter ⭐</h3>
       <table>
-        <tr><th></th><th>Compiler</th><th>Interpreteerder</th></tr>
-        <tr><td>Vertaal</td><td><span class="reveal">Volledige</span> kode in een keer, voor uitvoering</td><td><span class="reveal">Lyn-vir-lyn</span>, terwyl dit loop</td></tr>
-        <tr><td>Uitset</td><td>Maak <span class="reveal">'n .exe-lêer</span></td><td><span class="reveal">Geen</span> uitvoerbare lêer</td></tr>
-        <tr><td>Spoed</td><td><span class="reveal">Vinniger</span></td><td><span class="reveal">Stadiger</span></td></tr>
-        <tr><td>Foute</td><td>Rapporteer <span class="reveal">eers ná al die vertaling</span></td><td>Stop <span class="reveal">onmiddellik</span> by die foutlyn</td></tr>
-        <tr><td>Voorbeelde</td><td>Delphi, C++</td><td>Python, JavaScript <span class="cite">Nov 2024 V1.1.10</span></td></tr>
+        <tr><th></th><th>Compiler</th><th>Interpreter</th></tr>
+        <tr><td>Translate</td><td><span class="reveal">Whole</span> code at once, before running</td><td><span class="reveal">Line-by-line</span>, while it runs</td></tr>
+        <tr><td>Output</td><td>Creates <span class="reveal">an .exe file</span></td><td><span class="reveal">No</span> executable file</td></tr>
+        <tr><td>Speed</td><td><span class="reveal">Faster</span></td><td><span class="reveal">Slower</span></td></tr>
+        <tr><td>Errors</td><td>Reports <span class="reveal">only after all translation</span></td><td>Stops <span class="reveal">immediately</span> at the error line</td></tr>
+        <tr><td>Examples</td><td>Delphi, C++</td><td>Python, JavaScript <span class="cite">Nov 2024 Q1.1.10</span></td></tr>
       </table>
-      <h3>Sagteware &amp; die bedryfstelsel</h3>
+      <h3>Software &amp; the operating system</h3>
       <ul class="gloss">
-        <li><b>Toepassingsagteware</b> — vir <span class="reveal">een spesifieke taak</span>. <b>Stelselsagteware</b> — bestuur <span class="reveal">alles</span> (die OS).</li>
-        <li><b>OS-funksies:</b> hulpbronne bestuur, lêers bestuur, toestelle bestuur (drywers), gebruikerskoppelvlak, sekuriteit, prosesse bestuur.</li>
-        <li><b>Multiverwerking</b> — SVE met <span class="reveal">VEEL kerne (multi-core)</span> laat die OS veel take gelyk doen. <span class="cite">Nov 2024 V1.2.2 · Nov 2025 V2.2.1</span></li>
-        <li><b>Disk Cleanup</b> — verwyder <span class="reveal">onnodige/temporêre lêers</span>.</li>
-        <li><b>Modulêre ontwerp van 'n rekenaar (voordele):</b> <span class="reveal">maklik herstel, maklik opgradeer, spesifikasies aanpas, goedkoper om een deel te vervang</span>. <span class="cite">Nov 2024 V2.3.1</span></li>
-        <li><b>Alfa vs Beta-weergawe:</b> Alfa = <span class="reveal">vroeër, minder gepoleer, intern</span>; Beta = <span class="reveal">nader aan die finale weergawe, ekstern vir breër toetsing</span>.</li>
+        <li><b>Application software</b> — for <span class="reveal">one specific task</span>. <b>System software</b> — manages <span class="reveal">everything</span> (the OS).</li>
+        <li><b>OS functions:</b> manage resources, manage files, manage devices (drivers), user interface, security, manage processes.</li>
+        <li><b>Multiprocessing</b> — a CPU with <span class="reveal">MANY cores (multi-core)</span> lets the OS do many tasks at once. <span class="cite">Nov 2024 Q1.2.2 · Nov 2025 Q2.2.1</span></li>
+        <li><b>Disk Cleanup</b> — removes <span class="reveal">unnecessary/temporary files</span>.</li>
+        <li><b>Modular design of a computer (advantages):</b> <span class="reveal">easy to repair, easy to upgrade, customise specs, cheaper to replace one part</span>. <span class="cite">Nov 2024 Q2.3.1</span></li>
+        <li><b>Alpha vs Beta version:</b> Alpha = <span class="reveal">earlier, less polished, internal</span>; Beta = <span class="reveal">closer to final, external for broader testing</span>.</li>
+        <li><b>High-level vs low-level languages:</b> high-level = <span class="reveal">close to human language, easier, portable</span>; low-level = <span class="reveal">close to machine code, fast but hard to write</span>. <span class="cite">EC Sept 2025 Q2.7.4</span></li>
       </ul>
-      <h3>BIOS &amp; selflaai ⭐</h3>
+      <h3>BIOS &amp; booting ⭐</h3>
       <ul class="gloss">
-        <li><b>BIOS-funksies:</b> (1) <span class="reveal">beheer hardeware op die laagste vlak</span>, (2) <span class="reveal">POST</span> (kontroleer hardeware is teenwoordig en werk), (3) <span class="reveal">vind en laai die OS</span>, (4) bied konfigurasie-opsies (CMOS). <span class="cite">Nov 2024 V2.3.2</span></li>
-        <li><b>Hoekom BIOS op nie-vlugtige geheue?</b> sodat dit <span class="reveal">data behou as krag af is</span> en instellings die volgende keer herlaai. <span class="cite">Nov 2024 V2.3.3</span></li>
-        <li><b>CMOS</b> — <span class="reveal">stoor die BIOS-instellings</span>. Firmware/BIOS word op <span class="reveal">ROM</span> gestoor.</li>
-        <li><b>POST</b> — kort toets by <span class="reveal">aanskakeling</span>. <b>Booting</b> — die <span class="reveal">volledige opstartproses</span>.</li>
+        <li><b>BIOS (Basic Input/Output System) functions:</b> (1) <span class="reveal">controls hardware at the lowest level</span>, (2) <span class="reveal">POST</span> (checks hardware is present and working), (3) <span class="reveal">finds and loads the OS</span>, (4) offers configuration options (CMOS). <span class="cite">Nov 2024 Q2.3.2</span></li>
+        <li><b>Why BIOS is on non-volatile memory:</b> so it <span class="reveal">keeps data when power is off</span> and settings reload next time. <span class="cite">Nov 2024 Q2.3.3</span></li>
+        <li><b>CMOS</b> (Complementary Metal-Oxide Semiconductor) — <span class="reveal">stores the BIOS settings</span>. Firmware/BIOS is stored on <span class="reveal">ROM</span>.</li>
+        <li><b>POST</b> (Power-On Self-Test) — a short test at <span class="reveal">switch-on</span>. <b>Booting</b> — the <span class="reveal">full startup process</span>.</li>
       </ul>
-      <h3>Opdaterings</h3>
+      <h3>Updates</h3>
       <ul class="gloss">
-        <li><b>Patch</b> — klein, <span class="reveal">spesifieke regstelling</span>. <b>Service Pack</b> — <span class="reveal">'n versameling patches</span>. <span class="cite">Nov 2024 V1.3.4</span></li>
-        <li><b>Nadele van outomatiese opdaterings:</b> <span class="reveal">onverwagte data-gebruik, toestel stadig/onderbreek, ongerieflike herstart, ongewensde opdatering, data verloor, versoenbaarheidsprobleme</span>. <span class="cite">Nov 2024 V6.7</span></li>
+        <li><b>Patch</b> — small, <span class="reveal">specific fix</span>. <b>Service Pack</b> — <span class="reveal">a collection of patches</span>. <span class="cite">Nov 2024 Q1.3.4</span></li>
+        <li><b>Disadvantages of automatic updates:</b> <span class="reveal">unexpected data usage, device slows/interrupts, inconvenient restart, unwanted update, data loss, compatibility issues</span>. <span class="cite">Nov 2024 Q6.7</span></li>
       </ul>
-      <h3>Verwerker (SVE/CPU) &amp; GPU</h3>
+      <h3>Processor (CPU) &amp; GPU</h3>
       <ul class="gloss">
-        <li><b>SVE-funksie</b> — voer <span class="reveal">berekeninge en instruksies</span> uit (die "brein").</li>
-        <li><b>Multi-tasking</b> — <span class="reveal">baie programme</span> loop "gelyk". <b>Multi-threading</b> — <span class="reveal">ÉEN program</span> verdeel werk in drade oor kerne.</li>
-        <li><b>Kerne</b> — fisiese verwerkers; meer = meer gelyktydige werk. <b>Klokspoed</b> (GHz) — die SVE se spoed.</li>
-        <li><b>Faktore wat 'n GPU se rekenkrag bepaal:</b> <span class="reveal">VRAM-grootte, geheue-tipe/bandwydte, klokspoed, aantal kerne, generasie</span>. <span class="cite">Nov 2024 V2.2</span></li>
-        <li><b>Virtuele geheue maak rekenaar stadiger:</b> dit word <span class="reveal">vanaf stoor (skyf) gelees</span>, en die ruiling tussen RAM en skyf is stadig. <span class="cite">Nov 2024 V2.1.3</span></li>
-        <li><b>Paging</b> — die proses om <span class="reveal">"bladsye" geheue tussen RAM en hardeskyf</span> te ruil. <b>Thrashing</b> — as die rekenaar <span class="reveal">aanhoudend ruil</span> en "hak".</li>
+        <li><b>CPU (Central Processing Unit) function</b> — performs <span class="reveal">calculations and instructions</span> (the "brain").</li>
+        <li><b>Machine cycle (4 steps):</b> <span class="reveal">Fetch → Decode → Execute → Store</span>. <span class="cite">EC Sept 2024 Q2.1.3</span></li>
+        <li><b>Multi-tasking</b> — <span class="reveal">many programs</span> run "at once". <b>Multi-threading</b> — <span class="reveal">ONE program</span> splits work into threads across cores.</li>
+        <li><b>Cores</b> — physical processors; more = more simultaneous work. <b>Clock speed</b> (GHz) — the CPU's speed.</li>
+        <li><b>Factors that determine a GPU's (Graphics Processing Unit) power:</b> <span class="reveal">VRAM size, memory type/bandwidth, clock speed, number of cores, generation</span>. <span class="cite">Nov 2024 Q2.2</span></li>
+        <li><b>Virtual memory slows the computer:</b> it is <span class="reveal">read from storage (disk)</span>, and swapping between RAM and disk is slow. <span class="cite">Nov 2024 Q2.1.3</span></li>
+        <li><b>Paging</b> — the process of swapping <span class="reveal">"pages" of memory between RAM and hard disk</span>. <b>Thrashing</b> — when the computer <span class="reveal">keeps swapping</span> and "freezes".</li>
       </ul>
-      <h3>Sekuriteit</h3>
+      <h3>Security</h3>
       <ul class="gloss">
-        <li><b>Firewall</b> — filter <span class="reveal">netwerkverkeer</span>; voorkom <span class="reveal">NIE virusse</span> nie. ⚠️</li>
-        <li><b>Antivirus</b> — soek en verwyder <span class="reveal">malware</span>.</li>
-        <li><b>Enkripsie</b> — data in <span class="reveal">gekodeerde vorm</span>, onleesbaar sonder sleutel.</li>
-        <li><b>MFA</b> — 2+ metodes: <span class="reveal">iets wat jy weet + het + is</span>.</li>
-        <li><b>Biometries:</b> <span class="reveal">vingerafdruk, gesigsherkenning, iris-skandering, stem</span>. <span class="cite">Nov 2025 V2.5.1</span></li>
+        <li><b>Firewall</b> — filters <span class="reveal">network traffic</span>; does <span class="reveal">NOT prevent viruses</span>. ⚠️</li>
+        <li><b>Antivirus</b> — finds and removes <span class="reveal">malware</span>.</li>
+        <li><b>Encryption</b> — data in <span class="reveal">coded form</span>, unreadable without a key.</li>
+        <li><b>MFA</b> (Multi-Factor Authentication) — 2+ methods: <span class="reveal">something you know + have + are</span>.</li>
+        <li><b>Biometrics:</b> <span class="reveal">fingerprint, facial recognition, iris scan, voice</span>. <span class="cite">Nov 2025 Q2.5.1</span></li>
       </ul>
-      <h3>Rekenaarmisdadigers &amp; onetiese gebruikers</h3>
+      <h3>Cyber-criminals &amp; unethical users</h3>
       <table>
-        <tr><th>Term</th><th>Wat dit is</th></tr>
-        <tr><td>Threat actor</td><td>Persoon/groep wat <span class="reveal">opsetlik 'n kuberbedreiging</span> skep of uitvoer.</td></tr>
-        <tr><td>Ethical hacker</td><td>Gemagtigde deskundige wat stelsels <span class="reveal">vir kwesbaarhede toets</span> om sekuriteit te verbeter.</td></tr>
-        <tr><td>Virus author</td><td>Skryf <span class="reveal">kwaadwillige sagteware</span> (virusse/wurms).</td></tr>
-        <tr><td>Script kiddie</td><td>Onervare persoon wat <span class="reveal">voorafgemaakte hacking-gereedskap</span> gebruik.</td></tr>
-        <tr><td>Cybergang</td><td><span class="reveal">Georganiseerde groep</span> kubermisdadigers.</td></tr>
-        <tr><td>Cyber terrorist</td><td>Gebruik kubertegnologie vir <span class="reveal">politieke/ideologiese</span> doelwitte.</td></tr>
-        <tr><td>Kuberboelie (cyberbully)</td><td><span class="reveal">Herhaalde intimidasie</span> via digitale platforms.</td></tr>
-        <tr><td>Piggybacking</td><td><span class="reveal">Ongemagtigde gebruik</span> van iemand anders se Wi-Fi.</td></tr>
-        <tr><td>Click farms</td><td>Groep/bots wat <span class="reveal">kunsmatig op advertensies/skakels klik</span>.</td></tr>
-        <tr><td>Cyberslacking</td><td>Werknemers doen <span class="reveal">persoonlike internet-take</span> in werksure.</td></tr>
+        <tr><th>Term</th><th>What it is</th></tr>
+        <tr><td>Threat actor</td><td>Person/group that <span class="reveal">deliberately creates/executes a cyber-threat</span>.</td></tr>
+        <tr><td>Ethical hacker</td><td>Authorised expert who tests systems <span class="reveal">for vulnerabilities</span> to improve security.</td></tr>
+        <tr><td>Virus author</td><td>Writes <span class="reveal">malicious software</span> (viruses/worms).</td></tr>
+        <tr><td>Script kiddie</td><td>Inexperienced person using <span class="reveal">pre-made hacking tools</span>.</td></tr>
+        <tr><td>Cybergang</td><td><span class="reveal">Organised group</span> of cyber-criminals.</td></tr>
+        <tr><td>Cyber terrorist</td><td>Uses cyber technology for <span class="reveal">political/ideological</span> aims.</td></tr>
+        <tr><td>Cyberbully</td><td><span class="reveal">Repeated intimidation</span> via digital platforms.</td></tr>
+        <tr><td>Piggybacking</td><td><span class="reveal">Unauthorised use</span> of someone else's Wi-Fi.</td></tr>
+        <tr><td>Click farms</td><td>Group/bots that <span class="reveal">artificially click</span> ads/links.</td></tr>
+        <tr><td>Cyberslacking</td><td>Employees doing <span class="reveal">personal internet tasks</span> in work hours.</td></tr>
       </table>
       <h3>SSD vs HDD ⭐</h3>
       <table>
-        <tr><th></th><th>SSD</th><th>HDD</th></tr>
-        <tr><td>Bewegende dele</td><td><span class="reveal">Geen</span></td><td><span class="reveal">Ja</span></td></tr>
-        <tr><td>Spoed</td><td><span class="reveal">Vinniger</span></td><td>Stadiger</td></tr>
-        <tr><td>Duursaam</td><td><span class="reveal">Meer betroubaar</span>, stil, lig</td><td>Vatbaar vir skade, geraas</td></tr>
-        <tr><td>Krag</td><td>Minder</td><td>Meer</td></tr>
+        <tr><th></th><th>SSD (Solid State Drive)</th><th>HDD (Hard Disk Drive)</th></tr>
+        <tr><td>Moving parts</td><td><span class="reveal">None</span></td><td><span class="reveal">Yes</span></td></tr>
+        <tr><td>Speed</td><td><span class="reveal">Faster</span></td><td>Slower</td></tr>
+        <tr><td>Durable</td><td><span class="reveal">More reliable</span>, quiet, light</td><td>Prone to damage, noisy</td></tr>
+        <tr><td>Power</td><td>Less</td><td>More</td></tr>
       </table>
-      <h3>Kompressie &amp; rugsteun</h3>
+      <h3>Compression &amp; backup</h3>
       <ul class="gloss">
-        <li><b>Verliesloos</b> — <span class="reveal">geen data verlore</span> (teks/dokumente). <b>Verliesgewend</b> — data <span class="reveal">permanent weg</span> (JPEG, MP3, video).</li>
-        <li><b>Rugsteun</b> — <span class="reveal">kopie van data elders</span>. Tipes: volledig, inkrementeel.</li>
-        <li><b>Fisiese data-integriteit</b> — beskerm teen <span class="reveal">kragonderbreking, natuurrampe, diefstal</span>. Hardeware: <span class="reveal">UPS, RAID, toegangsbeheer, elektriese slotte, kragbeskermers</span>. <span class="cite">Nov 2024 V4.2</span></li>
+        <li><b>Lossless</b> — <span class="reveal">no data lost</span> (text/documents). <b>Lossy</b> — data <span class="reveal">permanently lost</span> (JPEG, MP3, video).</li>
+        <li><b>Backup</b> — <span class="reveal">copy of data elsewhere</span>. Types: full, incremental.</li>
+        <li><b>Physical data integrity</b> — protect against <span class="reveal">power failure, natural disasters, theft</span>. Hardware: <span class="reveal">UPS (Uninterruptible Power Supply), RAID (Redundant Array of Independent Disks), access control, electronic locks, surge protectors</span>. <span class="cite">Nov 2024 Q4.2</span></li>
       </ul>
-      <h3>Wolk &amp; SaaS</h3>
+      <h3>Cloud &amp; SaaS</h3>
       <ul class="gloss">
-        <li><b>Wolkberekening</b> — <span class="reveal">gedeelde hulpbronne wat as dienste oor die internet</span> aangebied word (stoor/verwerk data). <span class="cite">Nov 2024 V2.5.1</span></li>
-        <li><b>Hoekom wolk hardeware-vereistes verlaag:</b> <span class="reveal">verwerking in die wolk</span> → goedkoper/laer spesifikasies plaaslik; <span class="reveal">stoor in die wolk</span> → minder plaaslike stoor; <span class="reveal">wolk-rugsteun</span> → geen toegewyde rugsteunbediener. <span class="cite">Nov 2024 V2.5.2</span></li>
-        <li><b>SaaS</b> — sagteware in die wolk; gebruiker <span class="reveal">installeer/dateer/onderhou nie</span>.</li>
-        <li><b>API</b> — stel reëls sodat programme <span class="reveal">met ander dienste kan praat</span>.</li>
+        <li><b>Cloud computing</b> — <span class="reveal">shared resources offered as services over the internet</span> (store/process data). <span class="cite">Nov 2024 Q2.5.1</span></li>
+        <li><b>Why cloud lowers hardware requirements:</b> <span class="reveal">processing in the cloud</span> → cheaper/lower local specs; <span class="reveal">storage in the cloud</span> → less local storage; <span class="reveal">cloud backup</span> → no dedicated backup server. <span class="cite">Nov 2024 Q2.5.2</span></li>
+        <li><b>SaaS</b> (Software as a Service) — software in the cloud; user <span class="reveal">does not install/update/maintain</span>.</li>
+        <li><b>API</b> (Application Programming Interface) — set of rules so programs <span class="reveal">can talk to other services</span>.</li>
       </ul>
       <h3>VR vs AR</h3>
       <ul class="gloss">
-        <li><b>VR</b> — <span class="reveal">volledig gesimuleerde wêreld</span>. <b>AR</b> — <span class="reveal">digitale inligting bo-op die regte wêreld</span>. <span class="cite">Nov 2024 V2.6.1</span></li>
-        <li><b>VR-voordele (prakties):</b> <span class="reveal">interaktiewe opleiding, deelneem op afstand, simuleer die regte baan/omgewing, skep teenstanders</span>. <span class="cite">Nov 2024 V2.6.2</span></li>
-        <li><b>VR-beperkings:</b> <span class="reveal">duur toerusting, bewegingsiekte, kragtige rekenaar nodig, isoleer jou</span>.</li>
+        <li><b>VR</b> (Virtual Reality) — <span class="reveal">fully simulated world</span>. <b>AR</b> (Augmented Reality) — <span class="reveal">digital info on top of the real world</span>. <span class="cite">Nov 2024 Q2.6.1</span></li>
+        <li><b>VR benefits (practical):</b> <span class="reveal">interactive training, participate remotely, simulate the real course/environment, create opponents</span>. <span class="cite">Nov 2024 Q2.6.2</span></li>
+        <li><b>VR limitations:</b> <span class="reveal">expensive equipment, motion sickness, needs a powerful computer, isolates you</span>.</li>
       </ul>
-      <h3>Virtualisering &amp; verspreide verwerking</h3>
+      <h3>Virtualisation &amp; distributed processing</h3>
       <ul class="gloss">
-        <li><b>Virtualisering</b> — <span class="reveal">een fisiese rekenaar loop verskeie virtuele masjiene</span>. <span class="cite">Nov 2024 V1.2.4</span></li>
-        <li><b>Verspreide verwerking:</b> <span class="reveal">baie rekenaars werk saam aan een groot taak</span> — vinniger (parallel), deel hulpbronne, een kan uitval sonder dat alles stop. <span class="cite">Nov 2024 V6.3.4</span></li>
+        <li><b>Virtualisation</b> — <span class="reveal">one physical computer runs several virtual machines</span>. <span class="cite">Nov 2024 Q1.2.4</span></li>
+        <li><b>Distributed processing:</b> <span class="reveal">many computers work together on one big task</span> — faster (parallel), share resources, one can fail without everything stopping. <span class="cite">Nov 2024 Q6.3.4</span></li>
       </ul>
     </div>
   </details>
 
-  <!-- ============ AFDELING C ============ -->
+  <!-- ============ SECTION C ============ -->
   <details id="sC">
-    <summary><span class="tag">C · 25–30</span>Netwerke &amp; Kommunikasie<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="C">Gemeester</span></summary>
+    <summary><span class="tag">C · 25–30</span>Networks &amp; Communication<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="C">Mastered</span></summary>
     <div class="inner">
-      <h3>Netwerk-basies</h3>
+      <h3>Network basics</h3>
       <ul class="gloss">
-        <li><b>Protokol</b> — <span class="reveal">stel reëls</span> vir kommunikasie.</li>
-        <li><b>LAN</b> — klein area. <b>WAN</b> — groot area. <b>PAN</b> — persoonlike reeks (slimhorlosie + foon via Bluetooth).</li>
-        <li><b>IP-adres</b> — <span class="reveal">uniek identifiseer 'n toestel</span> op die netwerk sodat dit kan kommunikeer. <span class="cite">Nov 2024 V3.1.4</span></li>
-        <li><b>DNS</b> — vertaal <span class="reveal">domeinname na IP-adresse</span>.</li>
-        <li><b>ISP</b> — verskaffer van internet. <span class="cite">Nov 2024 V2.4.2</span></li>
-        <li><b>Bandwydte</b> — <span class="reveal">hoeveel data per sekonde</span> oor die netwerk beweeg; gemeet in <span class="reveal">bps / Mbps / Gbps</span>. <span class="cite">Nov 2024 V3.1.2</span></li>
-        <li><b>Reikafstand vs bandwydte:</b> reikafstand = <span class="reveal">hoe ver die sein strek</span>; bandwydte = <span class="reveal">hoeveel data per sekonde</span>.</li>
-        <li><b>Kliënt-bediener (redes):</b> <span class="reveal">sentrale sekuriteit/toegangsbeheer, sentrale rugsteun, hulpbronne gedeel, enige plek inteken, skaalbaar</span>.</li>
-        <li><b>NOS</b> (Network Operating System) — bedryfstelsel wat <span class="reveal">netwerk-hulpbronne bestuur</span>.</li>
-        <li><b>HAN</b> — tuisnetwerk; <b>WLAN</b> — draadlose LAN. <b>Node</b> — enige toestel op die netwerk.</li>
-        <li><b>AUP</b> (Acceptable Use Policy) — dokument wat <span class="reveal">korrekte gebruik van die netwerk</span> verduidelik.</li>
-        <li><b>Breëband</b> — <span class="reveal">hoëspoed, altyd-aan</span> verbinding. <b>Ruggraat</b> — die internet se <span class="reveal">hoofdata-pad</span>.</li>
-        <li><b>FTTH</b> — Fiber To The Home — vesel <span class="reveal">tot by jou huis</span>.</li>
+        <li><b>Protocol</b> — a <span class="reveal">set of rules</span> for communication.</li>
+        <li><b>LAN</b> (Local Area Network) — small area. <b>WAN</b> (Wide Area Network) — large area. <b>PAN</b> (Personal Area Network) — personal range (smartwatch + phone via Bluetooth).</li>
+        <li><b>IP address</b> (Internet Protocol address) — <span class="reveal">uniquely identifies a device</span> on the network so it can communicate. <span class="cite">Nov 2024 Q3.1.4</span></li>
+        <li><b>DNS</b> (Domain Name System) — translates <span class="reveal">domain names to IP addresses</span>.</li>
+        <li><b>ISP</b> (Internet Service Provider) — provider of internet. <span class="cite">Nov 2024 Q2.4.2</span></li>
+        <li><b>Bandwidth</b> — <span class="reveal">how much data per second</span> moves over the network; measured in <span class="reveal">bps / Mbps / Gbps</span>. <span class="cite">Nov 2024 Q3.1.2</span></li>
+        <li><b>Range vs bandwidth:</b> range = <span class="reveal">how far the signal reaches</span>; bandwidth = <span class="reveal">how much data per second</span>.</li>
+        <li><b>Client-server (reasons):</b> <span class="reveal">central security/access control, central backup, shared resources, sign in from anywhere, scalable</span>.</li>
+        <li><b>NOS</b> (Network Operating System) — OS that <span class="reveal">manages network resources</span>.</li>
+        <li><b>HAN</b> (Home Area Network) — home network; <b>WLAN</b> (Wireless Local Area Network) — wireless LAN. <b>Node</b> — any device on the network.</li>
+        <li><b>AUP</b> (Acceptable Use Policy) — document that <span class="reveal">explains correct use of the network</span>.</li>
+        <li><b>Broadband</b> — <span class="reveal">high-speed, always-on</span> connection. <b>Backbone</b> — the internet's <span class="reveal">main data path</span>.</li>
+        <li><b>FTTH</b> (Fiber To The Home) — fibre <span class="reveal">right to your home</span>.</li>
       </ul>
-      <div class="note"><b>Intranet vs Ekstranet vs Internet:</b> Intranet = <span class="reveal">privaat, slegs werknemers</span>; Ekstranet = <span class="reveal">privaat + beperkte toegang vir kliënte/verskaffers</span>; Internet = vir almal. <span class="cite">Nov 2025 V1.1.3</span></div>
-      <h3>Netwerk-topologie (Nov 2024 het STAR gevra)</h3>
+      <div class="note"><b>Intranet vs Extranet vs Internet:</b> Intranet = <span class="reveal">private, employees only</span>; Extranet = <span class="reveal">private + limited access for clients/suppliers</span>; Internet = for everyone. <span class="cite">Nov 2025 Q1.1.3</span></div>
+      <div class="note blue"><b>Internet vs World Wide Web (WWW):</b> the Internet = <span class="reveal">the physical network of interconnected networks</span>; the WWW = <span class="reveal">the collection of web pages/services that run on the internet</span>. <span class="cite">EC Sept 2024 Q3.1.1</span></div>
+      <h3>Network topology (Nov 2024 asked STAR)</h3>
       <ul class="gloss">
-        <li><b>Star-voordele:</b> <span class="reveal">as een kabel/switsel-poort faal, werk die ander toestelle steeds</span>; <span class="reveal">maklik om fout te vind</span> (eie kabel per toestel); <span class="reveal">maklik toestelle byvoeg/verwyder</span>. <span class="cite">Nov 2024 V3.1.5</span></li>
+        <li><b>Star advantages:</b> <span class="reveal">if one cable/switch-port fails, the other devices still work</span>; <span class="reveal">easy to find faults</span> (own cable per device); <span class="reveal">easy to add/remove devices</span>. <span class="cite">Nov 2024 Q3.1.5</span></li>
       </ul>
-      <h3>E-pos &amp; internet-protokolle ⭐</h3>
+      <h3>Email &amp; internet protocols ⭐</h3>
       <table>
-        <tr><th>Protokol</th><th>Voluit &amp; funksie</th></tr>
-        <tr><td>SMTP</td><td>Simple Mail Transfer Protocol — <span class="reveal">STUUR e-pos</span>. <span class="cite">Nov 2025 V1.1.1</span></td></tr>
-        <tr><td>POP3</td><td>Post Office Protocol — <span class="reveal">aflaai na ÉEN toestel</span>. <span class="cite">Nov 2024 V1.1.2</span></td></tr>
-        <tr><td>IMAP</td><td>Internet Message Access Protocol — <span class="reveal">sinchroniseer oor baie toestelle</span>.</td></tr>
-        <tr><td>HTTP / HTTPS</td><td>HyperText Transfer Protocol (Secure) — blaaier ↔ webbediener; HTTPS is <span class="reveal">versleutel</span>.</td></tr>
-        <tr><td>FTP</td><td>File Transfer Protocol — <span class="reveal">lêers oordra</span>.</td></tr>
-        <tr><td>TCP/IP</td><td>breek data in pakkies en <span class="reveal">roeteer dit</span>.</td></tr>
-        <tr><td>SSL</td><td>Secure Sockets Layer — <span class="reveal">enkripteer data</span> (https).</td></tr>
+        <tr><th>Protocol</th><th>Full form &amp; function</th></tr>
+        <tr><td>SMTP</td><td>Simple Mail Transfer Protocol — <span class="reveal">SENDS email</span>. <span class="cite">Nov 2025 Q1.1.1</span></td></tr>
+        <tr><td>POP3</td><td>Post Office Protocol (v3) — <span class="reveal">downloads to ONE device</span>. <span class="cite">Nov 2024 Q1.1.2</span></td></tr>
+        <tr><td>IMAP</td><td>Internet Message Access Protocol — <span class="reveal">syncs across many devices</span>.</td></tr>
+        <tr><td>HTTP / HTTPS</td><td>HyperText Transfer Protocol (Secure) — browser ↔ web server; HTTPS is <span class="reveal">encrypted</span>.</td></tr>
+        <tr><td>FTP</td><td>File Transfer Protocol — <span class="reveal">transfers files</span>.</td></tr>
+        <tr><td>TCP/IP</td><td>Transmission Control Protocol / Internet Protocol — breaks data into packets and <span class="reveal">routes them</span>.</td></tr>
+        <tr><td>SSL</td><td>Secure Sockets Layer — <span class="reveal">encrypts data</span> (https).</td></tr>
       </table>
-      <h3>VPN, enkripsie &amp; draadlose tegnologie</h3>
+      <h3>VPN, encryption &amp; wireless technology</h3>
       <ul class="gloss">
-        <li><b>VPN</b> — veilige, versleutelde koppeling na 'n privaat netwerk.</li>
-        <li><b>Afgeleë rekenaar (bv. AnyDesk)</b> — jy <span class="reveal">beheer 'n ander rekenaar op afstand</span>; teenoor VPN wat net 'n <span class="reveal">veilige konneksie na 'n netwerk</span> maak.</li>
-        <li><b>Draadlose tegnologieë:</b> <span class="reveal">WiFi, Bluetooth, Satelliet, Cellular (3G/4G/5G), WiMAX</span>. <span class="cite">Nov 2024 V3.2.1</span></li>
-        <li><b>Koppel aan 'n draadlose netwerk:</b> <span class="reveal">skakel WiFi aan, kies die netwerknaam, tik die korrekte wagwoord in</span>. <span class="cite">Nov 2024 V3.2.2</span></li>
+        <li><b>VPN</b> (Virtual Private Network) — secure, encrypted connection to a private network.</li>
+        <li><b>Remote computer (e.g. AnyDesk)</b> — you <span class="reveal">control another computer remotely</span>; versus VPN which only makes a <span class="reveal">secure connection to a network</span>.</li>
+        <li><b>Wireless technologies:</b> <span class="reveal">WiFi, Bluetooth, Satellite, Cellular (3G/4G/5G), WiMAX</span>. <span class="cite">Nov 2024 Q3.2.1</span></li>
+        <li><b>Connect to a wireless network:</b> <span class="reveal">switch WiFi on, choose the network name, type the correct password</span>. <span class="cite">Nov 2024 Q3.2.2</span></li>
       </ul>
-      <h3>Kabels: Fiber vs UTP ⭐</h3>
+      <h3>Cables: Fibre vs UTP ⭐</h3>
       <table>
-        <tr><th></th><th>Veselopties (Fiber)</th><th>UTP</th></tr>
-        <tr><td>Sein</td><td><span class="reveal">Ligpulse</span></td><td><span class="reveal">Elektriese seine</span></td></tr>
-        <tr><td>Spoed</td><td>Baie vinniger</td><td>Stadiger</td></tr>
-        <tr><td>Afstand</td><td><span class="reveal">Lang afstande</span>, min verlies</td><td>Kort afstande</td></tr>
-        <tr><td>Interferensie</td><td><span class="reveal">Immuun</span></td><td>Vatbaar</td></tr>
-        <tr><td>Koste</td><td>Duurder</td><td>Goedkoper</td></tr>
+        <tr><th></th><th>Fibre-optic</th><th>UTP (Unshielded Twisted Pair)</th></tr>
+        <tr><td>Signal</td><td><span class="reveal">Light pulses</span></td><td><span class="reveal">Electrical signals</span></td></tr>
+        <tr><td>Speed</td><td>Much faster</td><td>Slower</td></tr>
+        <tr><td>Distance</td><td><span class="reveal">Long distances</span>, little loss</td><td>Short distances</td></tr>
+        <tr><td>Interference</td><td><span class="reveal">Immune</span></td><td>Prone</td></tr>
+        <tr><td>Cost</td><td>More expensive</td><td>Cheaper</td></tr>
       </table>
-      <h3>Dun vs Vet Kliënt ⭐</h3>
+      <h3>Thin vs Fat Client ⭐</h3>
       <table>
-        <tr><th></th><th>Dun kliënt</th><th>Vet kliënt</th></tr>
-        <tr><td>Verwerking</td><td><span class="reveal">Min plaaslik</span> — op die bediener</td><td><span class="reveal">Plaaslik</span></td></tr>
-        <tr><td>Hardeware</td><td>Goedkoop</td><td>Kragtig/duur</td></tr>
-        <tr><td>Bediener-afhanklik</td><td><span class="reveal">Hoog</span></td><td>Laag — kan aflyn</td></tr>
-        <tr><td>Onderhoud</td><td>Maklik (sentraal)</td><td>Moeilik (elk apart)</td></tr>
+        <tr><th></th><th>Thin client</th><th>Fat client</th></tr>
+        <tr><td>Processing</td><td><span class="reveal">Little locally</span> — on the server</td><td><span class="reveal">Locally</span></td></tr>
+        <tr><td>Hardware</td><td>Cheap</td><td>Powerful/expensive</td></tr>
+        <tr><td>Server-dependent</td><td><span class="reveal">High</span></td><td>Low — can work offline</td></tr>
+        <tr><td>Maintenance</td><td>Easy (central)</td><td>Hard (each separately)</td></tr>
       </table>
-      <h3>Bandwydte, stroom &amp; spoed</h3>
+      <h3>Bandwidth, streaming &amp; speed</h3>
       <ul class="gloss">
-        <li><b>Buffering</b> — <span class="reveal">swak/ver sein van die toegangspunt, interferensie, te min toegangspunte vir baie gebruikers, almal deel dieselfde bandwydte</span>.</li>
-        <li><b>Smoring (throttling)</b> — verskaffer maak jou <span class="reveal">algehele spoed stadiger</span>. <b>Vorming (shaping)</b> — maak <span class="reveal">belangrike verkeer</span> vinniger.</li>
-        <li><b>Stroom (streaming)</b> — speel <span class="reveal">intyds</span>. <b>Op aanvraag (on-demand)</b> — <span class="reveal">vooraf opgeneem, enige tyd</span>. <span class="cite">Nov 2024 V3.5.1</span></li>
-        <li><b>VoIP</b> — stem-oproepe via die internet; nadele: stabiele verbinding nodig, latensie.</li>
-        <li><b>BitTorrent</b> — P2P: lêer in stukkies van baie gebruikers.</li>
+        <li><b>Buffering</b> — <span class="reveal">weak/far signal from the access point, interference, too few access points for many users, everyone shares the same bandwidth</span>.</li>
+        <li><b>Throttling</b> — provider makes your <span class="reveal">overall speed slower</span>. <b>Shaping</b> — makes <span class="reveal">important traffic</span> faster.</li>
+        <li><b>Streaming</b> — plays <span class="reveal">in real time</span>. <b>On-demand</b> — <span class="reveal">pre-recorded, any time</span>. <span class="cite">Nov 2024 Q3.5.1</span></li>
+        <li><b>VoIP</b> (Voice over Internet Protocol) — voice calls over the internet; drawbacks: needs a stable connection, latency.</li>
+        <li><b>BitTorrent</b> — P2P (peer-to-peer): file in pieces from many users.</li>
       </ul>
-      <h3>E-kommunikasie terme</h3>
+      <h3>E-communication terms</h3>
       <ul class="gloss">
-        <li><b>SMS</b> — kort teksboodskappe (±160 karakters) via selfoonnetwerk. <b>IM</b> — <span class="reveal">intydse teks</span> (WhatsApp, Teams).</li>
-        <li><b>Blog</b> — gereelde artikels; <b>Mikroblog</b> — kort plasings (X); <b>Vlog</b> — video-blog.</li>
-        <li><b>Podcast</b> — oudio-program (episodes); <b>Vodcast</b> — podcast in video.</li>
-        <li><b>Videokonferensie</b> — <span class="reveal">intydse video + oudio</span> met baie deelnemers.</li>
-        <li><b>e-leer</b> — leer via <span class="reveal">digitale platforms, op afstand</span>.</li>
+        <li><b>SMS</b> (Short Message Service) — short text messages (±160 characters) via mobile network. <b>IM</b> (Instant Messaging) — <span class="reveal">real-time text</span> (WhatsApp, Teams).</li>
+        <li><b>Blog</b> — regular articles; <b>Microblog</b> — short posts (X); <b>Vlog</b> — video blog.</li>
+        <li><b>Podcast</b> — audio programme (episodes); <b>Vodcast</b> — podcast in video.</li>
+        <li><b>Videoconference</b> — <span class="reveal">real-time video + audio</span> with many participants.</li>
+        <li><b>e-learning</b> — learning via <span class="reveal">digital platforms, at a distance</span>.</li>
       </ul>
-      <h3>Webtuistes &amp; web-dienste</h3>
+      <h3>Websites &amp; web services</h3>
       <ul class="gloss">
-        <li><b>Statiese webtuiste</b> — dieselfde vir almal, met die hand opgedateer. <b>Dinamiese webtuiste</b> — inhoud uit 'n databasis; voordele: <span class="reveal">persoonlike inhoud, altyd op datum, interaktief</span>. <span class="cite">Nov 2024 V3.3.1</span></li>
-        <li><b>Koekie (cookie)</b> — klein tekslêer wat <span class="reveal">jou aktiwiteit/voorkeure dophou</span>; voordele: <span class="reveal">onthou voorkeure, spaar tyd, persoonlike aanbevelings</span>. <span class="cite">Nov 2024 V3.3.2</span></li>
-        <li><b>Onsigbare data-insameling:</b> <span class="reveal">koekies, tracking pixels, toestel-identifikasie (fingerprinting)</span>.</li>
-        <li><b>SEO:</b> <span class="reveal">sleutelwoorde, meta-beskrywings, kwaliteit-inhoud, backlinks</span>.</li>
-        <li><b>Web 1.0 vs Web 3.0:</b> Web 1.0 = <span class="reveal">staties, jy lees net</span>; Web 2.0 = sosiaal; Web 3.0 = <span class="reveal">semanties + gedesentraliseerd</span>.</li>
-        <li><b>Semantiese soek</b> — verstaan <span class="reveal">betekenis</span> → akkurater.</li>
-        <li><b>Bemiddelde soek</b> — resultate <span class="reveal">eers deur mense/redakteurs gekies</span>.</li>
-        <li><b>QR-kode voordele:</b> <span class="reveal">kontakloos, veiliger (uniek per kaartjie), makliker organisasie, spaar papier, skakel na meer data</span>. <span class="cite">Nov 2024 V3.4.2</span></li>
+        <li><b>Static website</b> — same for everyone, updated by hand. <b>Dynamic website</b> — content from a database; benefits: <span class="reveal">personal content, always up to date, interactive</span>. <span class="cite">Nov 2024 Q3.3.1</span></li>
+        <li><b>Cookie</b> — a small text file that <span class="reveal">tracks your activity/preferences</span>; benefits: <span class="reveal">remember preferences, save time, personal recommendations</span>. <span class="cite">Nov 2024 Q3.3.2</span></li>
+        <li><b>Invisible data collection:</b> <span class="reveal">cookies, tracking pixels, device fingerprinting</span>.</li>
+        <li><b>SEO</b> (Search Engine Optimization): <span class="reveal">keywords, meta-descriptions, quality content, backlinks</span>.</li>
+        <li><b>Web 1.0 vs Web 3.0:</b> Web 1.0 = <span class="reveal">static, you just read</span>; Web 2.0 = social; Web 3.0 = <span class="reveal">semantic + decentralised</span>.</li>
+        <li><b>Semantic search</b> — understands <span class="reveal">meaning</span> → more accurate.</li>
+        <li><b>Mediated search</b> — results <span class="reveal">first chosen by people/editors</span>.</li>
+        <li><b>QR code (Quick Response) benefits:</b> <span class="reveal">contactless, more secure (unique per ticket), easier organisation, saves paper, links to more data</span>. <span class="cite">Nov 2024 Q3.4.2</span></li>
       </ul>
-      <h3>Sekuriteit &amp; gedrag</h3>
+      <h3>Security &amp; behaviour</h3>
       <ul class="gloss">
-        <li><b>DDoS</b> — Distributed Denial of Service. <span class="cite">Nov 2024 V3.5.2</span> <b>Voorkom:</b> <span class="reveal">meer bandwydte, opgradeer netwerk, toustelsel, verkeer-bestuur, bot-voorkoming</span>. <span class="cite">Nov 2024 V3.5.2(b)</span></li>
-        <li><b>OTP</b> — eenmalige PIN; effektief want: <span class="reveal">net een keer geldig, kort tyd, na JOU foon, moeilik om te steel</span>.</li>
-        <li><b>Sekuriteitsbewys (token)</b> — klein toestel wat <span class="reveal">elke paar sekondes 'n nuwe kode genereer</span>.</li>
-        <li><b>Sosiale manipulasie</b> — aanvaller <span class="reveal">mislei MENSE</span> om inligting te gee.</li>
-        <li><b>Strikroof-e-pos herken:</b> <span class="reveal">sender-adres, suspisieuse skakels, dringende taal, spelfoute, versoek vir persoonlike inligting</span>.</li>
-        <li><b>Hoe weet 'n webtuiste is veilig?</b> <span class="reveal">https, sekuriteitsimbool, groen adresbalk, SSL/digitale sertifikaat</span>. <span class="cite">Nov 2024 V6.1.1</span></li>
-        <li><b>SSL-enkripsie:</b> <span class="reveal">publieke sleutel enkripteer, privaat sleutel dekripteer</span>. <span class="cite">Nov 2024 V6.1.2</span></li>
+        <li><b>DDoS</b> (Distributed Denial of Service). <span class="cite">Nov 2024 Q3.5.2</span> <b>Prevent:</b> <span class="reveal">more bandwidth, upgrade network, queueing system, traffic management, bot prevention</span>. <span class="cite">Nov 2024 Q3.5.2(b)</span></li>
+        <li><b>OTP</b> (One-Time Password) — one-time PIN; effective because: <span class="reveal">valid only once, short time, sent to YOUR phone, hard to steal</span>.</li>
+        <li><b>Security token</b> — a small device that <span class="reveal">generates a new code every few seconds</span>.</li>
+        <li><b>Social engineering</b> — attacker <span class="reveal">deceives PEOPLE</span> into giving information.</li>
+        <li><b>Recognise a phishing email:</b> <span class="reveal">sender address, suspicious links, urgent language, spelling errors, request for personal info</span>.</li>
+        <li><b>How to tell a website is secure:</b> <span class="reveal">https, security symbol, green address bar, SSL/digital certificate</span>. <span class="cite">Nov 2024 Q6.1.1</span></li>
+        <li><b>SSL encryption:</b> <span class="reveal">public key encrypts, private key decrypts</span>. <span class="cite">Nov 2024 Q6.1.2</span></li>
       </ul>
     </div>
   </details>
 
-  <!-- ============ AFDELING D ============ -->
+  <!-- ============ SECTION D ============ -->
   <details id="sD">
-    <summary><span class="tag">D · 20–24</span>Databasisse &amp; Inligtingbestuur<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="D">Gemeester</span></summary>
+    <summary><span class="tag">D · 20–24</span>Databases &amp; Information management<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="D">Mastered</span></summary>
     <div class="inner">
-      <h3>Getallestelsels</h3>
+      <h3>Number systems</h3>
       <ul class="gloss">
-        <li><b>Binêr</b> (basis 2) — 0/1. <b>Denêr</b> (basis 10) — 0–9. <b>Heksadesimaal</b> (basis 16) — 0–9 + <span class="reveal">A–F</span>.</li>
-        <li>"1D1" het 'n letter → <span class="reveal">heksadesimaal</span>.</li>
+        <li><b>Binary</b> (base 2) — 0/1. <b>Denary</b> (base 10) — 0–9. <b>Hexadecimal</b> (base 16) — 0–9 + <span class="reveal">A–F</span>.</li>
+        <li>"1D1" has a letter → <span class="reveal">hexadecimal</span>.</li>
       </ul>
-      <h3>Sleutels &amp; integriteit ⭐</h3>
+      <h3>Keys &amp; integrity ⭐</h3>
       <ul class="gloss">
-        <li><b>Primêre sleutel (PK)</b> — <span class="reveal">uniek</span> identifiseer elke rekord; nie leeg, nie dupliseer nie. <span class="cite">Nov 2023 V4.1.1</span></li>
-        <li><b>Vreemde sleutel (FK)</b> — veld wat <span class="reveal">verwys na die PK van 'n ander tabel</span>.</li>
-        <li><b>Referensiële integriteit</b> — die FK <span class="reveal">moet ooreenstem met 'n bestaande PK</span>.</li>
-        <li><b>Alternatiewe sleutel</b> — 'n ander veld wat ook uniek is (kan PK gewees het). <span class="cite">Nov 2024 V4.3.2</span></li>
-        <li><b>Relasionele databasis</b> — data in <span class="reveal">verskeie verwante tabelle</span>.</li>
-        <li><b>Saamgestelde sleutel</b> — 'n PK wat uit <span class="reveal">twee of meer velde</span> bestaan.</li>
-        <li><b>Entiteit-integriteit</b> — die PK kan <span class="reveal">nie null wees nie</span>. <b>Verwysingsintegriteit</b> — die FK moet <span class="reveal">na 'n bestaande PK verwys</span>.</li>
+        <li><b>Primary key (PK)</b> — <span class="reveal">uniquely</span> identifies each record; not empty, not duplicated. <span class="cite">Nov 2023 Q4.1.1</span></li>
+        <li><b>Foreign key (FK)</b> — field that <span class="reveal">refers to the PK of another table</span>.</li>
+        <li><b>Referential integrity</b> — the FK <span class="reveal">must match an existing PK</span>.</li>
+        <li><b>Alternate key</b> — another field that is also unique (could have been the PK). <span class="cite">Nov 2024 Q4.3.2</span></li>
+        <li><b>Relational database</b> — data in <span class="reveal">several related tables</span>.</li>
+        <li><b>Composite key</b> — a PK made of <span class="reveal">two or more fields</span>.</li>
+        <li><b>Entity integrity</b> — the PK cannot be <span class="reveal">null</span>. <b>Referential integrity</b> — the FK must <span class="reveal">refer to an existing PK</span>.</li>
       </ul>
-      <h3>Data-eienskappe &amp; datatipes</h3>
+      <h3>Data properties &amp; data types</h3>
       <ul class="gloss">
-        <li><b>Aktualiteit (currency)</b> — data is <span class="reveal">op datum</span>. <b>Toepaslikheid (relevance)</b> — <span class="reveal">nuttig vir die doel</span>.</li>
-        <li><b>Akkuraatheid (accuracy)</b> — data moet <span class="reveal">presies</span> wees. <span class="cite">Nov 2024 V4.1.5</span></li>
-        <li><b>Konsekwentheid (consistency)</b> — data moet <span class="reveal">dieselfde formaat</span> hê oral. <span class="cite">Nov 2024 V4.1.5</span></li>
-        <li><b>Datatipe kies:</b> 'n veld wat jy moet <span class="reveal">sorteer of bereken</span> (bv. "Experience") → <span class="reveal">integer</span>, nie teks nie. <span class="cite">Nov 2025 V4.1.1</span></li>
-        <li><b>CellNumber → teks/string</b> (telefoonnommer is nie 'n getal om mee te bereken nie). <span class="cite">Nov 2024 V4.1.2(b)</span></li>
-        <li><b>Metadata</b> — <span class="reveal">data oor data</span>; voeg waarde toe deur <span class="reveal">konteks te gee, interpretasie te vergemaklik, besluite te ondersteun</span>. <span class="cite">Nov 2024 V4.4</span></li>
+        <li><b>Currency</b> — data is <span class="reveal">up to date</span>. <b>Relevance</b> — <span class="reveal">useful for the purpose</span>.</li>
+        <li><b>Accuracy</b> — data must be <span class="reveal">precise</span>. <span class="cite">Nov 2024 Q4.1.5</span></li>
+        <li><b>Consistency</b> — data must have <span class="reveal">the same format</span> everywhere. <span class="cite">Nov 2024 Q4.1.5</span></li>
+        <li><b>Choosing a data type:</b> a field you must <span class="reveal">sort or calculate</span> (e.g. "Experience") → <span class="reveal">integer</span>, not text. <span class="cite">Nov 2025 Q4.1.1</span></li>
+        <li><b>CellNumber → text/string</b> (a phone number is not a number to calculate with). <span class="cite">Nov 2024 Q4.1.2(b)</span></li>
+        <li><b>Metadata</b> — <span class="reveal">data about data</span>; adds value by <span class="reveal">giving context, easing interpretation, supporting decisions</span>. <span class="cite">Nov 2024 Q4.4</span></li>
       </ul>
-      <h3>Normalisering ⭐</h3>
+      <h3>Normalisation ⭐</h3>
       <ul class="gloss">
-        <li><b>Doel</b> — <span class="reveal">oortolligheid uithaal</span>; verdeel in logiese tabelle. <span class="cite">Nov 2023 V4.3.1 · Nov 2024 V4.3.1</span></li>
-        <li><b>Herken:</b> herhalende velde (Item1, Item2, Item3) of 'n veld wat van 'n nie-sleutelveld afhang = ongenormaliseerd.</li>
-        <li><b>Oplossing:</b> <span class="reveal">skuif die afhanklike velde na 'n aparte tabel, koppel met 'n FK</span>. <span class="cite">Nov 2023 V4.1.3(b)</span></li>
+        <li><b>Purpose</b> — <span class="reveal">remove redundancy</span>; split into logical tables. <span class="cite">Nov 2023 Q4.3.1 · Nov 2024 Q4.3.1</span></li>
+        <li><b>Recognise:</b> repeating fields (Item1, Item2, Item3) or a field that depends on a non-key field = unnormalised.</li>
+        <li><b>Solution:</b> <span class="reveal">move the dependent fields to a separate table, link with an FK</span>. <span class="cite">Nov 2023 Q4.1.3(b)</span></li>
       </ul>
-      <h3>Anomalieë ⭐</h3>
+      <h3>Anomalies ⭐</h3>
       <table>
-        <tr><th>Tipe</th><th>Beskrywing</th></tr>
-        <tr><td>Invoeg</td><td>Kan nie nuwe data byvoeg sonder <span class="reveal">onnodige ander data</span> nie.</td></tr>
-        <tr><td>Skrap</td><td>Skrap een rekord, verloor <span class="reveal">per ongeluk ander data</span>.</td></tr>
-        <tr><td>Opdatering</td><td>Dieselfde data <span class="reveal">op baie plekke</span> → teenstrydig.</td></tr>
-        <tr><td>Oortolligheid</td><td>Data <span class="reveal">onnodig herhaal</span>.</td></tr>
+        <tr><th>Type</th><th>Description</th></tr>
+        <tr><td>Insert</td><td>Cannot add new data without <span class="reveal">unnecessary other data</span>.</td></tr>
+        <tr><td>Delete</td><td>Deleting one record loses <span class="reveal">other data by accident</span>.</td></tr>
+        <tr><td>Update</td><td>Same data <span class="reveal">in many places</span> → inconsistent.</td></tr>
+        <tr><td>Redundancy</td><td>Data <span class="reveal">unnecessarily repeated</span>.</td></tr>
       </table>
-      <h3>ERD — databasis-diagram teken ⭐</h3>
+      <h3>ERD — draw a database diagram ⭐</h3>
       <ul class="gloss">
-        <li><b>1:1</b> — een by een. <b>1:N</b> — een het <span class="reveal">baie</span>. <b>M:N</b> — vra <span class="reveal">tussentabel</span>.</li>
-        <li><b>Stap-vir-stap:</b> (1) <span class="reveal">blokkie per tabel</span> met naam bo, (2) lys <span class="reveal">veldname</span>, (3) <span class="reveal">onderstreep of ★ die PK</span>, (4) merk elke FK, (5) <span class="reveal">lyn tussen FK-kant en PK-kant</span> met kardinaliteit (1 / ∞).</li>
+        <li><b>1:1</b> — one-to-one. <b>1:N</b> — one has <span class="reveal">many</span>. <b>M:N</b> — needs a <span class="reveal">linking table</span>.</li>
+        <li><b>Step-by-step:</b> (1) <span class="reveal">a box per table</span> with the name on top, (2) list <span class="reveal">field names</span>, (3) <span class="reveal">underline or ★ the PK</span>, (4) mark each FK, (5) <span class="reveal">line between the FK side and the PK side</span> with cardinality (1 / ∞).</li>
       </ul>
       <pre>┌───────────────┐         ┌──────────────────┐
 │  TBSellers    │         │  TBAdverts       │
 ├───────────────┤         ├──────────────────┤
 │ ★ SellerID    │1        │ AdvertID         │
-│ SellerNaam    │─────────│ ★ AdvertID       │
-│ KontakNommer  │         │ FK SellerID      │
+│ SellerName    │─────────│ ★ AdvertID       │
+│ ContactNumber │         │ FK SellerID      │
 └───────────────┘         └──────────────────┘
-  (1 by die PK-kant; ∞/baie by die FK-kant)</pre>
-      <h3>SQL-kernstellings</h3>
+  (1 at the PK side; ∞/many at the FK side)</pre>
+      <h3>SQL core statements</h3>
       <ul class="gloss">
-        <li><b>SELECT velde FROM tabel WHERE voorwaarde</b> — haal data uit.</li>
-        <li><b>ORDER BY</b> — sorteer (ASC/DESC). <b>GROUP BY</b> — groepeer vir totale (COUNT, SUM).</li>
-        <li><b>HAVING</b> filtreer <span class="reveal">ná</span> GROUP BY; <b>WHERE</b> filtreer <span class="reveal">voor</span> groepering. <span class="cite">Nov 2024 V1.3.5</span></li>
+        <li><b>SELECT fields FROM table WHERE condition</b> — retrieve data.</li>
+        <li><b>ORDER BY</b> — sort (ASC/DESC). <b>GROUP BY</b> — group for totals (COUNT, SUM).</li>
+        <li><b>HAVING</b> filters <span class="reveal">after</span> GROUP BY; <b>WHERE</b> filters <span class="reveal">before</span> grouping. <span class="cite">Nov 2024 Q1.3.5</span></li>
       </ul>
-      <h3>Validering vs Verifikasie ⭐</h3>
+      <h3>Validation vs Verification ⭐</h3>
       <table>
-        <tr><th>Validering (stelsel, outomaties)</th><th>Verifikasie (mens, dubbelkontrole)</th></tr>
-        <tr><td>Omvang: waarde in reeks (0–120)</td><td rowspan="6" style="vertical-align:middle">Dubbele-invoer; visuele proeflees; gebruiker bevestig data is korrek</td></tr>
-        <tr><td>Formaat: korrekte patroon (jjjj/mm/dd)</td></tr>
-        <tr><td>Teenwoordigheid: nie leeg nie</td></tr>
-        <tr><td>Tipe: korrekte datatipe</td></tr>
-        <tr><td>Lengte: aantal karakters</td></tr>
-        <tr><td>Kontrolesyfer: vang intikfoute</td></tr>
+        <tr><th>Validation (system, automatic)</th><th>Verification (human, double-check)</th></tr>
+        <tr><td>Range: value in range (0–120)</td><td rowspan="6" style="vertical-align:middle">Double entry; visual proofreading; user confirms data is correct</td></tr>
+        <tr><td>Format: correct pattern (yyyy/mm/dd)</td></tr>
+        <tr><td>Presence: not empty</td></tr>
+        <tr><td>Type: correct data type</td></tr>
+        <tr><td>Length: number of characters</td></tr>
+        <tr><td>Check digit: catches typing errors</td></tr>
       </table>
       <ul class="gloss">
-        <li><b>Hoekom validering nie verifikasie vervang nie:</b> geldige data is net <span class="reveal">in die regte formaat</span>, nie noodwendig <span class="reveal">feitlik korrek</span> nie. <span class="cite">Nov 2023 V4.2</span></li>
-        <li><b>DateTimePicker</b> doen reeds validering (formaat reg). Verifikasie nog nodig: gebruiker <span class="reveal">kontroleer visueel die datum korrek is</span>.</li>
+        <li><b>Why validation does not replace verification:</b> valid data is only <span class="reveal">in the correct format</span>, not necessarily <span class="reveal">factually correct</span>. <span class="cite">Nov 2023 Q4.2</span></li>
+        <li><b>DateTimePicker</b> already does validation (format is right). Verification still needed: the user <span class="reveal">visually checks the date is correct</span>.</li>
       </ul>
-      <h3>Databasis-bestuur</h3>
+      <h3>Database management</h3>
       <ul class="gloss">
-        <li><b>Ouditspoor (audit trail)</b> — hou by <span class="reveal">WIE, WAT, WANNEER</span> verander is. <span class="cite">Nov 2023 V4.4.1</span></li>
-        <li><b>Bediener-databasis nodig wanneer</b> <span class="reveal">baie gebruikers van baie plekke gelyk toegang nodig het</span>. <span class="cite">Nov 2023 V4.3.2</span></li>
-        <li><b>DBA</b> — sekuriteit, rugsteun, werkverrigting, ontwerp, integriteit.</li>
-        <li><b>Sekuriteit-metodes:</b> <span class="reveal">toegangsbeheer (wagwoorde/biometries), enkripsie, rugsteun, firewall</span>. <span class="cite">Nov 2023 V4.4.2</span></li>
-        <li><b>Oopbron-DBMS:</b> <span class="reveal">MySQL, PostgreSQL</span>. Proprietêr: SQL Server, Oracle, Access.</li>
-        <li><b>Data-ontginning</b> — <span class="reveal">patrone soek</span>. <b>Data-pakhuis</b> — <span class="reveal">gesentraliseerde stoor</span>.</li>
-        <li><b>Kundige-stelsel vs besluitsteunstelsel:</b> kundige stelsel <span class="reveal">gee 'n oplossing</span>; besluitsteunstelsel gee net <span class="reveal">inligting om self te besluit</span>. <span class="cite">Nov 2024 V4.5</span></li>
-        <li><b>DBMS-tipes:</b> Desktop (Access) · <span class="reveal">Bediener/gesentraliseerd</span> (MySQL, Oracle, SQL Server) · <span class="reveal">Verspreid</span> (MongoDB, Cassandra).</li>
-        <li><b>Databasisloopbane:</b> DBA (bestuur + rugsteun) · <span class="reveal">Programmeerder (skryf SQL/kode)</span> · <span class="reveal">Ontleder (interpreteer data vir besluite)</span> · Projekbestuurder (koördineer).</li>
-        <li><b>Rekordslot</b> — <span class="reveal">sluit 'n rekord</span> sodat twee gebruikers nie gelyk verander nie. <b>Terugrol (rollback)</b> — <span class="reveal">maak veranderinge ongedaan</span> ná 'n fout. <span class="cite">Nov 2024 V1.2.1</span> <b>Parallelle datastelle</b> — <span class="reveal">kopieë wat gelyk</span> bygehou word.</li>
-        <li><b>Data → inligting → kennis → besluitneming:</b> rou data word <span class="reveal">verwerk tot inligting</span>, wat begrip (kennis) en besluite moontlik maak.</li>
+        <li><b>Audit trail</b> — records <span class="reveal">WHO, WHAT, WHEN</span> changes were made. <span class="cite">Nov 2023 Q4.4.1</span></li>
+        <li><b>Server database needed when</b> <span class="reveal">many users from many places need simultaneous access</span>. <span class="cite">Nov 2023 Q4.3.2</span></li>
+        <li><b>DBA</b> (Database Administrator) — security, backup, performance, design, integrity.</li>
+        <li><b>Security methods:</b> <span class="reveal">access control (passwords/biometrics), encryption, backups, firewall</span>. <span class="cite">Nov 2023 Q4.4.2</span></li>
+        <li><b>Open-source DBMS:</b> <span class="reveal">MySQL, PostgreSQL</span>. Proprietary: SQL Server, Oracle, Access.</li>
+        <li><b>Data mining</b> — <span class="reveal">finding patterns</span>. <b>Data warehouse</b> — <span class="reveal">centralised store</span>.</li>
+        <li><b>Expert system vs decision-support system:</b> expert system <span class="reveal">gives a solution</span>; decision-support system only gives <span class="reveal">information to decide yourself</span>. <span class="cite">Nov 2024 Q4.5</span></li>
+        <li><b>DBMS types:</b> Desktop (Access) · <span class="reveal">Server/centralised</span> (MySQL, Oracle, SQL Server) · <span class="reveal">Distributed</span> (MongoDB, Cassandra).</li>
+        <li><b>Database careers:</b> DBA (manage + backup) · <span class="reveal">Programmer (writes SQL/code)</span> · <span class="reveal">Analyst (interprets data for decisions)</span> · Project manager (coordinates).</li>
+        <li><b>Record locking</b> — <span class="reveal">locks a record</span> so two users cannot change it at once. <b>Rollback</b> — <span class="reveal">undoes changes</span> after an error. <span class="cite">Nov 2024 Q1.2.1</span> <b>Parallel datasets</b> — <span class="reveal">copies kept in sync</span>.</li>
+        <li><b>Data → information → knowledge → decision-making:</b> raw data is <span class="reveal">processed into information</span>, which enables understanding (knowledge) and decisions.</li>
       </ul>
     </div>
   </details>
 
-  <!-- ============ AFDELING E ============ -->
+  <!-- ============ SECTION E ============ -->
   <details id="sE">
-    <summary><span class="tag">E · 22–30</span>Oplossingsontwikkeling (Delphi)<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="E">Gemeester</span></summary>
+    <summary><span class="tag">E · 22–30</span>Solution development (Delphi)<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="E">Mastered</span></summary>
     <div class="inner">
-      <h3>Datatipes</h3>
+      <h3>Data types</h3>
       <ul class="gloss">
-        <li><b>Integer</b> — heelgetalle. <b>Real</b> — desimale. <b>String</b> — teks. <b>Char</b> — een karakter. <b>Boolean</b> — True/False.</li>
-        <li><b>CASE-stelling:</b> werk slegs met <span class="reveal">ordinaal-tipes: Integer, Char, Boolean</span> — <span class="reveal">NIE String of Real NIE</span>. <span class="cite">Nov 2024 V5.1.2(a)</span></li>
+        <li><b>Integer</b> — whole numbers. <b>Real</b> — decimals. <b>String</b> — text. <b>Char</b> — one character. <b>Boolean</b> — True/False.</li>
+        <li><b>CASE statement:</b> works only with <span class="reveal">ordinal types: Integer, Char, Boolean</span> — <span class="reveal">NOT String or Real</span>. <span class="cite">Nov 2024 Q5.1.2(a)</span></li>
       </ul>
-      <h3>Fouttipes ⭐</h3>
+      <h3>Error types ⭐</h3>
       <table>
-        <tr><th>Tipe</th><th>Beskrywing</th><th>Voorbeeld</th></tr>
-        <tr><td>Sintaks</td><td>Kode <span class="reveal">kompileer nie eers nie</span>.</td><td>Ontbrekende <code>;</code></td></tr>
-        <tr><td>Uitvoering</td><td>Kompileer, maar <span class="reveal">faal terwyl dit loop</span>.</td><td>Deel deur nul, range check</td></tr>
-        <tr><td>Logies</td><td>Loop, maar <span class="reveal">verkeerde antwoord</span>.</td><td><code>&gt;</code> i.p.v. <code>&lt;</code></td></tr>
+        <tr><th>Type</th><th>Description</th><th>Example</th></tr>
+        <tr><td>Syntax</td><td>Code <span class="reveal">does not even compile</span>.</td><td>Missing <code>;</code></td></tr>
+        <tr><td>Runtime</td><td>Compiles, but <span class="reveal">fails while running</span>.</td><td>Divide by zero, range check</td></tr>
+        <tr><td>Logical</td><td>Runs, but <span class="reveal">wrong answer</span>.</td><td><code>&gt;</code> instead of <code>&lt;</code></td></tr>
       </table>
-      <div class="note"><b>Range check error:</b> skikking-indeks/waarde buite grense. Kontroleer grense en lus-toestande; voeg 'n voorwaardelike kontrole by.</div>
-      <h3>Deling: / vs DIV vs MOD ⭐</h3>
+      <div class="note"><b>Range check error:</b> array index/value outside bounds. Check your bounds and loop conditions; add a conditional check.</div>
+      <div class="note blue"><b>Defensive programming:</b> writing code that <span class="reveal">anticipates and handles invalid input/errors</span> to prevent logical errors. <span class="cite">EC Sept 2024 Q5.1.2</span></div>
+      <h3>Division: / vs DIV vs MOD ⭐</h3>
       <table>
-        <tr><th>Operasie</th><th>Gee</th><th>Let op</th></tr>
-        <tr><td><code>/</code></td><td><span class="reveal">Real</span> (desimaal)</td><td><span class="reveal">Kan NIE aan 'n Integer toegeken word nie</span> → fout.</td></tr>
-        <tr><td><code>DIV</code></td><td><span class="reveal">Integer</span> (heelgetal-deling)</td><td>17 DIV 5 = 3</td></tr>
-        <tr><td><code>MOD</code></td><td><span class="reveal">Integer</span> (die res)</td><td>17 MOD 5 = 2 · werk net met <span class="reveal">Integer</span></td></tr>
+        <tr><th>Operation</th><th>Gives</th><th>Note</th></tr>
+        <tr><td><code>/</code></td><td><span class="reveal">Real</span> (decimal)</td><td><span class="reveal">Cannot be assigned to an Integer</span> → error.</td></tr>
+        <tr><td><code>DIV</code></td><td><span class="reveal">Integer</span> (whole-number division)</td><td>17 DIV 5 = 3</td></tr>
+        <tr><td><code>MOD</code></td><td><span class="reveal">Integer</span> (the remainder)</td><td>17 MOD 5 = 2 · works only with <span class="reveal">Integer</span></td></tr>
       </table>
-      <h3>Wiskunde-funksies ⭐</h3>
+      <h3>Math functions ⭐</h3>
       <ul class="gloss">
-        <li><b>CEIL(x)</b> — rond <span class="reveal">NA BO</span>: CEIL(−2.3) = <span class="reveal">−2</span>; CEIL(2.3) = 3. <span class="cite">Nov 2025 V5.1.1</span></li>
-        <li><b>TRUNC(x)</b> — <span class="reveal">kap die desimale af</span>: TRUNC(−2.3) = <span class="reveal">−2</span>. <span class="cite">Nov 2025 V5.1.2</span></li>
-        <li><b>ROUND(x)</b> — gewone afronding: ROUND(2.5) = 3.</li>
-        <li><b>Random(N)</b> — 0..N−1; <b>RandomRange(A,B)</b> — A..B−1 (<span class="reveal">B NIE ingesluit</span>).</li>
-        <li><b>ABS</b> — absolute; <b>SQRT</b> — vierkantswortel; <b>POWER</b> — mag.</li>
+        <li><b>CEIL(x)</b> — rounds <span class="reveal">UP</span>: CEIL(−2.3) = <span class="reveal">−2</span>; CEIL(2.3) = 3. <span class="cite">Nov 2025 Q5.1.1</span></li>
+        <li><b>TRUNC(x)</b> — <span class="reveal">chops the decimals off</span>: TRUNC(−2.3) = <span class="reveal">−2</span>. <span class="cite">Nov 2025 Q5.1.2</span></li>
+        <li><b>ROUND(x)</b> — normal rounding: ROUND(2.5) = 3.</li>
+        <li><b>Random(N)</b> — 0..N−1; <b>RandomRange(A,B)</b> — A..B−1 (<span class="reveal">B NOT included</span>).</li>
+        <li><b>ABS</b> (absolute value); <b>SQRT</b> (square root); <b>POWER</b> (exponent).</li>
+        <li><b>FLOOR(x)</b> — rounds <span class="reveal">DOWN</span> to the nearest whole number: FLOOR(10.4) = 10. <span class="cite">EC Sept 2025 Q1.2.3</span></li>
       </ul>
-      <h3>String-funksies ⭐</h3>
+      <h3>String functions ⭐</h3>
       <ul class="gloss">
-        <li><b>UpCase</b> werk met <span class="reveal">Char (EEN letter)</span>: UpCase('a') = 'A'. <b>UpperCase</b> werk met <span class="reveal">String</span>: UpperCase('abc') = 'ABC'.</li>
-        <li><b>FOUT:</b> <code>sString := UpCase(sString)</code> — UpCase kan nie 'n String vat nie. <span class="cite">Nov 2025 V1.1.9</span></li>
-        <li><b>Length</b> — aantal karakters; <b>Copy(s, pos, n)</b> — deel van 'n string; <b>Pos</b> — waar 'n substring is. <span class="cite">Nov 2024 V5.1.1</span></li>
+        <li><b>UpCase</b> works with <span class="reveal">Char (ONE letter)</span>: UpCase('a') = 'A'. <b>UpperCase</b> works with <span class="reveal">String</span>: UpperCase('abc') = 'ABC'.</li>
+        <li><b>ERROR:</b> <code>sString := UpCase(sString)</code> — UpCase cannot take a String. <span class="cite">Nov 2025 Q1.1.9</span></li>
+        <li><b>Length</b> — number of characters; <b>Copy(s, pos, n)</b> — part of a string; <b>Pos</b> — where a substring is. <span class="cite">Nov 2024 Q5.1.1</span></li>
       </ul>
-      <h3>Boole-logika (bereken van binne af) ⭐</h3>
+      <h3>Boolean logic (evaluate from inside out) ⭐</h3>
       <table>
-        <tr><th>Operasie</th><th>Reël</th></tr>
-        <tr><td>AND</td><td>WAAR slegs as <span class="reveal">ALBEI waar</span>.</td></tr>
-        <tr><td>OR</td><td>WAAR as <span class="reveal">minstens EEN</span> waar.</td></tr>
-        <tr><td>NOT</td><td><span class="reveal">Omkeer</span>.</td></tr>
+        <tr><th>Operation</th><th>Rule</th></tr>
+        <tr><td>AND</td><td>TRUE only if <span class="reveal">BOTH true</span>.</td></tr>
+        <tr><td>OR</td><td>TRUE if <span class="reveal">at least ONE</span> true.</td></tr>
+        <tr><td>NOT</td><td><span class="reveal">Reverses</span>.</td></tr>
       </table>
       <ul class="gloss">
-        <li>Voorbeeld: <code>TRUE AND (FALSE OR TRUE)</code> = TRUE. <span class="cite">Nov 2025 V1.1.10</span></li>
-        <li>Voorbeeld: <code>(-4 = 12 MOD 5) AND NOT FALSE OR (5-(-4)=1)</code> → FALSE AND TRUE OR FALSE → FALSE. <span class="cite">Nov 2024 V5.3</span></li>
+        <li>Example: <code>TRUE AND (FALSE OR TRUE)</code> = TRUE. <span class="cite">Nov 2025 Q1.1.10</span></li>
+        <li>Example: <code>(-4 = 12 MOD 5) AND NOT FALSE OR (5-(-4)=1)</code> → FALSE AND TRUE OR FALSE → FALSE. <span class="cite">Nov 2024 Q5.3</span></li>
       </ul>
-      <h3>Kontrole-strukture</h3>
+      <h3>Control structures</h3>
       <ul class="gloss">
-        <li><b>IF … THEN … ELSE</b> — keuse. <b>CASE</b> — baie moontlikhede (slegs ordinaal-tipes).</li>
-        <li><b>FOR</b> — jy <span class="reveal">weet presies hoeveel keer</span>. <b>WHILE</b> — aantal <span class="reveal">onbekend</span>. <b>REPEAT … UNTIL</b> — loop minstens een keer.</li>
-        <li><b>FOR → WHILE omskakel:</b> <span class="reveal">initialiseer teller, WHILE toestand, inc(teller)</span>. <span class="cite">Nov 2023 V5.1.4</span></li>
+        <li><b>IF … THEN … ELSE</b> — choice. <b>CASE</b> — many options (ordinal types only).</li>
+        <li><b>FOR</b> — you <span class="reveal">know exactly how many times</span>. <b>WHILE</b> — number <span class="reveal">unknown</span>. <b>REPEAT … UNTIL</b> — loops at least once.</li>
+        <li><b>FOR → WHILE conversion:</b> <span class="reveal">initialise counter, WHILE condition, inc(counter)</span>. <span class="cite">Nov 2023 Q5.1.4</span></li>
       </ul>
-      <h3>Funksies vs Prosedures</h3>
+      <h3>Functions vs Procedures</h3>
       <ul class="gloss">
-        <li><b>Funksie</b> — gee <span class="reveal">'n waarde terug</span>: Length, Copy, Random, CEIL, TRUNC.</li>
-        <li><b>Prosedure</b> — gee <span class="reveal">GEEN waarde terug</span>: Writeln, ShowMessage, CloseFile.</li>
+        <li><b>Function</b> — returns <span class="reveal">a value</span>: Length, Copy, Random, CEIL, TRUNC.</li>
+        <li><b>Procedure</b> — returns <span class="reveal">NO value</span>: Writeln, ShowMessage, CloseFile.</li>
       </ul>
-      <h3>Skikkings</h3>
+      <h3>Arrays</h3>
       <ul class="gloss">
-        <li><b>1D</b> — enkele lys. <b>2D</b> — rooster (rye + kolomme); GUI: TStringGrid.</li>
-        <li><b>Parallele skikkings:</b> twee skikkings wat by dieselfde <span class="reveal">indeks</span> pas.</li>
-        <li><b>Moenie name by 'n 2D-skikking voeg nie:</b> verskillende <span class="reveal">datatipes</span>; skikkings moet dieselfde tipe stoor.</li>
-        <li><b>Waarde invoeg by posisie i:</b> <span class="reveal">loop van onder na bo, skuif elke element een op, sit nuwe waarde in, increment teller</span>. <span class="cite">Nov 2024 V5.4</span></li>
+        <li><b>1D</b> (one-dimensional) — single list. <b>2D</b> (two-dimensional) — grid (rows + columns); GUI (Graphical User Interface) component: TStringGrid.</li>
+        <li><b>Parallel arrays:</b> two arrays that match at the same <span class="reveal">index</span>.</li>
+        <li><b>Don't add names to a 2D array:</b> different <span class="reveal">data types</span>; arrays must store the same type.</li>
+        <li><b>Insert a value at position i:</b> <span class="reveal">loop from bottom up, shift each element up one, insert new value, increment counter</span>. <span class="cite">Nov 2024 Q5.4</span></li>
       </ul>
-      <h3>Tekslêer (Delphi)</h3>
-      <pre>{ Deklarasie: var sFile: TextFile; }
-AssignFile(sFile,'staff.txt'); // koppel aan lêer
-Reset(sFile);                  // open vir LEES
+      <h3>Text file (Delphi)</h3>
+      <pre>{ Declaration: var sFile: TextFile; }
+AssignFile(sFile,'staff.txt'); // link to file
+Reset(sFile);                  // open for READING
 While not eof(sFile) do
 Begin
   Readln(sFile, sStaff);
@@ -717,267 +703,272 @@ End;
 CloseFile(sFile);</pre>
       <h3>Reset vs Rewrite vs Append ⭐</h3>
       <table>
-        <tr><th>Stelling</th><th>Effek</th></tr>
-        <tr><td>Reset</td><td>Open vir <span class="reveal">LEES</span>.</td></tr>
-        <tr><td>Rewrite</td><td>Maak 'n <span class="reveal">NUWE lêer</span> (vee bestaande uit) vir skryf. <span class="cite">Nov 2025 V5.4.2</span></td></tr>
-        <tr><td>Append</td><td>Voeg <span class="reveal">by die einde</span> by.</td></tr>
+        <tr><th>Statement</th><th>Effect</th></tr>
+        <tr><td>Reset</td><td>Opens for <span class="reveal">READING</span>.</td></tr>
+        <tr><td>Rewrite</td><td>Creates a <span class="reveal">NEW file</span> (wipes existing) for writing. <span class="cite">Nov 2025 Q5.4.2</span></td></tr>
+        <tr><td>Append</td><td>Adds <span class="reveal">at the end</span>.</td></tr>
       </table>
       <ul class="gloss">
-        <li><b>Hoekom <code>while not eof</code>?</b> jy weet nie vooraf hoeveel reëls daar is nie.</li>
+        <li><b>Why <code>while not eof</code>?</b> you don't know in advance how many lines there are.</li>
       </ul>
-      <h3>UML-klasdiagram teken ⭐</h3>
+      <h3>Draw a UML class diagram ⭐</h3>
       <ul class="gloss">
-        <li><b>+</b> publiek; <b>−</b> privaat. <b>Accessor</b> — lees terug (Get); <b>Mutator</b> — verander (Set); <b>Konstruktor (Create)</b> — skep + initialiseer; <b>toString</b> — string-voorstelling.</li>
-        <li><b>Stap-vir-stap:</b> (1) <span class="reveal">DRIE blokkies bo-op mekaar</span>, (2) klasnaam, (3) attribute met datatipes, (4) metodes met datatipes, (5) <span class="reveal">+ of − voor ELKE lid</span>.</li>
+        <li><b>+</b> public; <b>−</b> private. <b>Accessor</b> — reads back (Get); <b>Mutator</b> — changes (Set); <b>Constructor (Create)</b> — creates + initialises; <b>toString</b> — string representation; <b>Auxiliary (helper) method</b> — a supporting method that helps the main methods. <span class="cite">EC Sept 2025 Q5.4.4</span></li>
+        <li><b>Encapsulation</b> — <span class="reveal">restricting direct access to an object's fields</span>; data is accessed via methods. <span class="cite">EC Sept 2025 Q1.2.1</span></li>
+        <li><b>Step-by-step:</b> (1) <span class="reveal">THREE boxes on top of each other</span>, (2) class name, (3) attributes with data types, (4) methods with data types, (5) <span class="reveal">+ or − before EVERY member</span>.</li>
       </ul>
       <pre>┌──────────────────────────────────┐
-│            TSighting             │  ← blokkie 1: klasnaam
+│            TSighting             │  ← box 1: class name
 ├──────────────────────────────────┤
-│ - sAnimal : String               │  ← blokkie 2: attribute
-│ - sLocation : String             │     (− = privaat)
+│ - sAnimal : String               │  ← box 2: attributes
+│ - sLocation : String             │     (− = private)
 │ - dDate : TDateTime              │
 │ - iDuration : Integer            │
 │ - bConfirmed : Boolean           │
 ├──────────────────────────────────┤
-│ + Create()                       │  ← blokkie 3: metodes
-│ + GetAnimal() : String           │     (+ = publiek)
+│ + Create()                       │  ← box 3: methods
+│ + GetAnimal() : String           │     (+ = public)
 │ + SetDuration(iNew : Integer)    │
 │ + ToString() : String            │
 └──────────────────────────────────┘</pre>
-      <h3>Komponente</h3>
+      <h3>Components</h3>
       <ul class="gloss">
-        <li><b>DateTimePicker</b> — kies datum in regte formaat (doen validering). <b>ComboBox / RadioGroup</b> — vaste lys opsies.</li>
+        <li><b>DateTimePicker</b> — pick a date in the right format (does validation). <b>ComboBox / RadioGroup</b> — fixed list of options.</li>
       </ul>
-      <h3>Algoritmes skryf (6–8 punte!) ⭐</h3>
+      <h3>Writing algorithms (6–8 marks!) ⭐</h3>
       <ul class="gloss">
-        <li><b>Struktuur:</b> (1) verklaar veranderlikes, (2) <span class="reveal">lees lêer via while not eof</span>, (3) breek reëls op met Copy/Pos, (4) stoor in skikkings, (5) <span class="reveal">vergelyk in 'n lus</span> vir hoogste/laagste, (6) vertoon antwoord.</li>
-        <li><b>Hoogste waarde:</b> Maks = eerste; vir elke volgende: as waarde &gt; Maks dan Maks = waarde.</li>
-        <li><b>Nasporing:</b> kolom per veranderlike + toestand + afvoer; werk reël-vir-reël; toets toestand elke keer. <span class="cite">Nov 2023 V5.2</span></li>
-        <li><b>Logiese-fout-les:</b> lus loop glad nie? Kyk <span class="reveal">eers na die vergelykingsoperator</span>.</li>
+        <li><b>Structure:</b> (1) declare variables, (2) <span class="reveal">read file via while not eof</span>, (3) split lines with Copy/Pos, (4) store in arrays, (5) <span class="reveal">compare in a loop</span> for highest/lowest, (6) display the answer.</li>
+        <li><b>Find highest value:</b> Max = first; for each next: if value &gt; Max then Max = value.</li>
+        <li><b>Binary search</b> needs a <span class="reveal">SORTED array</span> (splits in half each time); use <span class="reveal">linear search</span> on an unsorted array. <span class="cite">EC Sept 2024 Q5.2</span></li>
+        <li><b>Trace table:</b> a column per variable + condition + output; work line-by-line; test the condition every time. <span class="cite">Nov 2023 Q5.2</span></li>
+        <li><b>Logical-error lesson:</b> loop doesn't run at all? Check <span class="reveal">the comparison operator first</span>.</li>
       </ul>
     </div>
   </details>
 
-  <!-- ============ AFDELING F ============ -->
+  <!-- ============ SECTION F ============ -->
   <details id="sF">
-    <summary><span class="tag f">F · 30–40</span>Geïntegreerde Scenario<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="F">Gemeester</span></summary>
+    <summary><span class="tag f">F · 30–40</span>Integrated scenario<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="F">Mastered</span></summary>
     <div class="inner">
-      <div class="note"><b>F-raamwerk:</b> gee die <span class="reveal">definisie + pas dit op die scenario toe</span>. Skryf volsinne, een feit per sin, verwys na die scenario om vol punte te kry.</div>
-      <h3>Data &amp; inligting</h3>
+      <div class="note"><b>F framework:</b> give the <span class="reveal">definition + apply it to the scenario</span>. Write full sentences, one fact per sentence, refer to the scenario to get full marks.</div>
+      <h3>Data &amp; information</h3>
       <ul class="gloss">
-        <li><b>GIGO</b> — swak invoer → swak uitvoer. Voorkom: validering, opleiding, dubbelkontrole.</li>
-        <li><b>Big Data "V's"</b> — <span class="reveal">Volume, Snelheid (Velocity), Verskeidenheid (Variety), Waarheidsgetrouheid (Veracity)</span>.</li>
-        <li><b>Inligting-oorlading</b> — <span class="reveal">oorweldigende hoeveelheid inligting</span> → moeilik om te verwerk/besluit. <span class="cite">Nov 2024 V6.5</span></li>
-        <li><b>Data-sekuriteit:</b> sterk wagwoorde/MFA, firewalls, antivirus, enkripsie, rugsteun, toegangsregte, opdaterings.</li>
+        <li><b>GIGO</b> (Garbage In, Garbage Out) — bad input → bad output. Prevent: validation, training, double-checking.</li>
+        <li><b>Big Data "V's"</b> — <span class="reveal">Volume, Velocity, Variety, Veracity</span>.</li>
+        <li><b>Information overload</b> — <span class="reveal">overwhelming amount of information</span> → hard to process/decide. <span class="cite">Nov 2024 Q6.5</span></li>
+        <li><b>Data security:</b> strong passwords/MFA, firewalls, antivirus, encryption, backups, access rights, updates.</li>
       </ul>
-      <h3>Samelewing &amp; etiek</h3>
+      <h3>Society &amp; ethics</h3>
       <ul class="gloss">
-        <li><b>Digitale kloof</b> — ongelykheid in toegang/vaardighede; oorbrug met gratis internet/toestelle + opleiding.</li>
-        <li><b>Digitale burgerskap</b> — verantwoordelike, etiese, veilige gebruik.</li>
-        <li><b>Digitale voetspoor</b> — jou data-spoor aanlyn; gebruik: <span class="reveal">werkgewers ondersoek jou, advertensies, identiteitsdiefstal</span>. <span class="cite">Nov 2024 V4.6</span></li>
-        <li><b>Gig-ekonomie</b> — korttermyn werk; geen sekerheid/voordele.</li>
-        <li><b>4IR</b> — KI, IoT, outomatisering.</li>
+        <li><b>Digital divide</b> — inequality in access/skills; bridge with free internet/devices + training.</li>
+        <li><b>Digital citizenship</b> — responsible, ethical, safe use.</li>
+        <li><b>Digital footprint</b> — your data trail online; used for: <span class="reveal">employers screening you, adverts, identity theft</span>. <span class="cite">Nov 2024 Q4.6</span></li>
+        <li><b>Gig economy</b> — short-term work; no security/benefits.</li>
+        <li><b>4IR</b> (Fourth Industrial Revolution) — AI, IoT, automation.</li>
       </ul>
-      <h3>Werkplek &amp; tegnologie</h3>
+      <h3>Workplace &amp; technology</h3>
       <ul class="gloss">
-        <li><b>Robotte:</b> produktief, 24/7, veilig vir gevaarlike take; nadele: werksverlies, koste.</li>
-        <li><b>KI / GenKI:</b> vinnig, 24/7, kreatief; nadele: hallusinasies, geen ware begrip, etiek, werksverliese, plagiaat.</li>
-        <li><b>3D-drukker</b> — voeg materiaal laag-vir-laag by. <span class="cite">Nov 2024 V1.2.3</span></li>
+        <li><b>Robots:</b> productive, 24/7, safe for dangerous tasks; drawbacks: job loss, cost.</li>
+        <li><b>AI (Artificial Intelligence) / GenAI:</b> fast, 24/7, creative; drawbacks: hallucinations, no real understanding, ethics, job losses, plagiarism.</li>
+        <li><b>3D printer</b> — adds material layer by layer. <span class="cite">Nov 2024 Q1.2.3</span></li>
+        <li><b>Office automation</b> — using <span class="reveal">software/hardware to automate routine office tasks</span> (email, scheduling, document handling). <span class="cite">EC Sept 2025 Q6.5.1</span></li>
+        <li><b>Decentralisation of labour</b> — spreading work <span class="reveal">across locations/workers</span> (remote); drawbacks: <span class="reveal">less control, communication issues, security risk</span>. <span class="cite">EC Sept 2025 Q6.4</span></li>
       </ul>
       <h3>IPTV &amp; media</h3>
       <ul class="gloss">
-        <li><b>IPTV</b> = Internet Protocol Television — TV via die internet.</li>
-        <li><b>Kompressie vs kwaliteit vs spoed:</b> meer kompressie → <span class="reveal">kleiner lêer → vinniger maar LAGER kwaliteit</span>; minder → beter kwaliteit maar <span class="reveal">meer data → stadiger</span>.</li>
+        <li><b>IPTV</b> (Internet Protocol Television) — TV via the internet.</li>
+        <li><b>Compression vs quality vs speed:</b> more compression → <span class="reveal">smaller file → faster but LOWER quality</span>; less → better quality but <span class="reveal">more data → slower</span>.</li>
       </ul>
-      <h3>Finansies &amp; tegnologie</h3>
+      <h3>Finance &amp; technology</h3>
       <ul class="gloss">
-        <li><b>Kripto:</b> gedesentraliseer, laer koste; nadele: wisselvallig, geen regulering, hacking, hoë energie.</li>
-        <li><b>Blokkeerketting:</b> <span class="reveal">gedesentraliseerde digitale grootboek</span>; rekords kan nie agterna verander word nie. <span class="cite">Nov 2024 V1.1.8</span></li>
-        <li><b>Hoekom kriminele kripto verkies vir losprys:</b> <span class="reveal">kan nie opgespoor word nie / anoniem</span>. <span class="cite">Nov 2024 V6.6.2</span></li>
+        <li><b>Cryptocurrency:</b> decentralised, lower cost; drawbacks: volatile, no regulation, hacking, high energy.</li>
+        <li><b>Blockchain:</b> <span class="reveal">decentralised digital ledger</span>; records cannot be changed afterwards. <span class="cite">Nov 2024 Q1.1.8</span></li>
+        <li><b>Why criminals want ransom in crypto:</b> <span class="reveal">cannot be traced / anonymous</span>. <span class="cite">Nov 2024 Q6.6.2</span></li>
       </ul>
-      <h3>IoT, RFID &amp; sekuriteit</h3>
+      <h3>IoT, RFID &amp; security</h3>
       <ul class="gloss">
-        <li><b>IoT</b> — slim toestelle, fiksheidsmonitors, kameras. Uitdaging: swak sekuriteit, hacking, privaatheid.</li>
-        <li><b>RFID — passief vs aktief:</b> <span class="reveal">passief = geen battery, kry krag van leser</span>; <span class="reveal">aktief = eie battery, stuur self</span>.</li>
-        <li><b>Hoe RFID werk:</b> etiket het mikroskyfie + antenna met unieke ID; <span class="reveal">leser stuur radiosein, etiket antwoord met ID</span>. <span class="cite">Nov 2024 V6.2.1</span></li>
-        <li><b>GPS:</b> gebruik <span class="reveal">satelliet-seine</span> om ligging te bepaal. Etiese kwessies: <span class="reveal">privaatheidskending, datasekuriteit, misbruik van ligging</span>. <span class="cite">Nov 2024 V6.3</span></li>
-        <li><b>DoS</b> — stelsel oorlaai. <b>DDoS</b> — baie toestelle (botnet) saam.</li>
+        <li><b>IoT</b> (Internet of Things) — smart devices, fitness monitors, cameras. Challenge: weak security, hacking, privacy.</li>
+        <li><b>RFID (Radio Frequency Identification) — passive vs active:</b> <span class="reveal">passive = no battery, gets power from the reader</span>; <span class="reveal">active = own battery, sends its own signal</span>.</li>
+        <li><b>How RFID works:</b> the tag has a microchip + antenna with a unique ID; <span class="reveal">the reader sends a radio signal, the tag replies with its ID</span>. <span class="cite">Nov 2024 Q6.2.1</span></li>
+        <li><b>RFID vs barcode:</b> RFID — <span class="reveal">no line-of-sight needed, read several at once, more data, reusable</span>; barcode — <span class="reveal">needs line-of-sight, one at a time</span>. <span class="cite">EC Sept 2024 Q4.3.2</span></li>
+        <li><b>GPS (Global Positioning System):</b> uses <span class="reveal">satellite signals</span> to determine location. Ethical issues: <span class="reveal">privacy invasion, data security, misuse of location</span>. <span class="cite">Nov 2024 Q6.3</span></li>
+        <li><b>DoS</b> (Denial of Service) — overload a system. <b>DDoS</b> (Distributed Denial of Service) — many devices (botnet) together.</li>
       </ul>
-      <h3>Web &amp; mobiel</h3>
+      <h3>Web &amp; mobile</h3>
       <ul class="gloss">
-        <li><b>AR-toep:</b> inligting bo-op die <span class="reveal">kamera-beeld</span>.</li>
-        <li><b>Web 1.0-URL</b> met <span class="reveal">sessionid</span> = ouer, statiese tegnologie.</li>
-        <li><b>Verspreide verwerking vir draagbare toestelle:</b> <span class="reveal">koppel aan eksterne bedieners, versamel data, KI-vermoë, intydse inligting, deel batterylading</span>. <span class="cite">Nov 2024 V6.3.4</span></li>
+        <li><b>AR app:</b> info on top of the <span class="reveal">camera image</span>.</li>
+        <li><b>Web 1.0 URL</b> with <span class="reveal">sessionid</span> = older, static technology.</li>
+        <li><b>Distributed processing for wearable devices:</b> <span class="reveal">link to external servers, collect data, AI capability, real-time info, share battery load</span>. <span class="cite">Nov 2024 Q6.3.4</span></li>
       </ul>
     </div>
   </details>
 
-  <!-- ============ §3: ANTWOORDFORMULES ============ -->
+  <!-- ============ §3: ANSWER FORMULAS ============ -->
   <details id="s3">
-    <summary><span class="tag p">🧭</span>Antwoordformules per vraagtipe<span class="chev">▸</span></summary>
+    <summary><span class="tag p">🧭</span>Answer formulas per question type<span class="chev">▸</span></summary>
     <div class="inner">
-      <div class="note blue">Hoe om elke <b>opdragwoord</b> te beantwoord sodat jy <b>elke punt</b> kry. (Uit die memostruktuur van Nov 2020–2025.)</div>
+      <div class="note blue">How to answer each <b>command word</b> so you get <b>every mark</b>. (From the memo structure of Nov 2020–2025.)</div>
       <table>
-        <tr><th>Opdragwoord</th><th>Formule (wat die memo wil hê)</th><th>Voorbeeld</th></tr>
-        <tr><td><b>State / Noem / Gee / Lys</b></td><td>Net die <b>feit</b>, GEEN verduideliking. (2) = 2 aparte feite.</td><td>"State TWO functions of a motherboard" → 2 funksies, elk 1 punt.</td></tr>
-        <tr><td><b>Define / Definieer</b></td><td><b>1 kernfeit</b> in 'n volsin (kort, presies).</td><td>"Bandwidth = amount of data sent over a network in a specific time."</td></tr>
-        <tr><td><b>Explain / Verduidelik</b></td><td><b>Feit + rede/uitbreiding</b>. (2) = 1 konsep + 1 uitbreiding, NIE 2 los feite.</td><td>"Explain why bus is slower" → "bus is a SHARED path (feit) → only one device at a time (rede)."</td></tr>
-        <tr><td><b>Discuss / Bespreek</b></td><td><b>Feite + verduideliking / beide kante</b>. (2) = 2 konsepte; (3) = 1 feit + 2 uitbreidings.</td><td>"Discuss cache memory" → "high-speed memory (feit) + close to CPU + stores frequent data (2 uitbreidings)."</td></tr>
-        <tr><td><b>Differentiate / Compare / Distinguish</b></td><td><b>BEIDE kante</b> — "A is …, terwyl B is …". 2 punte = 1 vir A + 1 vir B.</td><td>"Compare RAM and VRAM" → "RAM stores data for CPU; VRAM stores images for GPU."</td></tr>
-        <tr><td><b>Motivate / Justify</b></td><td><b>Stelling + rede (hoekom)</b>. Elke punt moet 'n "want/omdat" hê.</td><td>"Motivate cloud use" → "cost saving (feit) BECAUSE processing is in the cloud (rede)."</td></tr>
-        <tr><td><b>Suggest</b></td><td>'n <b>praktiese voorbeeld/oplossing</b> — enige redelike antwoord word aanvaar.</td><td>"Suggest ONE mobile technology" → "GPS / RFID / tracking app."</td></tr>
-        <tr><td><b>Describe</b></td><td>"Hoe dit werk" — <b>stap-vir-stap</b> of eienskappe.</td><td>"Describe how GPS works" → "uses signals from satellites to determine location."</td></tr>
-        <tr><td><b>Identify</b></td><td><b>Benoem/herken</b> die term uit die scenario (kort antwoord).</td><td>"Identify the network type" → "LAN".</td></tr>
+        <tr><th>Command word</th><th>Formula (what the memo wants)</th><th>Example</th></tr>
+        <tr><td><b>State / Name / Give / List</b></td><td>Just the <b>fact</b>, NO explanation. (2) = 2 separate facts.</td><td>"State TWO functions of a motherboard" → 2 functions, 1 mark each.</td></tr>
+        <tr><td><b>Define</b></td><td><b>1 core fact</b> in a full sentence (short, precise).</td><td>"Bandwidth = amount of data sent over a network in a specific time."</td></tr>
+        <tr><td><b>Explain</b></td><td><b>Fact + reason/expansion</b>. (2) = 1 concept + 1 expansion, NOT 2 loose facts.</td><td>"Explain why bus is slower" → "bus is a SHARED path (fact) → only one device at a time (reason)."</td></tr>
+        <tr><td><b>Discuss</b></td><td><b>Facts + expansion / both sides</b>. (2) = 2 concepts; (3) = 1 fact + 2 expansions.</td><td>"Discuss cache" → "high-speed memory (fact) + close to CPU + stores frequent data (2 expansions)."</td></tr>
+        <tr><td><b>Differentiate / Compare / Distinguish</b></td><td><b>BOTH sides</b> — "A is …, whereas B is …". 2 marks = 1 for A + 1 for B.</td><td>"Compare RAM and VRAM" → "RAM stores data for CPU; VRAM stores images for GPU."</td></tr>
+        <tr><td><b>Motivate / Justify</b></td><td><b>Statement + reason (why)</b>. Each point must have a "because".</td><td>"Motivate cloud use" → "cost saving (fact) BECAUSE processing is in the cloud (reason)."</td></tr>
+        <tr><td><b>Suggest</b></td><td>A <b>practical example/solution</b> — any reasonable answer is accepted.</td><td>"Suggest ONE mobile technology" → "GPS / RFID / tracking app."</td></tr>
+        <tr><td><b>Describe</b></td><td>"How it works" — <b>step-by-step</b> or features.</td><td>"Describe how GPS works" → "uses signals from satellites to determine location."</td></tr>
+        <tr><td><b>Identify</b></td><td><b>Name/recognise</b> the term from the scenario (short answer).</td><td>"Identify the network type" → "LAN".</td></tr>
       </table>
 
-      <h3>SQL-query-sjablone</h3>
-      <pre>-- Haal data uit (filtreer + sorteer):
-SELECT  veld1, veld2
-FROM    tabel
-WHERE   voorwaarde
-ORDER BY  veld  ASC/DESC;
+      <h3>SQL query templates</h3>
+      <pre>-- Retrieve data (filter + sort):
+SELECT  field1, field2
+FROM    table
+WHERE   condition
+ORDER BY  field  ASC/DESC;
 
--- Totale / tellings (groepeer):
-SELECT  veld, COUNT(*) / SUM(veld)
-FROM    tabel
-GROUP BY  veld
-HAVING    voorwaarde_ná_groepering;
+-- Totals / counts (group):
+SELECT  field, COUNT(*) / SUM(field)
+FROM    table
+GROUP BY  field
+HAVING    condition_after_grouping;
 
--- Koppel twee tabelle (FK → PK):
-SELECT  a.veld, b.veld
-FROM    tabelA a, tabelB b
+-- Join two tables (FK → PK):
+SELECT  a.field, b.field
+FROM    tableA a, tableB b
 WHERE   a.fk = b.pk;</pre>
-      <div class="formula"><span class="f-name">Reël:</span> <b>WHERE</b> filtreer <i>voor</i> groepering, <b>HAVING</b> filtreer <i>ná</i> GROUP BY. <b>ORDER BY</b> sorteer, <b>GROUP BY</b> groepeer vir COUNT/SUM.</div>
+      <div class="formula"><span class="f-name">Rule:</span> <b>WHERE</b> filters <i>before</i> grouping, <b>HAVING</b> filters <i>after</i> GROUP BY. <b>ORDER BY</b> sorts, <b>GROUP BY</b> groups for COUNT/SUM.</div>
 
-      <h3>Nasporingstabel-metode (trace table)</h3>
+      <h3>Trace-table method</h3>
       <ul class="gloss">
-        <li><b>1.</b> Maak 'n <span class="reveal">kolom vir elke veranderlike + die toestand + die afvoer</span>.</li>
-        <li><b>2.</b> Werk <span class="reveal">reël-vir-reël</span> deur die kode; vul 'n nuwe ry vir elke stap.</li>
-        <li><b>3.</b> Toets die <span class="reveal">toestand elke keer</span> (WAAR/ONWAAR) — dit bepaal of die lus loop.</li>
-        <li><b>4.</b> Skryf die <span class="reveal">afvoer (Display)</span> in die regte volgorde neer.</li>
-        <li><b>5.</b> Stop as die toestand ONWAAR word. <span class="cite">Nov 2023 V5.2</span></li>
+        <li><b>1.</b> Make a <span class="reveal">column for each variable + the condition + the output</span>.</li>
+        <li><b>2.</b> Work <span class="reveal">line-by-line</span> through the code; fill a new row for each step.</li>
+        <li><b>3.</b> Test the <span class="reveal">condition every time</span> (TRUE/FALSE) — it decides whether the loop runs.</li>
+        <li><b>4.</b> Write the <span class="reveal">output (Display)</span> in the correct order.</li>
+        <li><b>5.</b> Stop when the condition becomes FALSE. <span class="cite">Nov 2023 Q5.2</span></li>
       </ul>
 
-      <h3>Algoritme-skryf-metode (6–8 punte)</h3>
+      <h3>Algorithm-writing method (6–8 marks)</h3>
       <ul class="gloss">
-        <li><b>1.</b> <span class="reveal">Verklaar veranderlikes</span> (skikkings, tellers).</li>
-        <li><b>2.</b> <span class="reveal">Lees die lêer</span> via <code>while not eof</code>; breek reëls op (Copy/Pos).</li>
-        <li><b>3.</b> <span class="reveal">Stoor in skikkings</span>.</li>
-        <li><b>4.</b> <span class="reveal">Vergelyk in 'n lus</span> om hoogste/laagste te vind.</li>
-        <li><b>5.</b> <span class="reveal">Vertoon die antwoord</span>.</li>
+        <li><b>1.</b> <span class="reveal">Declare variables</span> (arrays, counters).</li>
+        <li><b>2.</b> <span class="reveal">Read the file</span> via <code>while not eof</code>; split lines (Copy/Pos).</li>
+        <li><b>3.</b> <span class="reveal">Store in arrays</span>.</li>
+        <li><b>4.</b> <span class="reveal">Compare in a loop</span> to find highest/lowest.</li>
+        <li><b>5.</b> <span class="reveal">Display the answer</span>.</li>
       </ul>
 
-      <h3>Berekeninge (kom selde voor, maar ken die formules)</h3>
-      <div class="formula"><span class="f-name">Data-oordragtyd:</span> tyd = datagrootte ÷ bandwydte. <span class="f-in">Lêer in MB, spoed in Mbps → skakel om (×8 vir byte→bit).</span></div>
-      <div class="formula"><span class="f-name">Stoorplek:</span> totaal = aantal rekords × grootte per rekord. <span class="f-in">Beeld: resolusie × kleurdiepte (bits) × raamwerke × sekondes.</span></div>
-      <div class="formula"><span class="f-name">Bandwydte:</span> hoeveel data per sekonde (bps/Mbps/Gbps). <span class="f-in">1 byte = 8 bisse.</span></div>
+      <h3>Calculations (rare, but know the formulas)</h3>
+      <div class="formula"><span class="f-name">Data-transfer time:</span> time = data size ÷ bandwidth. <span class="f-in">File in MB, speed in Mbps → convert (×8 for byte→bit).</span></div>
+      <div class="formula"><span class="f-name">Storage space:</span> total = number of records × size per record. <span class="f-in">Image: resolution × colour depth (bits) × frames × seconds.</span></div>
+      <div class="formula"><span class="f-name">Bandwidth:</span> how much data per second (bps/Mbps/Gbps). <span class="f-in">1 byte = 8 bits.</span></div>
     </div>
   </details>
 
-  <!-- ============ §4: PUNTE-PER-VRAAG ============ -->
+  <!-- ============ §4: MARKS PER QUESTION ============ -->
   <details id="s4">
-    <summary><span class="tag p">🎯</span>Punte-per-vraag: hoeveel om te gee<span class="chev">▸</span></summary>
+    <summary><span class="tag p">🎯</span>Marks per question: how much to give<span class="chev">▸</span></summary>
     <div class="inner">
-      <div class="note green">Die goue reël: <b>1 punt = 1 feit</b>. Kyk na die getal tussen hakies en gee presies soveel feite.</div>
+      <div class="note green">The golden rule: <b>1 mark = 1 fact</b>. Look at the number in brackets and give exactly that many facts.</div>
       <table>
-        <tr><th>Punte</th><th>Hoeveel om te gee</th><th>Voorbeeld</th></tr>
-        <tr><td><b>(1)</b></td><td>1 feit / 1 term / 1 letter (A–D)</td><td>"Name the protocol" → "SMTP".</td></tr>
-        <tr><td><b>(2)</b></td><td><b>2 feite</b>, of (vir explain/motivate) <b>1 feit + 1 rede</b></td><td>"State TWO" = 2 aparte feite; "Explain why" = feit + rede.</td></tr>
-        <tr><td><b>(3)</b></td><td><b>3 feite</b>, of 1 feit + 2 redes/uitbreidings</td><td>"Discuss cache" = 1 definisie + 2 eienskappe.</td></tr>
-        <tr><td><b>(4)</b></td><td><b>4 feite</b>, of 2 feite + 2 redes</td><td>Boole-uitdrukking, of "explain + motivate + example".</td></tr>
-        <tr><td><b>(5–8)</b></td><td><b>Stap-vir-stap</b> (algoritme/nasporing) — elke stap is 'n punt</td><td>Loop (1) + toestand (1) + inkrement (1) …</td></tr>
+        <tr><th>Marks</th><th>How much to give</th><th>Example</th></tr>
+        <tr><td><b>(1)</b></td><td>1 fact / 1 term / 1 letter (A–D)</td><td>"Name the protocol" → "SMTP".</td></tr>
+        <tr><td><b>(2)</b></td><td><b>2 facts</b>, or (for explain/motivate) <b>1 fact + 1 reason</b></td><td>"State TWO" = 2 separate facts; "Explain why" = fact + reason.</td></tr>
+        <tr><td><b>(3)</b></td><td><b>3 facts</b>, or 1 fact + 2 reasons/expansions</td><td>"Discuss cache" = 1 definition + 2 features.</td></tr>
+        <tr><td><b>(4)</b></td><td><b>4 facts</b>, or 2 facts + 2 reasons</td><td>Boolean expression, or "explain + motivate + example".</td></tr>
+        <tr><td><b>(5–8)</b></td><td><b>Step-by-step</b> (algorithm/trace) — each step is a mark</td><td>Loop (1) + condition (1) + increment (1) …</td></tr>
       </table>
       <ul class="gloss">
-        <li><b>"Gee TWEE / State TWO"</b> — presies <span class="reveal">twee</span> volledige feite; een feit = 1 punt, moenie oorverduidelik nie.</li>
-        <li><b>"Enige TWEE van"</b> (in die memo) — daar is 4–6 moontlike antwoorde; <span class="reveal">enige 2 korrekte</span> kry die punte.</li>
-        <li><b>Explain met (2)</b> — <span class="reveal">feit + rede</span>; net die feit = 1 punt (nie 2).</li>
-        <li><b>Scenario-vraag (F)</b> — <span class="reveal">definisie (1) + scenario-toepassing (1)</span>; verwys na die scenario.</li>
-        <li><b>Akroniem</b> — skryf <span class="reveal">voluit</span>: "URL (Uniform Resource Locator)".</li>
-        <li><b>MCQ (1.1)</b> — net die letter (A–D); geen verduideliking.</li>
+        <li><b>"Give TWO / State TWO"</b> — exactly <span class="reveal">two</span> complete facts; one fact = 1 mark, don't over-explain.</li>
+        <li><b>"Any TWO of"</b> (in the memo) — there are 4–6 possible answers; <span class="reveal">any 2 correct</span> get the marks.</li>
+        <li><b>Explain with (2)</b> — <span class="reveal">fact + reason</span>; just the fact = 1 mark (not 2).</li>
+        <li><b>Scenario question (F)</b> — <span class="reveal">definition (1) + scenario application (1)</span>; refer to the scenario.</li>
+        <li><b>Acronym</b> — write it <span class="reveal">in full</span>: "URL (Uniform Resource Locator)".</li>
+        <li><b>MCQ (1.1)</b> — just the letter (A–D); no explanation.</li>
       </ul>
     </div>
   </details>
 
-  <!-- ============ §5: ALGEMENE FOUTE ============ -->
+  <!-- ============ §5: COMMON MISTAKES ============ -->
   <details id="s5">
-    <summary><span class="tag w">⚠️</span>Algemene foute wat punte kos<span class="chev">▸</span></summary>
+    <summary><span class="tag w">⚠️</span>Common mistakes that cost marks<span class="chev">▸</span></summary>
     <div class="inner">
       <ul class="gloss">
-        <li><b>Akroniem nie voluit</b> — "RAM" i.p.v. "Random Access Memory" = geen punt. Skryf altyd voluit.</li>
-        <li><b>Firewall "voorkom virusse"</b> — ONWAAR. 'n Firewall filter netwerkverkeer; <span class="reveal">antivirus</span> hanteer virusse.</li>
-        <li><b>RandomRange(A,B)</b> — jy dink B is ingesluit. <span class="reveal">B is NIE ingesluit nie</span>: RandomRange(10,13) = 10, 11, 12.</li>
-        <li><b>UpCase op 'n String</b> — UpCase werk net met <span class="reveal">Char</span>; gebruik <span class="reveal">UpperCase</span> vir 'n String.</li>
-        <li><b>MOD met Real</b> — MOD/DIV werk net met <span class="reveal">Integer</span>.</li>
-        <li><b>CEIL van negatief</b> — CEIL(−2.3) = <span class="reveal">−2</span> (nie −3 nie). "Na bo" = na die groter getal.</li>
-        <li><b>CASE met String/Real</b> — CASE werk net met <span class="reveal">ordinaal-tipes (Integer/Char/Boolean)</span>.</li>
-        <li><b>PK duplikaat/null</b> — 'n primêre sleutel kan <span class="reveal">nie null of duplikaat</span> wees nie.</li>
-        <li><b>Validering = verifikasie</b> — validering is <span class="reveal">outomaties (formaat/reeks)</span>; verifikasie is <span class="reveal">mens (dubbelkontrole)</span>.</li>
-        <li><b>ERD-kardinaliteit omgekeer</b> — die <span class="reveal">"1" by die PK-kant</span>, "baie/∞" by die FK-kant.</li>
-        <li><b>PK nie onderstreep / FK nie gemerk</b> in ERD en UML — verloor jy punte.</li>
-        <li><b>Explain sonder rede</b> — "explain why" vra <span class="reveal">'n rede</span>, nie net die feit.</li>
-        <li><b>1 lang sin vir 3 punte</b> — die merker tel <span class="reveal">afsonderlike feite</span>; breek dit op.</li>
-        <li><b>Scenario geïgnoreer (F)</b> — gee die definisie maar <span class="reveal">pas dit nie op die scenario toe nie</span> = helfte van die punte.</li>
-        <li><b>Nasporing slaan stappe oor</b> — werk <span class="reveal">reël-vir-reël</span>; toets die toestand elke lus.</li>
-        <li><b>"Vergelyk" gee net een kant</b> — gee <span class="reveal">BEIDE</span> (A is …; B is …).</li>
-        <li><b>Te min of te veel punte</b> — "gegee TWEE" maar jy gee <span class="reveal">een</span> (of drie). Gee presies die gevraagde aantal.</li>
-        <li><b>Bandwydte-eenheid verkeerd</b> — bandwydte word in <span class="reveal">bps/Mbps/Gbps</span> gemeet, nie in "meter" (dis reikafstand) nie.</li>
+        <li><b>Acronym not in full</b> — "RAM" instead of "Random Access Memory" = no mark. Always write it in full.</li>
+        <li><b>Firewall "prevents viruses"</b> — FALSE. A firewall filters network traffic; <span class="reveal">antivirus</span> handles viruses.</li>
+        <li><b>RandomRange(A,B)</b> — you think B is included. <span class="reveal">B is NOT included</span>: RandomRange(10,13) = 10, 11, 12.</li>
+        <li><b>UpCase on a String</b> — UpCase works only with <span class="reveal">Char</span>; use <span class="reveal">UpperCase</span> for a String.</li>
+        <li><b>MOD with Real</b> — MOD/DIV work only with <span class="reveal">Integer</span>.</li>
+        <li><b>CEIL of a negative</b> — CEIL(−2.3) = <span class="reveal">−2</span> (not −3). "Up" = towards the larger number.</li>
+        <li><b>CASE with String/Real</b> — CASE works only with <span class="reveal">ordinal types (Integer/Char/Boolean)</span>.</li>
+        <li><b>PK duplicate/null</b> — a primary key cannot be <span class="reveal">null or duplicate</span>.</li>
+        <li><b>Validation = verification</b> — validation is <span class="reveal">automatic (format/range)</span>; verification is <span class="reveal">human (double-check)</span>.</li>
+        <li><b>ERD cardinality reversed</b> — the <span class="reveal">"1" at the PK side</span>, "many/∞" at the FK side.</li>
+        <li><b>PK not underlined / FK not marked</b> in ERD and UML — loses marks.</li>
+        <li><b>Explain without a reason</b> — "explain why" asks <span class="reveal">for a reason</span>, not just the fact.</li>
+        <li><b>1 long sentence for 3 marks</b> — the marker counts <span class="reveal">separate facts</span>; break it up.</li>
+        <li><b>Scenario ignored (F)</b> — give the definition but <span class="reveal">don't apply it to the scenario</span> = half the marks.</li>
+        <li><b>Trace table skips steps</b> — work <span class="reveal">line-by-line</span>; test the condition every loop.</li>
+        <li><b>"Compare" gives only one side</b> — give <span class="reveal">BOTH</span> (A is …; B is …).</li>
+        <li><b>Too few or too many points</b> — "give TWO" but you give <span class="reveal">one</span> (or three). Give exactly the number asked.</li>
+        <li><b>Bandwidth unit wrong</b> — bandwidth is measured in <span class="reveal">bps/Mbps/Gbps</span>, not in "metres" (that's range).</li>
       </ul>
     </div>
   </details>
 
-  <!-- ============ §6: VRAAGBANK ============ -->
+  <!-- ============ §6: QUESTION BANK ============ -->
   <details id="s6">
-    <summary><span class="tag p">📚</span>Vraagbank: regte vrae + memo-antwoorde<span class="chev">▸</span></summary>
+    <summary><span class="tag p">📚</span>Question bank: real questions + memo answers<span class="chev">▸</span></summary>
     <div class="inner">
-      <div class="note blue">Regte vrae uit NSC Nov 2023–2025 met die <b>memo-antwoord</b> en die punte. Kyk hoe die memo punte toeken: elke ✓ = 1 feit.</div>
+      <div class="note blue">Real questions from NSC Nov 2023–2025 with the <b>memo answer</b> and marks. See how the memo awards marks: each ✓ = 1 fact.</div>
 
-      <h3>Oplossingsontwikkeling (Delphi)</h3>
-      <div class="qbank"><div class="q">Bereken: <code>iResult := CEIL(-2.3)</code> <span class="cite">Nov 2025 V5.1.1</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">-2</span> (CEIL rond na bo, na die groter heelgetal).</div></div>
-      <div class="qbank"><div class="q">Bereken: <code>iResult := TRUNC(-2.3)</code> <span class="cite">Nov 2025 V5.1.2</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">-2</span> (TRUNC kap die desimale af).</div></div>
-      <div class="qbank"><div class="q">Watter prosedure skep 'n NUWE tekslêer ná <code>AssignFile</code>? <span class="cite">Nov 2025 V5.4.2</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">Rewrite()</span> (Reset = lees, Append = voeg by).</div></div>
-      <div class="qbank"><div class="q">Hoekom gee <code>sString := UpCase(sString)</code> 'n fout? <span class="cite">Nov 2025 V1.1.9</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">UpCase werk net met 'n Char (een letter); gebruik UpperCase vir 'n String</span>.</div></div>
-      <div class="qbank"><div class="q">Waarde van <code>TRUE AND (FALSE OR TRUE)</code> <span class="cite">Nov 2025 V1.1.10</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">TRUE</span> (binne hakies eerste: FALSE OR TRUE = TRUE; TRUE AND TRUE = TRUE).</div></div>
-      <div class="qbank"><div class="q">Bereken: <code>(-4 = 12 MOD 5) AND NOT FALSE OR (5-(-4)=1)</code> <span class="cite">Nov 2024 V5.3</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">FALSE</span> → (-4=2)=FALSE AND TRUE OR (9=1)=FALSE → FALSE OR FALSE = FALSE.</div></div>
-      <div class="qbank"><div class="q">Hoekom is <code>sMonth</code> (String) in 'n CASE-stelling 'n sintaksfout? <span class="cite">Nov 2024 V5.1.2</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">CASE werk net met ordinaal-tipes (Integer, Char, Boolean)</span>; skakel die String eers om na Integer.</div></div>
-      <div class="qbank"><div class="q">Skakel <code>for iCol := 1 to 5 do</code> om na WHILE. <span class="cite">Nov 2023 V5.1.4</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">iCol := 1; while iCol &lt;= 5 do begin … inc(iCol); end;</span> (initialiseer + toestand + inkrement).</div></div>
-      <div class="qbank"><div class="q">Noem 'n accessor- EN 'n mutator-metode vir 'n klas. <span class="cite">Nov 2024 V5.5.3</span></div><div class="a"><b>Antwoord:</b> Accessor = <span class="reveal">Function getNumMarathons : Integer</span> (lees terug); Mutator = <span class="reveal">setQualify</span> (verander die waarde).</div></div>
+      <h3>Solution development (Delphi)</h3>
+      <div class="qbank"><div class="q">Calculate: <code>iResult := CEIL(-2.3)</code> <span class="cite">Nov 2025 Q5.1.1</span></div><div class="a"><b>Answer:</b> <span class="reveal">-2</span> (CEIL rounds up, to the larger whole number).</div></div>
+      <div class="qbank"><div class="q">Calculate: <code>iResult := TRUNC(-2.3)</code> <span class="cite">Nov 2025 Q5.1.2</span></div><div class="a"><b>Answer:</b> <span class="reveal">-2</span> (TRUNC chops the decimals off).</div></div>
+      <div class="qbank"><div class="q">Which procedure creates a NEW text file after <code>AssignFile</code>? <span class="cite">Nov 2025 Q5.4.2</span></div><div class="a"><b>Answer:</b> <span class="reveal">Rewrite()</span> (Reset = read, Append = add at end).</div></div>
+      <div class="qbank"><div class="q">Why does <code>sString := UpCase(sString)</code> give an error? <span class="cite">Nov 2025 Q1.1.9</span></div><div class="a"><b>Answer:</b> <span class="reveal">UpCase works only with a Char (one letter); use UpperCase for a String</span>.</div></div>
+      <div class="qbank"><div class="q">Value of <code>TRUE AND (FALSE OR TRUE)</code> <span class="cite">Nov 2025 Q1.1.10</span></div><div class="a"><b>Answer:</b> <span class="reveal">TRUE</span> (brackets first: FALSE OR TRUE = TRUE; TRUE AND TRUE = TRUE).</div></div>
+      <div class="qbank"><div class="q">Calculate: <code>(-4 = 12 MOD 5) AND NOT FALSE OR (5-(-4)=1)</code> <span class="cite">Nov 2024 Q5.3</span></div><div class="a"><b>Answer:</b> <span class="reveal">FALSE</span> → (-4=2)=FALSE AND TRUE OR (9=1)=FALSE → FALSE OR FALSE = FALSE.</div></div>
+      <div class="qbank"><div class="q">Why is <code>sMonth</code> (String) in a CASE statement a syntax error? <span class="cite">Nov 2024 Q5.1.2</span></div><div class="a"><b>Answer:</b> <span class="reveal">CASE works only with ordinal types (Integer, Char, Boolean)</span>; convert the String to Integer first.</div></div>
+      <div class="qbank"><div class="q">Convert <code>for iCol := 1 to 5 do</code> to WHILE. <span class="cite">Nov 2023 Q5.1.4</span></div><div class="a"><b>Answer:</b> <span class="reveal">iCol := 1; while iCol &lt;= 5 do begin … inc(iCol); end;</span> (initialise + condition + increment).</div></div>
+      <div class="qbank"><div class="q">Name an accessor AND a mutator method for a class. <span class="cite">Nov 2024 Q5.5.3</span></div><div class="a"><b>Answer:</b> Accessor = <span class="reveal">Function getNumMarathons : Integer</span> (reads back); Mutator = <span class="reveal">setQualify</span> (changes the value).</div></div>
 
-      <h3>Databasisse &amp; SQL</h3>
-      <div class="qbank"><div class="q">Wat is 'n primêre sleutel? <span class="cite">Nov 2023 V4.1.1</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">'n veld wat elke rekord in die tabel uniek identifiseer</span>. (Kan nie null/duplikaat wees nie.)</div></div>
-      <div class="qbank"><div class="q">Noem 'n ontwerpfout in 'n tabel waar Teacher by elke rekord herhaal. <span class="cite">Nov 2023 V4.1.3</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">Data-oortolligheid / nie genormaliseer</span>. Oplossing: <span class="reveal">skuif Teacher + RegisterClass na 'n aparte tabel, koppel met 'n FK</span>.</div></div>
-      <div class="qbank"><div class="q">Hoekom vervang validering NIE verifikasie nie? <span class="cite">Nov 2023 V4.2</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">Geldige data is net in die regte formaat, nie noodwendig feitlik korrek nie</span>. Verifikasie kontroleer teen die bron.</div></div>
-      <div class="qbank"><div class="q">Wat hou 'n ouditspoor (audit trail) by? <span class="cite">Nov 2023 V4.4.1</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">WIE (who), WAT (what) en WANNEER (when)</span> veranderings gemaak is.</div></div>
-      <div class="qbank"><div class="q">Twee maniere hoe metadata waarde toevoeg. <span class="cite">Nov 2024 V4.4</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">(1) Gee konteks sodat data makliker gevind/geïnterpreteer word; (2) help verstaan waar data vandaan kom en sy doel</span>.</div></div>
-      <div class="qbank"><div class="q">Twee hardeware-toestelle vir fisiese data-integriteit. <span class="cite">Nov 2024 V4.2.2</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">UPS, RAID, toegangsbeheer (biometries), elektriese slotte, kragbeskermers</span>.</div></div>
-      <div class="qbank"><div class="q">Hoekom moet "Experience" integer wees, nie teks? <span class="cite">Nov 2025 V4.1.1</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">Sodat jy daarmee kan sorteer en bereken</span> — teks kan nie gesorteer/bereken word nie.</div></div>
+      <h3>Databases &amp; SQL</h3>
+      <div class="qbank"><div class="q">What is a primary key? <span class="cite">Nov 2023 Q4.1.1</span></div><div class="a"><b>Answer:</b> <span class="reveal">a field that uniquely identifies each record in the table</span>. (Cannot be null/duplicate.)</div></div>
+      <div class="qbank"><div class="q">Name a design error where Teacher repeats in every record. <span class="cite">Nov 2023 Q4.1.3</span></div><div class="a"><b>Answer:</b> <span class="reveal">Data redundancy / not normalised</span>. Solution: <span class="reveal">move Teacher + RegisterClass to a separate table, link with a FK</span>.</div></div>
+      <div class="qbank"><div class="q">Why does validation NOT replace verification? <span class="cite">Nov 2023 Q4.2</span></div><div class="a"><b>Answer:</b> <span class="reveal">Valid data is only in the correct format, not necessarily factually correct</span>. Verification checks against the source.</div></div>
+      <div class="qbank"><div class="q">What does an audit trail record? <span class="cite">Nov 2023 Q4.4.1</span></div><div class="a"><b>Answer:</b> <span class="reveal">WHO, WHAT and WHEN</span> changes were made.</div></div>
+      <div class="qbank"><div class="q">Two ways metadata adds value. <span class="cite">Nov 2024 Q4.4</span></div><div class="a"><b>Answer:</b> <span class="reveal">(1) Gives context so data is easier to find/interpret; (2) helps understand where data comes from and its purpose</span>.</div></div>
+      <div class="qbank"><div class="q">Two hardware devices for physical data integrity. <span class="cite">Nov 2024 Q4.2.2</span></div><div class="a"><b>Answer:</b> <span class="reveal">UPS, RAID, access control (biometric), electronic locks, surge protectors</span>.</div></div>
+      <div class="qbank"><div class="q">Why should "Experience" be integer, not text? <span class="cite">Nov 2025 Q4.1.1</span></div><div class="a"><b>Answer:</b> <span class="reveal">So you can sort and calculate with it</span> — text cannot be sorted/calculated.</div></div>
 
-      <h3>Netwerke &amp; Kommunikasie</h3>
-      <div class="qbank"><div class="q">Definieer bandwydte + gee EEN eenheid. <span class="cite">Nov 2024 V3.1.2</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">Hoeveel data oor 'n netwerk in 'n spesifieke tyd gestuur word</span>; eenheid: <span class="reveal">bps / Mbps / Gbps</span>.</div></div>
-      <div class="qbank"><div class="q">Wat is die doel van 'n IP-adres? <span class="cite">Nov 2024 V3.1.4</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">Uniek identifiseer 'n toestel op die netwerk sodat toestelle met mekaar kan kommunikeer</span>.</div></div>
-      <div class="qbank"><div class="q">Motiveer hoekom STAR-topologie geskik is. <span class="cite">Nov 2024 V3.1.5</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">As een kabel faal werk die ander toestelle steeds (1), want elk het sy eie kabel (1)</span>.</div></div>
-      <div class="qbank"><div class="q">Noem TWEE draadlose tegnologieë. <span class="cite">Nov 2024 V3.2.1</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">WiFi, Bluetooth, Satelliet, Cellular (3G/4G/5G), WiMAX</span>.</div></div>
-      <div class="qbank"><div class="q">Wat is 'n koekie + TWEE voordele vir die gebruiker. <span class="cite">Nov 2024 V3.3.2</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">'n klein tekslêer wat jou aktiwiteit/voorkeure dophou</span>. Voordele: <span class="reveal">onthou voorkeure (outovul), spaar tyd, persoonlike aanbevelings</span>.</div></div>
-      <div class="qbank"><div class="q">Waarvoor staan DDoS + TWEE voorkomings. <span class="cite">Nov 2024 V3.5.2</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">Distributed Denial of Service</span>. Voorkom: <span class="reveal">meer bandwydte, opgradeer netwerk, toustelsel, bot-voorkoming</span>.</div></div>
+      <h3>Networks &amp; Communication</h3>
+      <div class="qbank"><div class="q">Define bandwidth + give ONE unit. <span class="cite">Nov 2024 Q3.1.2</span></div><div class="a"><b>Answer:</b> <span class="reveal">How much data is sent over a network in a specific time</span>; unit: <span class="reveal">bps / Mbps / Gbps</span>.</div></div>
+      <div class="qbank"><div class="q">What is the purpose of an IP address? <span class="cite">Nov 2024 Q3.1.4</span></div><div class="a"><b>Answer:</b> <span class="reveal">Uniquely identifies a device on the network so devices can communicate</span>.</div></div>
+      <div class="qbank"><div class="q">Motivate why a STAR topology is suitable. <span class="cite">Nov 2024 Q3.1.5</span></div><div class="a"><b>Answer:</b> <span class="reveal">If one cable fails the other devices still work (1), because each has its own cable (1)</span>.</div></div>
+      <div class="qbank"><div class="q">Name TWO wireless technologies. <span class="cite">Nov 2024 Q3.2.1</span></div><div class="a"><b>Answer:</b> <span class="reveal">WiFi, Bluetooth, Satellite, Cellular (3G/4G/5G), WiMAX</span>.</div></div>
+      <div class="qbank"><div class="q">What is a cookie + TWO benefits to the user. <span class="cite">Nov 2024 Q3.3.2</span></div><div class="a"><b>Answer:</b> <span class="reveal">a small text file that tracks your activity/preferences</span>. Benefits: <span class="reveal">remember preferences (autofill), save time, personal recommendations</span>.</div></div>
+      <div class="qbank"><div class="q">What does DDoS stand for + TWO preventions. <span class="cite">Nov 2024 Q3.5.2</span></div><div class="a"><b>Answer:</b> <span class="reveal">Distributed Denial of Service</span>. Prevent: <span class="reveal">more bandwidth, upgrade network, queueing system, bot prevention</span>.</div></div>
 
-      <h3>Stelseltegnologieë</h3>
-      <div class="qbank"><div class="q">Noem TWEE funksies van 'n moederbord. <span class="cite">Nov 2025 V2.1.1</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">(1) Verbind al die komponente; (2) versprei krag; (3) verskaf gleuwe/poorte; (4) vervoer data via busse</span>.</div></div>
-      <div class="qbank"><div class="q">Verduidelik wat virtuele geheue is. <span class="cite">Nov 2025 V2.2.2</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">'n area op sekondêre stoor wat as RAM gebruik word wanneer RAM vol is</span> (stadiger, gaan deur stoor).</div></div>
-      <div class="qbank"><div class="q">Definieer wolkberekening. <span class="cite">Nov 2024 V2.5.1</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">Gebruik van gedeelde hulpbronne wat as dienste oor die internet aangebied word</span>.</div></div>
-      <div class="qbank"><div class="q">Noem TWEE funksies van die BIOS. <span class="cite">Nov 2024 V2.3.2</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">(1) Beheer hardeware op laagste vlak; (2) POST (kontroleer hardeware); (3) vind en laai die OS</span>.</div></div>
-      <div class="qbank"><div class="q">Hoekom word die BIOS op nie-vlugtige geheue gestoor? <span class="cite">Nov 2024 V2.3.3</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">Sodat dit data behou as krag af is en instellings die volgende keer herlaai kan word</span>.</div></div>
+      <h3>Systems technologies</h3>
+      <div class="qbank"><div class="q">Name TWO functions of a motherboard. <span class="cite">Nov 2025 Q2.1.1</span></div><div class="a"><b>Answer:</b> <span class="reveal">(1) Connects all the components; (2) distributes power; (3) provides slots/ports; (4) carries data via buses</span>.</div></div>
+      <div class="qbank"><div class="q">Explain what virtual memory is. <span class="cite">Nov 2025 Q2.2.2</span></div><div class="a"><b>Answer:</b> <span class="reveal">an area on secondary storage used as RAM when RAM is full</span> (slower, goes through storage).</div></div>
+      <div class="qbank"><div class="q">Define cloud computing. <span class="cite">Nov 2024 Q2.5.1</span></div><div class="a"><b>Answer:</b> <span class="reveal">Use of shared resources offered as services over the internet</span>.</div></div>
+      <div class="qbank"><div class="q">Name TWO functions of the BIOS. <span class="cite">Nov 2024 Q2.3.2</span></div><div class="a"><b>Answer:</b> <span class="reveal">(1) Controls hardware at the lowest level; (2) POST (checks hardware); (3) finds and loads the OS</span>.</div></div>
+      <div class="qbank"><div class="q">Why is the BIOS stored on non-volatile memory? <span class="cite">Nov 2024 Q2.3.3</span></div><div class="a"><b>Answer:</b> <span class="reveal">So it keeps data when power is off and settings can reload next time</span>.</div></div>
 
-      <h3>Geïntegreerde scenario / sosiale implikasies</h3>
-      <div class="qbank"><div class="q">Hoe gebruik 'n RFID-etiket die atleet se tyd om te bepaal? <span class="cite">Nov 2024 V6.2.1</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">Die etiket het 'n unieke ID; die leser vang die ID by die begin en einde vas → bereken die tyd</span>.</div></div>
-      <div class="qbank"><div class="q">Verduidelik die term "spoofing". <span class="cite">Nov 2024 V6.6.1</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">'n e-pos/webwerf wat lyk of dit van 'n wettige organisasie kom, maar net 'n replika is om persoonlike inligting te steel</span>.</div></div>
-      <div class="qbank"><div class="q">Verduidelik inligting-oorlading + gee 'n voorbeeld. <span class="cite">Nov 2024 V6.5</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">Oorweldigende hoeveelheid inligting wat dit moeilik maak om te verwerk/besluit</span>; vb. <span class="reveal">te veel bronne vir jou PAT-navorsing</span>.</div></div>
-      <div class="qbank"><div class="q">TWEE maniere om te sien 'n webwerf is veilig. <span class="cite">Nov 2024 V6.1.1</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">https, sekuriteitsimbool, groen adresbalk, SSL/digitale sertifikaat</span>.</div></div>
-      <div class="qbank"><div class="q">Hoekom wil kriminele losprys in kriptogeldeenheid hê? <span class="cite">Nov 2024 V6.6.2</span></div><div class="a"><b>Antwoord:</b> <span class="reveal">Dit kan nie opgespoor word nie / anoniem</span>.</div></div>
+      <h3>Integrated scenario / social implications</h3>
+      <div class="qbank"><div class="q">How does an RFID tag determine an athlete's time? <span class="cite">Nov 2024 Q6.2.1</span></div><div class="a"><b>Answer:</b> <span class="reveal">The tag has a unique ID; the reader captures the ID at the start and finish → calculates the time</span>.</div></div>
+      <div class="qbank"><div class="q">Explain the term "spoofing". <span class="cite">Nov 2024 Q6.6.1</span></div><div class="a"><b>Answer:</b> <span class="reveal">an email/website that looks like it comes from a legitimate organisation, but is only a replica to steal personal info</span>.</div></div>
+      <div class="qbank"><div class="q">Explain information overload + give an example. <span class="cite">Nov 2024 Q6.5</span></div><div class="a"><b>Answer:</b> <span class="reveal">Overwhelming amount of information that makes it hard to process/decide</span>; e.g. <span class="reveal">too many sources for your PAT research</span>.</div></div>
+      <div class="qbank"><div class="q">TWO ways to tell a website is secure. <span class="cite">Nov 2024 Q6.1.1</span></div><div class="a"><b>Answer:</b> <span class="reveal">https, security symbol, green address bar, SSL/digital certificate</span>.</div></div>
+      <div class="qbank"><div class="q">Why do criminals want ransom in cryptocurrency? <span class="cite">Nov 2024 Q6.6.2</span></div><div class="a"><b>Answer:</b> <span class="reveal">It cannot be traced / anonymous</span>.</div></div>
     </div>
   </details>
 
   <footer>
-    IT V2 · Eksamen-kits · Gebaseer op NSC Nov 2020–2025 + Sept 2024/2025 (DBE + Stanmorephysics)
-    <div class="footer-note">Self-toets: skakel die modus aan en tik op vervaagde antwoorde. Jou vordering bly op hierdie toestel gestoor.</div>
+    IT Paper 2 · Exam Pack · Based on NSC Nov 2020–2025 + Sept 2024/2025 (DBE + Stanmorephysics)
+    <div class="footer-note">Self-test: switch the mode on and tap blurred answers. Your progress is stored on this device.</div>
   </footer>
 </div>
 
@@ -997,7 +988,7 @@ WHERE   a.fk = b.pk;</pre>
     var n=boxes.filter(function(b){return b.checked}).length;
     var pct=Math.round(n/boxes.length*100);
     bar.style.width=pct+'%';
-    barLabel.textContent=n+' / '+boxes.length+' afdelings gemeester ('+pct+'%)';
+    barLabel.textContent=n+' / '+boxes.length+' sections mastered ('+pct+'%)';
   }
   boxes.forEach(function(b){
     b.addEventListener('change',function(){
@@ -1011,7 +1002,7 @@ WHERE   a.fk = b.pk;</pre>
   testBtn.addEventListener('click',function(){
     on=!on;
     document.body.classList.toggle('self-test',on);
-    testBtn.textContent=on?'👁 Self-toets-modus AF':'👁 Self-toets-modus AAN';
+    testBtn.textContent=on?'👁 Self-test mode OFF':'👁 Self-test mode ON';
     testBtn.classList.toggle('on',on);
   });
   document.addEventListener('click',function(e){
