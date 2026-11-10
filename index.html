@@ -1,1054 +1,431 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="af">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IT Paper 2 · Exam Pack — NSC IT Theory</title>
+<title>Afrikaans Huistaal Vraestel 1 — Analise, Patrone, Voorspellings &amp; Teorie</title>
 <style>
-  :root{
-    --bg:#f3eee2;          /* warm room */
-    --card:#fbf7ec;        /* lighter card */
-    --line:#e0d7c0;        /* soft sand line */
-    --txt:#2e2a24;         /* charcoal */
-    --mut:#6f6759;         /* muted taupe */
-    --acc:#8a5b2f;         /* warm ochre/brown */
-    --acc2:#a84b3a;        /* soft brick red */
-    --ok:#4d7c5f;          /* soft green */
-    --warn:#8a6d1f;        /* soft gold */
-    --head-bg:rgba(243,238,226,.97);
-  }
-  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  html,body{margin:0;padding:0}
-  body{background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.55;padding-bottom:80px}
-  .wrap{max-width:880px;margin:0 auto;padding:0 14px}
-  header{position:sticky;top:0;z-index:50;background:var(--head-bg);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);padding:12px 14px 10px;transition:transform .3s ease;box-shadow:0 2px 8px rgba(46,42,36,.06)}
-  header.hidden{transform:translateY(-100%)}
-  .wrap-head{max-width:880px;margin:0 auto}
-  h1{font-size:20px;margin:0 0 2px;letter-spacing:.3px;color:var(--acc)}
-  .sub{color:var(--mut);font-size:13px;margin:0 0 10px}
-  .bar-bg{background:var(--line);border-radius:20px;height:14px;overflow:hidden}
-  .bar{background:linear-gradient(90deg,var(--acc),var(--ok));height:100%;width:0%;transition:width .3s;border-radius:20px}
-  .bar-label{font-size:12px;color:var(--mut);margin-top:4px;text-align:center}
-  .controls{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
-  .btn{flex:1;min-width:120px;padding:12px;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;color:#fff;box-shadow:0 1px 3px rgba(46,42,36,.15)}
-  .btn-test{background:var(--acc)}
-  .btn-test.on{background:var(--acc2)}
-  .btn-reset{background:var(--mut)}
-  .btn-reset:active,.btn-test:active{transform:scale(.98)}
-  input.search{width:100%;margin-top:8px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--txt);font-size:15px}
-  input.search::placeholder{color:var(--mut)}
-  nav.toc{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:14px 0;padding:12px 14px}
-  nav.toc h2{margin:0 0 8px;font-size:14px;color:var(--acc);text-transform:uppercase;letter-spacing:.5px}
-  nav.toc ol{margin:0;padding-left:20px;columns:2;column-gap:24px;font-size:14px}
-  nav.toc li{margin:3px 0;break-inside:avoid}
-  nav.toc a{color:var(--txt);text-decoration:none;border-bottom:1px dashed var(--line)}
-  nav.toc a:hover{color:var(--acc)}
-  @media(max-width:520px){nav.toc ol{columns:1}}
-  details{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:12px 0;overflow:hidden;box-shadow:0 1px 4px rgba(46,42,36,.05)}
-  details[open]{border-color:var(--acc)}
-  summary{cursor:pointer;padding:14px 16px;font-size:16px;font-weight:700;display:flex;align-items:center;gap:10px;list-style:none;user-select:none}
-  summary::-webkit-details-marker{display:none}
-  summary .tag{flex-shrink:0;background:var(--acc);color:#fff;border-radius:8px;padding:2px 8px;font-size:12px;font-weight:800}
-  summary .tag.f{background:var(--acc2)}
-  summary .tag.p{background:var(--ok)}
-  summary .tag.w{background:var(--warn)}
-  summary .chev{margin-left:auto;color:var(--mut);transition:transform .2s;font-size:14px}
-  details[open] .chev{transform:rotate(90deg)}
-  summary .master{margin-left:10px;display:flex;align-items:center;gap:6px;color:var(--mut);font-size:13px;font-weight:600;cursor:pointer;user-select:none}
-  .inner{padding:4px 16px 16px;border-top:1px solid var(--line)}
-  .note{background:#f1e8d2;border-left:3px solid var(--warn);border-radius:8px;padding:10px 12px;margin:12px 0;font-size:14px;color:var(--txt)}
-  .note b{color:var(--warn)}
-  .note.blue{border-left-color:var(--acc)}
-  .note.red{border-left-color:var(--acc2);background:#f6e6df}
-  .note.green{border-left-color:var(--ok);background:#e7f0e8}
-  .new{background:#efe0d3;border:1px solid #dcbfa8;border-radius:8px;padding:10px 12px;margin:12px 0;font-size:14px}
-  .new b{color:var(--acc2)}
-  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
-  th{background:#e9dfc6;color:#5c4323;text-align:left;padding:9px 10px;font-size:13px}
-  td{padding:9px 10px;border-top:1px solid var(--line);vertical-align:top}
-  tr:nth-child(even) td{background:#f5efdf}
-  td:first-child,th:first-child{font-weight:700;color:var(--acc);white-space:nowrap}
-  th:first-child{color:#5c4323}
-  ul.gloss{margin:8px 0;padding:0;list-style:none}
-  ul.gloss li{padding:8px 4px;border-bottom:1px solid var(--line);font-size:15px}
-  ul.gloss li:last-child{border-bottom:none}
-  ul.gloss li b{color:var(--acc)}
-  h3{color:var(--acc);font-size:15px;margin:16px 0 4px;text-transform:uppercase;letter-spacing:.5px}
-  h4{color:var(--txt);font-size:14px;margin:12px 0 4px}
-  code{background:#ebe3cd;padding:2px 6px;border-radius:6px;font-size:13px;color:#6b4a2f}
-  pre{background:#f6f1e3;border:1px solid var(--line);border-radius:10px;padding:12px;overflow-x:auto;font-size:13px;line-height:1.5}
-  .cite{font-size:11px;color:var(--mut);font-weight:600;background:#e9dfc6;border-radius:6px;padding:1px 6px;margin-left:4px;white-space:nowrap;display:inline-block;vertical-align:middle}
-  .tier{display:inline-block;font-size:11px;font-weight:800;border-radius:8px;padding:1px 7px;color:#fff}
-  .tier.t1{background:var(--acc2)}
-  .tier.t2{background:var(--acc)}
-  .tier.t3{background:var(--ok)}
-  .formula{background:#f6f1e3;border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:8px;padding:10px 12px;margin:10px 0;font-size:14px}
-  .formula .f-name{font-weight:800;color:var(--acc)}
-  .formula .f-in{color:var(--mut);font-size:13px}
-  .qbank{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:12px 0;overflow:hidden}
-  .qbank .q{padding:10px 14px;font-weight:700;border-bottom:1px dashed var(--line)}
-  .qbank .a{padding:10px 14px;font-size:14px}
-  .qbank .a ul{margin:6px 0 0;padding-left:18px}
-  .reveal{color:var(--acc);font-weight:700}
-  body.self-test .reveal{filter:blur(6px);cursor:pointer;transition:filter .15s;user-select:none}
-  body.self-test .reveal.shown{filter:none}
-  body.self-test .reveal:active{filter:none}
-  footer{text-align:center;color:var(--mut);font-size:12px;margin-top:24px;padding:0 14px}
-  .footer-note{margin-top:6px}
-  @media(min-width:600px){h1{font-size:24px}.inner{padding:6px 20px 20px}summary{padding:16px 18px}}
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #111; background: #fff; line-height: 1.55; margin: 2rem auto; max-width: 960px; padding: 0 1.2rem; }
+  h1 { font-size: 1.7rem; border-bottom: 3px solid #333; padding-bottom: .4rem; }
+  h2 { font-size: 1.35rem; margin-top: 2.2rem; border-bottom: 2px solid #666; padding-bottom: .25rem; }
+  h3 { font-size: 1.1rem; margin-top: 1.5rem; color: #222; }
+  h4 { font-size: 1rem; margin-bottom: .3rem; }
+  table { border-collapse: collapse; width: 100%; margin: .8rem 0 1.4rem; font-size: .92rem; }
+  th, td { border: 1px solid #999; padding: .45rem .6rem; text-align: left; vertical-align: top; }
+  th { background: #eee; }
+  .key { background: #fff3cd; }
+  .tip { background: #e7f3e7; border-left: 4px solid #2e7d32; padding: .6rem .8rem; margin: .8rem 0; }
+  .warn { background: #fdecea; border-left: 4px solid #c62828; padding: .6rem .8rem; margin: .8rem 0; }
+  .pred { background: #eef3fb; border-left: 4px solid #1565c0; padding: .6rem .8rem; margin: .8rem 0; }
+  .box { border: 1px solid #bbb; padding: .8rem; margin: 1rem 0; }
+  code, .term { background: #f4f4f4; padding: .05rem .3rem; border-radius: 3px; font-family: Consolas, monospace; }
+  pre { background: #f7f7f7; border: 1px solid #ccc; padding: .8rem; overflow-x: auto; font-size: .88rem; }
+  .ex { color: #0b5e0b; }
+  .mark { color: #b71c1c; font-weight: bold; }
+  ul, ol { margin: .4rem 0 1rem; padding-left: 1.4rem; }
+  .small { font-size: .85rem; color: #555; }
+  .tot { background: #e3f2fd; font-weight: bold; }
+  .tick { color: #2e7d32; font-weight: bold; }
 </style>
 </head>
 <body>
-<header>
-  <div class="wrap-head">
-    <h1>IT Paper 2 · Exam Pack</h1>
-    <p class="sub">Grade 12 · 150 marks · Based on NSC <b>Nov 2020–2025</b> + Sept 2024/2025 · A:20 · B:25 · C:25–30 · D:20 · E:22–30 · F:30–40</p>
-    <div class="bar-bg"><div class="bar" id="bar"></div></div>
-    <div class="bar-label" id="barLabel">0 / 9 sections mastered</div>
-    <div class="controls">
-      <button class="btn btn-test" id="testBtn">👁 Self-test mode ON</button>
-      <button class="btn btn-reset" id="resetBtn">↺ Reset all</button>
-    </div>
-    <input class="search" id="q" type="search" placeholder="🔍 Search a term or concept…">
-  </div>
-</header>
 
-<div class="wrap">
+<h1>AFRIKAANS HUISTAAL · VRAESTEL 1 — Volledige Analise, Patrone &amp; Teorie</h1>
+<p class="small">Gegrond op die amptelike DBE-vraestelle en -nasienriglyne vir <b>November 2022, November 2024, November 2025</b> en <b>Mei/Junie 2026</b>. Elke patroon word met die spesifieke jaar/vraagnommer gestaaf.</p>
 
-  <nav class="toc">
-    <h2>Contents</h2>
-    <ol>
-      <li><a href="#s0">📌 One-page final summary</a></li>
-      <li><a href="#s1">🥇 Topic priority list</a></li>
-      <li><a href="#sA">A · Short questions &amp; terms</a></li>
-      <li><a href="#sB">B · Systems technologies</a></li>
-      <li><a href="#sC">C · Networks &amp; communication</a></li>
-      <li><a href="#sD">D · Databases &amp; SQL</a></li>
-      <li><a href="#sE">E · Solution development</a></li>
-      <li><a href="#sF">F · Integrated scenario</a></li>
-      <li><a href="#s3">🧭 Answer formulas</a></li>
-      <li><a href="#s4">🎯 Marks per question</a></li>
-      <li><a href="#s5">⚠️ Common mistakes</a></li>
-      <li><a href="#s6">📚 Question bank</a></li>
-    </ol>
-  </nav>
+<h2>1. Die bloudruk van Vraestel 1 (wat jy ALTYD kry)</h2>
+<table>
+  <tr><th>Afdeling</th><th>Inhoud</th><th>Punte</th><th>Vraag</th><th>Tyd</th></tr>
+  <tr><td><b>A</b></td><td>Leesbegrip (2 tekste: artikel + visuele teks/spotprent)</td><td class="tot">30</td><td>V1</td><td>50 min</td></tr>
+  <tr><td><b>B</b></td><td>Opsomming (7 feite + 3 taal)</td><td class="tot">10</td><td>V2</td><td>30 min</td></tr>
+  <tr><td><b>C</b></td><td>Taalstrukture en -konvensies (advertensie, strokiesprent, artikel)</td><td class="tot">30</td><td>V3–V5</td><td>40 min</td></tr>
+  <tr><td colspan="2" class="tot">TOTAAL</td><td class="tot">70</td><td class="tot">—</td><td class="tot">2 uur</td></tr>
+</table>
+<div class="tip"><b>Die een reël wat alles deurloop (instruksie 8 in die vraestel):</b> <i>"Skenk veral baie aandag aan spelling en sinskonstruksie."</i> Spelling tel NIE net in Afdeling C nie — dit is 'n uitdruklike instruksie aan die NASIENER.</div>
 
-  <div class="note blue"><b>HOW TO USE THIS:</b> Learn the <b>final summary (§0)</b> and the <b>priority list (§1)</b> first, then the <b>⭐ tables</b> word-for-word. Use <b>self-test mode</b> (👁) to test yourself — tap blurred answers. Watch the <b>mark allocation</b> (2 marks = 2 facts). Write acronyms <b>in full</b>. <b>Define</b> = core fact in a full sentence; <b>"give TWO"</b> = two complete facts.</div>
+<h2>2. AFDELING A — LEESBEGRIP (30 punte)</h2>
+<h3>2.1 Wat jy altyd kry</h3>
+<ul>
+  <li><b>Teks A:</b> 'n artikel (±13–15 paragrawe) oor 'n aktuele/nuttige onderwerp (energiedrankies, skermtyd/digitale demensie, orgaanskenking, klimaatverandering).</li>
+  <li><b>Teks B:</b> 'n visuele teks — gewoonlik 'n spotprent of advertensie-agtige prent — wat met Teks A verband hou.</li>
+  <li>±13–15 vrae, gewoonlik <b>1.1 tot 1.14</b>, met sub-vrae (1.5.1, 1.5.2).</li>
+  <li>Die laaste 2–3 vrae verg dat jy <b>beide tekste</b> saam beoordeel.</li>
+</ul>
 
-  <!-- ============ §0: FINAL SUMMARY ============ -->
-  <details id="s0" open>
-    <summary><span class="tag p">📌</span>One-page final summary<span class="chev">▸</span></summary>
-    <div class="inner">
-      <div class="note red"><b>THE 150 MARKS — where they sit (Nov 2020–2025):</b> F·Integrated scenario ±33–40 (≈24%) · C·Networks ±25–30 (≈19%) · B·Systems 25 (≈17%) · E·Solution dev ±20–30 (≈15%) · D·Databases ±20–24 (≈14%) · A·Short questions ±15–20 (≈12%).</div>
+<h3>2.2 Die vraagtipes wat elke jaar herhaal (met bewyse)</h3>
+<table>
+  <tr><th>Vraagtipe</th><th>Tipiese bewoording (stem)</th><th>Waar dit voorkom</th><th>Hoe om te antwoord</th></tr>
+  <tr><td><b>Aanhaling-vraag</b></td><td>"Skryf TWEE afsonderlike sinsdele uit paragraaf 1 neer wat by ... aansluit."</td><td>Nov 2024 (1.1), Nov 2025 (1.1.1), MJ 2026 (1.1)</td><td>Haal <b>100% presies</b> aan — geen spelling- of woordfout nie. Die memo eis 'n volmaakte aanhaling.</td></tr>
+  <tr><td><b>Woordbetekenis in konteks</b></td><td>"Watter gedagte dra die skrywer met die woord '...' oor?"</td><td>Nov 2024 (1.2), Nov 2025 (1.8), MJ 2026 (1.8.1)</td><td>Kyk na die <b>betekenis</b>, nie die letterlike definisie nie. Verduidelik wát dit hier suggereer.</td></tr>
+  <tr><td><b>Lys-vraag</b></td><td>"Watter VIER/DRIE/TWEE ... ?"</td><td>Nov 2024 (1.3, 1.6, 1.8), Nov 2025 (1.7), MJ 2026 (1.3.2)</td><td>Gee presies soveel items as gevra. As jy méér gee, word <b>slegs die eerste 2/3/4</b> gemerk.</td></tr>
+  <tr><td><b>Evalueer / betroubaarheid</b></td><td>"Evalueer die betroubaarheid van die statistiek ..."</td><td>Nov 2024 (1.4)</td><td>Weeg voor en teen, verwys na die spesifieke paragraaf, en motiveer met 'n rede (bv. 'n kenner word aangehaal = betroubaar).</td></tr>
+  <tr><td><b>Mening + motivering</b></td><td>"Dink jy dit is regverdig ...? Motiveer jou antwoord."</td><td>Nov 2024 (1.5.2), Nov 2025 (1.10, 1.14.2)</td><td><b>JA of NEE alleen = 0 punte.</b> Jy MOET die rede/motivering gee. Enige sinvolle redenasie kry die punt.</td></tr>
+  <tr><td><b>Bewys-stelling</b></td><td>"Bewys hierdie stelling in DRIE afsonderlike sinne."</td><td>Nov 2024 (1.6)</td><td>Een feit per sin, elk oor 'n ander deel van die stelling. Drie los sinne, nie een lang sin nie.</td></tr>
+  <tr><td><b>Vergelyk twee sienings</b></td><td>"Waarop fokus hulle onderskeidelik? / Waarom verskillende benaderings?"</td><td>Nov 2024 (1.7.1, 1.7.2)</td><td>Dui beide kante aan — verwys na elke persoon/bron apart.</td></tr>
+  <tr><td><b>Funksioneel?</b></td><td>"Is die invoeging van ... funksioneel? Motiveer met TWEE redes."</td><td>Nov 2024 (1.9), Nov 2025 (1.14.1)</td><td>Gee die vereiste getal redes (bv. 2). Ja/Nee sonder rede = 0.</td></tr>
+  <tr><td><b>WAAR/ONWAAR of FEIT/MENING</b></td><td>(Soms eksplisiet gevra)</td><td>Memo-reël (elke jaar)</td><td>Geen punt vir net WAAR/ONWAAR nie — die <b>rede/bewys</b> tel.</td></tr>
+  <tr><td><b>Visuele analise</b></td><td>"Watter visuele inligting versterk ... ? Noem TWEE aspekte."</td><td>Nov 2024 (1.11), Nov 2022 (1.12), MJ 2026 (1.12)</td><td>Beskryf wát jy sien (bewegingstrepies, gesigsuitdrukking, grootte, kleur) én hoekom dit die boodskap versterk.</td></tr>
+  <tr><td><b>Klank / woordspeling</b></td><td>"Waarom sou 'n mens sê die herhaling van die v/f-klank ... versterk?"</td><td>Nov 2024 (1.12), Nov 2022 (1.5)</td><td>Noem die stylfiguur (alliterasie) en verbind die klank met die betekenis/beeld.</td></tr>
+  <tr><td><b>Geïntegreerde teks-vraag</b></td><td>"Hoe sal die man in TEKS B die vraag in die titel van TEKS A beantwoord?"</td><td>Nov 2024 (1.13.1), Nov 2022 (1.13)</td><td>Verwys na BEIDE tekste in een antwoord.</td></tr>
+  <tr><td><b>Impliseer / aflei</b></td><td>"Wat word geïmpliseer oor ... ?"</td><td>Nov 2024 (1.13.2), MJ 2026 (1.13)</td><td>Lees "tussen die reëls" — sê wat gesuggereer word, nie wat letterlik staan nie.</td></tr>
+  <tr><td><b>Ironie</b></td><td>"Bespreek die ironie ..." / verwagting vs werklikheid</td><td>Nov 2025 (1.4), MJ 2026 (1.5), Nov 2022 (1.8)</td><td>Gee ALBEI kante: wat jy sou verwag + wat werklik gebeur.</td></tr>
+</table>
 
-      <h3>The 10 golden answer rules (every paper)</h3>
-      <ul class="gloss">
-        <li><b>1.</b> <span class="reveal">Check the marks first</span>: (2) = 2 facts, (4) = 4 facts or 2 facts + 2 reasons. Don't give 1 long sentence for 3 marks.</li>
-        <li><b>2.</b> <span class="reveal">Define = 1 core fact in a full sentence</span>; "state/give/list" = just the fact, NO explanation.</li>
-        <li><b>3.</b> <span class="reveal">Explain = fact + reason</span> (why). Just the fact = ½ mark.</li>
-        <li><b>4.</b> <span class="reveal">Write acronyms in full</span>: URL, SMTP, RAM, VPN, GPL … otherwise you lose the mark.</li>
-        <li><b>5.</b> <span class="reveal">"Give TWO" = exactly two</span>, not one, not three.</li>
-        <li><b>6.</b> Scenario question (F): <span class="reveal">definition + apply it to the scenario</span>. Refer to the scenario to get full marks.</li>
-        <li><b>7.</b> Compare/differentiate: <span class="reveal">give BOTH sides</span> (A is … whereas B is …).</li>
-        <li><b>8.</b> Motivate/justify: <span class="reveal">give the reason (why)</span>, not just the statement.</li>
-        <li><b>9.</b> ERD/UML: <span class="reveal">underline or ★ the primary key, mark the FK</span>, show cardinality (1 / ∞).</li>
-        <li><b>10.</b> Trace table: <span class="reveal">work line-by-line, one column per variable</span>, test the condition every time.</li>
-      </ul>
-
-      <h3>Know these ⭐ tables word-for-word</h3>
-      <ul class="gloss">
-        <li>Compiler vs Interpreter · Thin vs Fat client · SSD vs HDD · Fibre vs UTP · Reset/Rewrite/Append · Validation vs Verification · / vs DIV vs MOD · UpCase vs UpperCase.</li>
-      </ul>
-
-      <h3>Top 20 terms to memorise</h3>
-      <ul class="gloss">
-        <li>Router, Switch, Modem, NIC, Access Point · RAM/ROM/VRAM/Cache/Virtual memory · Protocol, LAN/WAN/PAN, IP address, DNS, ISP · SMTP/POP3/IMAP/HTTP/FTP · Primary/Foreign key, Normalisation, ERD · Validation vs Verification · GIGO · Firewall vs Antivirus · Encryption, MFA · Cloud computing, SaaS.</li>
-      </ul>
-
-      <h3>Last-minute list (tick off)</h3>
-      <ul class="gloss">
-        <li>☐ CEIL/TRUNC/ROUND rules <span class="reveal">CEIL(−2.3) = −2; TRUNC(−2.3) = −2; ROUND(2.5) = 3</span></li>
-        <li>☐ RandomRange(A,B) <span class="reveal">gives A … B−1 (B NOT included)</span></li>
-        <li>☐ MOD works <span class="reveal">only with Integer</span>; / gives <span class="reveal">Real</span></li>
-        <li>☐ CASE works only with <span class="reveal">Integer/Char/Boolean (ordinal)</span></li>
-        <li>☐ Firewall <span class="reveal">does NOT prevent viruses</span> — antivirus does that</li>
-        <li>☐ Speed order: <span class="reveal">Cache → VRAM → RAM → SSD → HDD</span></li>
-        <li>☐ PK <span class="reveal">cannot be null/duplicate</span>; FK refers to a PK</li>
-        <li>☐ 1:N — <span class="reveal">the "1" at the PK side, "many" at the FK side</span></li>
-      </ul>
-    </div>
-  </details>
-
-  <!-- ============ §1: PRIORITY LIST ============ -->
-  <details id="s1" open>
-    <summary><span class="tag p">🥇</span>Topic priority list (ranked)<span class="chev">▸</span></summary>
-    <div class="inner">
-      <div class="note blue">Ranked by <b>how often + how heavily</b> it is tested over Nov 2020–2025. <span class="tier t1">Tier 1</span> = learn first (every year, heavy). <span class="tier t2">Tier 2</span> = every year. <span class="tier t3">Tier 3</span> = regular, smaller part.</div>
-      <table>
-        <tr><th>#</th><th>Topic</th><th>Section</th><th>Avg marks</th><th>≈%</th><th>Tier</th><th>Focus</th></tr>
-        <tr><td>1</td><td><b>Solution development</b> (Delphi/algorithms/tracing/files/UML)</td><td>E</td><td>22–30</td><td>15%</td><td><span class="tier t1">T1</span></td><td>Tracing, loops, DIV/MOD, text file, UML, string functions — every year</td></tr>
-        <tr><td>2</td><td><b>Databases &amp; SQL</b></td><td>D</td><td>20–24</td><td>14%</td><td><span class="tier t1">T1</span></td><td>Keys, normalisation, ERD, SQL-SELECT, validation vs verification</td></tr>
-        <tr><td>3</td><td><b>Networks &amp; Communication</b></td><td>C</td><td>25–30</td><td>19%</td><td><span class="tier t1">T1</span></td><td>Protocols, hardware, bandwidth, cables, thin/fat client, VPN</td></tr>
-        <tr><td>4</td><td><b>Systems technologies</b> (hardware/memory/security)</td><td>B</td><td>25</td><td>17%</td><td><span class="tier t2">T2</span></td><td>RAM/ROM/VRAM/cache, SSD/HDD, CPU/GPU, malware, firewall, cloud</td></tr>
-        <tr><td>5</td><td><b>Integrated scenario</b> (social implications + new tech)</td><td>F</td><td>30–40</td><td>24%</td><td><span class="tier t2">T2</span></td><td>IoT, RFID, AI, blockchain, big data, digital divide, GIGO, ethics</td></tr>
-        <tr><td>6</td><td><b>Internet &amp; e-communication / web</b></td><td>C+F</td><td>—</td><td>—</td><td><span class="tier t2">T2</span></td><td>Email protocols, static/dynamic web, cookies, SEO, Web 1.0/2.0/3.0</td></tr>
-        <tr><td>7</td><td><b>Data &amp; information management</b> (data types, number systems, metadata)</td><td>D</td><td>—</td><td>—</td><td><span class="tier t3">T3</span></td><td>Binary/hex, data types, data quality, metadata, audit trail</td></tr>
-        <tr><td>8</td><td><b>Short questions</b> (general terms, everything)</td><td>A</td><td>15–20</td><td>12%</td><td><span class="tier t3">T3</span></td><td>Quick 1-mark questions on ALL of the above — broad, not deep</td></tr>
-      </table>
-
-      <div class="note green"><b>Where you easily lose/gain the most marks:</b> Section A (short questions) is <span class="reveal">20 easy marks</span> — don't lose them needlessly. Section E's <b>trace table + algorithm</b> is <span class="reveal">6–8 marks that become full marks with practice</span>. Section F rewards you when you give <b>the definition + scenario application</b>.</div>
-
-      <div class="note"><b>Section marks per year (memo-verified):</b></div>
-      <table>
-        <tr><th>Section</th><th>2020</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th></tr>
-        <tr><td>A · Short questions</td><td>15</td><td>15</td><td>15</td><td>20</td><td>20</td><td>20</td></tr>
-        <tr><td>B · Systems tech.</td><td>25</td><td>25</td><td>25</td><td>25</td><td>25</td><td>25</td></tr>
-        <tr><td>C · Networks</td><td>30</td><td>30</td><td>30</td><td>30</td><td>26</td><td>25</td></tr>
-        <tr><td>D · Databases</td><td>20</td><td>20</td><td>20</td><td>20</td><td>24</td><td>20</td></tr>
-        <tr><td>E · Solution dev.</td><td>20</td><td>20</td><td>20</td><td>22</td><td>22</td><td>30</td></tr>
-        <tr><td>F · Scenario</td><td>40</td><td>40</td><td>40</td><td>33</td><td>33</td><td>30</td></tr>
-      </table>
-
-      <div class="note"><b>Command words that appear most (Nov 2020–2025, counted from the papers):</b> explain (91), state (86), give (59), name (55), identify (25), suggest (23), define (20), discuss (14), describe (14), motivate (11), differentiate (9). <b>Explain + state = 60% of the instructions.</b> Learn their formula in <a href="#s3">§3 Answer formulas</a>.</div>
-    </div>
-  </details>
-
-  <!-- ============ SECTION A ============ -->
-  <details id="sA">
-    <summary><span class="tag">A · 20</span>Short questions: Hardware &amp; Terms<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="A">Mastered</span></summary>
-    <div class="inner">
-      <h3>Network hardware</h3>
-      <table>
-        <tr><th>Term</th><th>What it is / does</th></tr>
-        <tr><td>Router</td><td>Connects <span class="reveal">different networks</span> (home network → internet); chooses the best path for data.</td></tr>
-        <tr><td>Switch</td><td>Connects devices <span class="reveal">within the same network</span>; sends data only to the correct device.</td></tr>
-        <tr><td>Modem</td><td>Converts <span class="reveal">digital ↔ analogue</span> so data can travel over phone/cable lines.</td></tr>
-        <tr><td>NIC (Network Interface Card)</td><td><span class="reveal">Connects the computer to a network</span>. <span class="cite">Nov 2024 Q2.4.1</span></td></tr>
-        <tr><td>Access Point (WAP — Wireless Access Point)</td><td>Lets <span class="reveal">wireless devices</span> join a wired network.</td></tr>
-      </table>
-      <h3>Memory &amp; storage</h3>
-      <ul class="gloss">
-        <li><b>RAM</b> (Random Access Memory) — <span class="reveal">volatile</span>: holds programs/data temporarily for the CPU. <span class="cite">Nov 2024 Q2.1.1</span></li>
-        <li><b>ROM</b> (Read Only Memory) — <span class="reveal">non-volatile</span>: permanent instructions (firmware/BIOS).</li>
-        <li><b>VRAM</b> (Video Random Access Memory) — memory <span class="reveal">on the graphics card (GPU)</span>, stores image data.</li>
-        <li><b>Cache</b> — small, <span class="reveal">very fast</span> memory near/on the CPU; holds frequently used data. <span class="cite">Nov 2024 Q2.1.2</span></li>
-        <li><b>Web caching</b> — visited websites' <span class="reveal">images/info are stored on your disk</span>; next visit loads only the changed data → <span class="reveal">saves time and data</span>.</li>
-        <li><b>Virtual memory</b> — <span class="reveal">disk space used as "extra RAM"</span> when RAM is full (slower — it goes through storage). <span class="cite">Nov 2025 Q2.2.2</span></li>
-        <li><b>Register</b> — smallest, fastest storage <span class="reveal">inside the CPU</span>.</li>
-      </ul>
-      <div class="note"><b>Speed order (fastest → slowest) — Nov 2025 asked this:</b> <span class="reveal">CPU cache → VRAM → RAM → SSD → HDD</span>. Why VRAM before RAM? It is directly on the graphics card, closer to the processor.</div>
-      <h3>Units &amp; characters</h3>
-      <ul class="gloss">
-        <li><b>Bit</b> — smallest unit (0 or 1). <b>Byte</b> — <span class="reveal">8 bits</span>; usually one character.</li>
-        <li><b>Hierarchy:</b> bit → byte → KB → MB → GB → TB (about ×1024 each step).</li>
-        <li><b>ASCII</b> (American Standard Code for Information Interchange) — code that represents characters as numbers.</li>
-      </ul>
-      <h3>Input &amp; output — units of measurement</h3>
-      <ul class="gloss">
-        <li><b>Scanner / mouse</b> — sensitivity/quality in <span class="reveal">dpi (dots per inch)</span>.</li>
-        <li><b>Screen resolution</b> — in <span class="reveal">pixels</span>; screen size in <span class="reveal">inches (diagonal)</span>.</li>
-        <li><b>Printer resolution</b> — <span class="reveal">dpi</span>; printer speed — <span class="reveal">ppm (pages per minute)</span>.</li>
-      </ul>
-      <h3>Motherboard (Nov 2025: TWO functions)</h3>
-      <ul class="gloss">
-        <li><b>Functions:</b> (1) <span class="reveal">connects all the components</span>, (2) <span class="reveal">distributes power</span>, (3) provides <span class="reveal">slots/ports</span>, (4) carries data via buses. <span class="cite">Nov 2025 Q2.1.1</span></li>
-        <li><b>Bus vs point-to-point:</b> a bus is <span class="reveal">one shared path for many devices</span> → only one can talk at a time → slower. Point-to-point is <span class="reveal">a direct connection between two devices</span> → faster. <span class="cite">Nov 2025 Q2.1.2</span></li>
-        <li><b>Why a GPU improves performance:</b> the GPU takes <span class="reveal">graphics tasks over from the CPU</span>; many small cores do it <span class="reveal">in parallel</span>. <span class="cite">Nov 2025 Q2.1.3</span></li>
-        <li><b>Ports:</b> USB (Universal Serial Bus), HDMI (High-Definition Multimedia Interface — video + audio, digital), VGA (Video Graphics Array — older, analogue, video only), Thunderbolt (one cable, very fast).</li>
-        <li><b>Slots (expansion cards):</b> <span class="reveal">ZIF (Zero Insertion Force) socket = CPU; DIMM (Dual In-line Memory Module) slots = DDR RAM; PCI Express (Peripheral Component Interconnect Express) = graphics card</span> (fast data transfer).</li>
-      </ul>
-      <h3>Errors &amp; phenomena</h3>
-      <ul class="gloss">
-        <li><b>Integer overflow</b> — value too big for the <span class="reveal">number of bits</span> → wrong value.</li>
-        <li><b>Thrashing</b> — system spends too much time swapping data between <span class="reveal">RAM and disk</span> → very slow.</li>
-        <li><b>PnP</b> (Plug and Play) — <span class="reveal">automatic</span> recognition + driver installation of new hardware.</li>
-        <li><b>Archiving</b> — old documents are <span class="reveal">moved from primary to secondary storage</span> (frees the main location); <span class="reveal">NOT the same as backup</span> (backup = copy). <span class="cite">Nov 2025 Q2.3</span></li>
-      </ul>
-      <h3>Malware &amp; security threats</h3>
-      <table>
-        <tr><th>Threat</th><th>What it is</th></tr>
-        <tr><td>Virus</td><td>Attaches to files/programs; spreads when it runs.</td></tr>
-        <tr><td>Worm</td><td>Replicates <span class="reveal">itself over networks</span>, without a host file.</td></tr>
-        <tr><td>Trojan</td><td>Pretends to be a real program, but does harm.</td></tr>
-        <tr><td>Rootkit</td><td>Gives <span class="reveal">hidden remote control</span> over a system.</td></tr>
-        <tr><td>Zombie</td><td>A device hijacked by malware, <span class="reveal">controlled remotely</span>.</td></tr>
-        <tr><td>Botnet</td><td>A <span class="reveal">GROUP of hijacked computers (zombies)</span> working together — e.g. for DDoS. <span class="cite">Nov 2024 Q1.3.1 · Nov 2025 Q1.1.7</span></td></tr>
-        <tr><td>Keylogger</td><td>Records your <span class="reveal">keystrokes</span>.</td></tr>
-        <tr><td>Spoofing</td><td>Pretends to be <span class="reveal">another (trusted) source</span>. <span class="cite">Nov 2024 Q6.6.1</span></td></tr>
-        <tr><td>Phishing</td><td>Fraudulent emails with <span class="reveal">fake links</span> to steal information.</td></tr>
-        <tr><td>Pharming</td><td>Redirects you to <span class="reveal">a fake website</span> even when you typed the correct URL (identity-theft scam). <span class="cite">EC Sept 2024 Q1.1.1</span></td></tr>
-        <tr><td>Spam</td><td>Unwanted <span class="reveal">junk mail</span>.</td></tr>
-        <tr><td>Ransomware</td><td>Encrypts <span class="reveal">your files</span> and demands a ransom to unlock them.</td></tr>
-        <tr><td>Spyware</td><td>Installs <span class="reveal">secretly</span> and monitors your activity.</td></tr>
-        <tr><td>Adware</td><td>Shows <span class="reveal">unwanted adverts</span>.</td></tr>
-        <tr><td>Fake news / Hoax</td><td><span class="reveal">False news / prank</span> spread to mislead.</td></tr>
-      </table>
-      <h3>Licences</h3>
-      <table>
-        <tr><th>Type</th><th>What it means</th></tr>
-        <tr><td>GPL (General Public License)</td><td><span class="reveal">Open-source</span>: may edit, copy and distribute. <span class="cite">Nov 2025 Q1.1.5</span></td></tr>
-        <tr><td>Shareware</td><td>Free for a <span class="reveal">trial period</span>; pay later.</td></tr>
-        <tr><td>Freeware</td><td>Completely <span class="reveal">free</span> (may not be changed).</td></tr>
-        <tr><td>EULA (End User License Agreement)</td><td>You buy the <span class="reveal">right to use</span>, not the program itself.</td></tr>
-        <tr><td>Creative Commons (CC)</td><td>For <span class="reveal">creative work</span>; the owner says what you may do.</td></tr>
-        <tr><td>Copyleft</td><td>Lets others <span class="reveal">copy/use</span> provided rules are followed (e.g. non-profit).</td></tr>
-        <tr><td>Site licence</td><td>One licence for <span class="reveal">many users on one site</span> (school/business).</td></tr>
-        <tr><td>Single-user licence</td><td>Licence for <span class="reveal">only one user</span> on one device.</td></tr>
-      </table>
-      <h3>General terms</h3>
-      <ul class="gloss">
-        <li><b>Algorithm</b> — a <span class="reveal">sequence of steps</span> to solve a problem. <span class="cite">Nov 2025 Q1.2.1</span></li>
-        <li><b>Netiquette</b> — <span class="reveal">good manners online</span>. <span class="cite">Nov 2025 Q1.2.2</span></li>
-        <li><b>URL</b> (Uniform Resource Locator) — <span class="reveal">the full web address</span>. <span class="cite">Nov 2025 Q1.2.3</span></li>
-        <li><b>Driver</b> — software that lets the OS talk to <span class="reveal">hardware</span>. <span class="cite">Nov 2025 Q1.2.4</span></li>
-        <li><b>Wiki</b> — collaborative website; users <span class="reveal">create, edit and link</span> content. <span class="cite">Nov 2024 Q6.4.1</span></li>
-        <li><b>Microblog</b> — short posts, shared fast (X/Twitter); may also contain <span class="reveal">photos/videos</span>.</li>
-        <li><b>Configuration</b> — changing the <span class="reveal">system's settings</span> (region/language, date/clock). <span class="cite">Nov 2025 Q1.1.4</span></li>
-        <li><b>Ergonomics</b> — design so it is <span class="reveal">comfortable and safe</span>. <span class="cite">Nov 2024 Q1.3.2</span></li>
-        <li><b>Green computing</b> — <span class="reveal">environmentally friendly</span> computer use.</li>
-        <li><b>Data mining</b> — searching large datasets for <span class="reveal">patterns</span>.</li>
-        <li><b>Data warehouse</b> — <span class="reveal">centralised store</span> of data from various sources. <span class="cite">Nov 2024 Q1.2.5</span></li>
-        <li><b>ORDER BY</b> — <span class="reveal">sort</span>; <b>GROUP BY</b> — <span class="reveal">group</span> for totals.</li>
-        <li><b>Append</b> — add to the <span class="reveal">end</span> of a text file.</li>
-        <li><b>Firmware</b> — software <span class="reveal">fixed in hardware</span>.</li>
-        <li><b>Convergence</b> — the trend where <span class="reveal">separate technologies/functions combine into one multi-purpose device</span> (e.g. a smartphone). <span class="cite">EC Sept 2024 Q2.2.1</span></li>
-        <li><b>CSV</b> (Comma Separated Values) — a text format where <span class="reveal">fields are separated by commas</span> (used to transfer data between programs). <span class="cite">EC Sept 2024 Q1.2.1</span></li>
-        <li><b>Flashing (the ROM)</b> — <span class="reveal">updating the firmware</span> on a device such as a phone or tablet. <span class="cite">EC Sept 2025 Q1.2.4</span></li>
-      </ul>
-      <h3>True/False traps (Section A)</h3>
-      <ul class="gloss">
-        <li><b>RandomRange(10,13)</b> gives 10, 11 or 12 — the upper number is <span class="reveal">NOT included</span>. <span class="cite">Nov 2025 Q1.3.1</span></li>
-        <li><b>Ubuntu on smartphones?</b> FALSE — <span class="reveal">Android/iOS</span>. <span class="cite">Nov 2025 Q1.3.2</span></li>
-        <li><b>Machine code is human-readable?</b> FALSE — that is <span class="reveal">source code</span>; machine code is 0s and 1s. <span class="cite">Nov 2025 Q1.3.5</span></li>
-        <li><b>Compiler translates source code to machine code</b> → <span class="reveal">TRUE</span>. <span class="cite">Nov 2024 Q1.1.5</span></li>
-        <li><b>Blockchain</b> — a decentralised digital ledger. <span class="cite">Nov 2024 Q1.1.8</span></li>
-        <li><b>HAVING</b> (not WHERE) filters after GROUP BY. <span class="cite">Nov 2024 Q1.3.5</span></li>
-      </ul>
-    </div>
-  </details>
-
-  <!-- ============ SECTION B ============ -->
-  <details id="sB">
-    <summary><span class="tag">B · 25</span>Systems technologies<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="B">Mastered</span></summary>
-    <div class="inner">
-      <h3>Compiler vs Interpreter ⭐</h3>
-      <table>
-        <tr><th></th><th>Compiler</th><th>Interpreter</th></tr>
-        <tr><td>Translate</td><td><span class="reveal">Whole</span> code at once, before running</td><td><span class="reveal">Line-by-line</span>, while it runs</td></tr>
-        <tr><td>Output</td><td>Creates <span class="reveal">an .exe file</span></td><td><span class="reveal">No</span> executable file</td></tr>
-        <tr><td>Speed</td><td><span class="reveal">Faster</span></td><td><span class="reveal">Slower</span></td></tr>
-        <tr><td>Errors</td><td>Reports <span class="reveal">only after all translation</span></td><td>Stops <span class="reveal">immediately</span> at the error line</td></tr>
-        <tr><td>Examples</td><td>Delphi, C++</td><td>Python, JavaScript <span class="cite">Nov 2024 Q1.1.10</span></td></tr>
-      </table>
-      <h3>Software &amp; the operating system</h3>
-      <ul class="gloss">
-        <li><b>Application software</b> — for <span class="reveal">one specific task</span>. <b>System software</b> — manages <span class="reveal">everything</span> (the OS).</li>
-        <li><b>OS functions:</b> manage resources, manage files, manage devices (drivers), user interface, security, manage processes.</li>
-        <li><b>Multiprocessing</b> — a CPU with <span class="reveal">MANY cores (multi-core)</span> lets the OS do many tasks at once. <span class="cite">Nov 2024 Q1.2.2 · Nov 2025 Q2.2.1</span></li>
-        <li><b>Disk Cleanup</b> — removes <span class="reveal">unnecessary/temporary files</span>.</li>
-        <li><b>Modular design of a computer (advantages):</b> <span class="reveal">easy to repair, easy to upgrade, customise specs, cheaper to replace one part</span>. <span class="cite">Nov 2024 Q2.3.1</span></li>
-        <li><b>Alpha vs Beta version:</b> Alpha = <span class="reveal">earlier, less polished, internal</span>; Beta = <span class="reveal">closer to final, external for broader testing</span>.</li>
-        <li><b>High-level vs low-level languages:</b> high-level = <span class="reveal">close to human language, easier, portable</span>; low-level = <span class="reveal">close to machine code, fast but hard to write</span>. <span class="cite">EC Sept 2025 Q2.7.4</span></li>
-      </ul>
-      <h3>BIOS &amp; booting ⭐</h3>
-      <ul class="gloss">
-        <li><b>BIOS (Basic Input/Output System) functions:</b> (1) <span class="reveal">controls hardware at the lowest level</span>, (2) <span class="reveal">POST</span> (checks hardware is present and working), (3) <span class="reveal">finds and loads the OS</span>, (4) offers configuration options (CMOS). <span class="cite">Nov 2024 Q2.3.2</span></li>
-        <li><b>Why BIOS is on non-volatile memory:</b> so it <span class="reveal">keeps data when power is off</span> and settings reload next time. <span class="cite">Nov 2024 Q2.3.3</span></li>
-        <li><b>CMOS</b> (Complementary Metal-Oxide Semiconductor) — <span class="reveal">stores the BIOS settings</span>. Firmware/BIOS is stored on <span class="reveal">ROM</span>.</li>
-        <li><b>POST</b> (Power-On Self-Test) — a short test at <span class="reveal">switch-on</span>. <b>Booting</b> — the <span class="reveal">full startup process</span>.</li>
-      </ul>
-      <h3>Updates</h3>
-      <ul class="gloss">
-        <li><b>Patch</b> — small, <span class="reveal">specific fix</span>. <b>Service Pack</b> — <span class="reveal">a collection of patches</span>. <span class="cite">Nov 2024 Q1.3.4</span></li>
-        <li><b>Disadvantages of automatic updates:</b> <span class="reveal">unexpected data usage, device slows/interrupts, inconvenient restart, unwanted update, data loss, compatibility issues</span>. <span class="cite">Nov 2024 Q6.7</span></li>
-      </ul>
-      <h3>Processor (CPU) &amp; GPU</h3>
-      <ul class="gloss">
-        <li><b>CPU (Central Processing Unit) function</b> — performs <span class="reveal">calculations and instructions</span> (the "brain").</li>
-        <li><b>Machine cycle (4 steps):</b> <span class="reveal">Fetch → Decode → Execute → Store</span>. <span class="cite">EC Sept 2024 Q2.1.3</span></li>
-        <li><b>Multi-tasking</b> — <span class="reveal">many programs</span> run "at once". <b>Multi-threading</b> — <span class="reveal">ONE program</span> splits work into threads across cores.</li>
-        <li><b>Cores</b> — physical processors; more = more simultaneous work. <b>Clock speed</b> (GHz) — the CPU's speed.</li>
-        <li><b>Factors that determine a GPU's (Graphics Processing Unit) power:</b> <span class="reveal">VRAM size, memory type/bandwidth, clock speed, number of cores, generation</span>. <span class="cite">Nov 2024 Q2.2</span></li>
-        <li><b>Virtual memory slows the computer:</b> it is <span class="reveal">read from storage (disk)</span>, and swapping between RAM and disk is slow. <span class="cite">Nov 2024 Q2.1.3</span></li>
-        <li><b>Paging</b> — the process of swapping <span class="reveal">"pages" of memory between RAM and hard disk</span>. <b>Thrashing</b> — when the computer <span class="reveal">keeps swapping</span> and "freezes".</li>
-      </ul>
-      <h3>Security</h3>
-      <ul class="gloss">
-        <li><b>Firewall</b> — filters <span class="reveal">network traffic</span>; does <span class="reveal">NOT prevent viruses</span>. ⚠️</li>
-        <li><b>Antivirus</b> — finds and removes <span class="reveal">malware</span>.</li>
-        <li><b>Encryption</b> — data in <span class="reveal">coded form</span>, unreadable without a key.</li>
-        <li><b>MFA</b> (Multi-Factor Authentication) — 2+ methods: <span class="reveal">something you know + have + are</span>.</li>
-        <li><b>Biometrics:</b> <span class="reveal">fingerprint, facial recognition, iris scan, voice</span>. <span class="cite">Nov 2025 Q2.5.1</span></li>
-      </ul>
-      <h3>Cyber-criminals &amp; unethical users</h3>
-      <table>
-        <tr><th>Term</th><th>What it is</th></tr>
-        <tr><td>Threat actor</td><td>Person/group that <span class="reveal">deliberately creates/executes a cyber-threat</span>.</td></tr>
-        <tr><td>Ethical hacker</td><td>Authorised expert who tests systems <span class="reveal">for vulnerabilities</span> to improve security.</td></tr>
-        <tr><td>Virus author</td><td>Writes <span class="reveal">malicious software</span> (viruses/worms).</td></tr>
-        <tr><td>Script kiddie</td><td>Inexperienced person using <span class="reveal">pre-made hacking tools</span>.</td></tr>
-        <tr><td>Cybergang</td><td><span class="reveal">Organised group</span> of cyber-criminals.</td></tr>
-        <tr><td>Cyber terrorist</td><td>Uses cyber technology for <span class="reveal">political/ideological</span> aims.</td></tr>
-        <tr><td>Cyberbully</td><td><span class="reveal">Repeated intimidation</span> via digital platforms.</td></tr>
-        <tr><td>Piggybacking</td><td><span class="reveal">Unauthorised use</span> of someone else's Wi-Fi.</td></tr>
-        <tr><td>Click farms</td><td>Group/bots that <span class="reveal">artificially click</span> ads/links.</td></tr>
-        <tr><td>Cyberslacking</td><td>Employees doing <span class="reveal">personal internet tasks</span> in work hours.</td></tr>
-      </table>
-      <h3>SSD vs HDD ⭐</h3>
-      <table>
-        <tr><th></th><th>SSD (Solid State Drive)</th><th>HDD (Hard Disk Drive)</th></tr>
-        <tr><td>Moving parts</td><td><span class="reveal">None</span></td><td><span class="reveal">Yes</span></td></tr>
-        <tr><td>Speed</td><td><span class="reveal">Faster</span></td><td>Slower</td></tr>
-        <tr><td>Durable</td><td><span class="reveal">More reliable</span>, quiet, light</td><td>Prone to damage, noisy</td></tr>
-        <tr><td>Power</td><td>Less</td><td>More</td></tr>
-      </table>
-      <h3>Compression &amp; backup</h3>
-      <ul class="gloss">
-        <li><b>Lossless</b> — <span class="reveal">no data lost</span> (text/documents). <b>Lossy</b> — data <span class="reveal">permanently lost</span> (JPEG, MP3, video).</li>
-        <li><b>Backup</b> — <span class="reveal">copy of data elsewhere</span>. Types: full, incremental.</li>
-        <li><b>Physical data integrity</b> — protect against <span class="reveal">power failure, natural disasters, theft</span>. Hardware: <span class="reveal">UPS (Uninterruptible Power Supply), RAID (Redundant Array of Independent Disks), access control, electronic locks, surge protectors</span>. <span class="cite">Nov 2024 Q4.2</span></li>
-      </ul>
-      <h3>Cloud &amp; SaaS</h3>
-      <ul class="gloss">
-        <li><b>Cloud computing</b> — <span class="reveal">shared resources offered as services over the internet</span> (store/process data). <span class="cite">Nov 2024 Q2.5.1</span></li>
-        <li><b>Why cloud lowers hardware requirements:</b> <span class="reveal">processing in the cloud</span> → cheaper/lower local specs; <span class="reveal">storage in the cloud</span> → less local storage; <span class="reveal">cloud backup</span> → no dedicated backup server. <span class="cite">Nov 2024 Q2.5.2</span></li>
-        <li><b>SaaS</b> (Software as a Service) — software in the cloud; user <span class="reveal">does not install/update/maintain</span>.</li>
-        <li><b>API</b> (Application Programming Interface) — set of rules so programs <span class="reveal">can talk to other services</span>.</li>
-      </ul>
-      <h3>VR vs AR</h3>
-      <ul class="gloss">
-        <li><b>VR</b> (Virtual Reality) — <span class="reveal">fully simulated world</span>. <b>AR</b> (Augmented Reality) — <span class="reveal">digital info on top of the real world</span>. <span class="cite">Nov 2024 Q2.6.1</span></li>
-        <li><b>VR benefits (practical):</b> <span class="reveal">interactive training, participate remotely, simulate the real course/environment, create opponents</span>. <span class="cite">Nov 2024 Q2.6.2</span></li>
-        <li><b>VR limitations:</b> <span class="reveal">expensive equipment, motion sickness, needs a powerful computer, isolates you</span>.</li>
-      </ul>
-      <h3>Virtualisation &amp; distributed processing</h3>
-      <ul class="gloss">
-        <li><b>Virtualisation</b> — <span class="reveal">one physical computer runs several virtual machines</span>. <span class="cite">Nov 2024 Q1.2.4</span></li>
-        <li><b>Distributed processing:</b> <span class="reveal">many computers work together on one big task</span> — faster (parallel), share resources, one can fail without everything stopping. <span class="cite">Nov 2024 Q6.3.4</span></li>
-      </ul>
-    </div>
-  </details>
-
-  <!-- ============ SECTION C ============ -->
-  <details id="sC">
-    <summary><span class="tag">C · 25–30</span>Networks &amp; Communication<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="C">Mastered</span></summary>
-    <div class="inner">
-      <h3>Network basics</h3>
-      <ul class="gloss">
-        <li><b>Protocol</b> — a <span class="reveal">set of rules</span> for communication.</li>
-        <li><b>LAN</b> (Local Area Network) — small area. <b>WAN</b> (Wide Area Network) — large area. <b>PAN</b> (Personal Area Network) — personal range (smartwatch + phone via Bluetooth).</li>
-        <li><b>IP address</b> (Internet Protocol address) — <span class="reveal">uniquely identifies a device</span> on the network so it can communicate. <span class="cite">Nov 2024 Q3.1.4</span></li>
-        <li><b>DNS</b> (Domain Name System) — translates <span class="reveal">domain names to IP addresses</span>.</li>
-        <li><b>ISP</b> (Internet Service Provider) — provider of internet. <span class="cite">Nov 2024 Q2.4.2</span></li>
-        <li><b>Bandwidth</b> — <span class="reveal">how much data per second</span> moves over the network; measured in <span class="reveal">bps / Mbps / Gbps</span>. <span class="cite">Nov 2024 Q3.1.2</span></li>
-        <li><b>Range vs bandwidth:</b> range = <span class="reveal">how far the signal reaches</span>; bandwidth = <span class="reveal">how much data per second</span>.</li>
-        <li><b>Client-server (reasons):</b> <span class="reveal">central security/access control, central backup, shared resources, sign in from anywhere, scalable</span>.</li>
-        <li><b>NOS</b> (Network Operating System) — OS that <span class="reveal">manages network resources</span>.</li>
-        <li><b>HAN</b> (Home Area Network) — home network; <b>WLAN</b> (Wireless Local Area Network) — wireless LAN. <b>Node</b> — any device on the network.</li>
-        <li><b>AUP</b> (Acceptable Use Policy) — document that <span class="reveal">explains correct use of the network</span>.</li>
-        <li><b>Broadband</b> — <span class="reveal">high-speed, always-on</span> connection. <b>Backbone</b> — the internet's <span class="reveal">main data path</span>.</li>
-        <li><b>FTTH</b> (Fiber To The Home) — fibre <span class="reveal">right to your home</span>.</li>
-      </ul>
-      <div class="note"><b>Intranet vs Extranet vs Internet:</b> Intranet = <span class="reveal">private, employees only</span>; Extranet = <span class="reveal">private + limited access for clients/suppliers</span>; Internet = for everyone. <span class="cite">Nov 2025 Q1.1.3</span></div>
-      <div class="note blue"><b>Internet vs World Wide Web (WWW):</b> the Internet = <span class="reveal">the physical network of interconnected networks</span>; the WWW = <span class="reveal">the collection of web pages/services that run on the internet</span>. <span class="cite">EC Sept 2024 Q3.1.1</span></div>
-      <h3>Network topology (Nov 2024 asked STAR)</h3>
-      <ul class="gloss">
-        <li><b>Star advantages:</b> <span class="reveal">if one cable/switch-port fails, the other devices still work</span>; <span class="reveal">easy to find faults</span> (own cable per device); <span class="reveal">easy to add/remove devices</span>. <span class="cite">Nov 2024 Q3.1.5</span></li>
-      </ul>
-      <h3>Email &amp; internet protocols ⭐</h3>
-      <table>
-        <tr><th>Protocol</th><th>Full form &amp; function</th></tr>
-        <tr><td>SMTP</td><td>Simple Mail Transfer Protocol — <span class="reveal">SENDS email</span>. <span class="cite">Nov 2025 Q1.1.1</span></td></tr>
-        <tr><td>POP3</td><td>Post Office Protocol (v3) — <span class="reveal">downloads to ONE device</span>. <span class="cite">Nov 2024 Q1.1.2</span></td></tr>
-        <tr><td>IMAP</td><td>Internet Message Access Protocol — <span class="reveal">syncs across many devices</span>.</td></tr>
-        <tr><td>HTTP / HTTPS</td><td>HyperText Transfer Protocol (Secure) — browser ↔ web server; HTTPS is <span class="reveal">encrypted</span>.</td></tr>
-        <tr><td>FTP</td><td>File Transfer Protocol — <span class="reveal">transfers files</span>.</td></tr>
-        <tr><td>TCP/IP</td><td>Transmission Control Protocol / Internet Protocol — breaks data into packets and <span class="reveal">routes them</span>.</td></tr>
-        <tr><td>SSL</td><td>Secure Sockets Layer — <span class="reveal">encrypts data</span> (https).</td></tr>
-      </table>
-      <h3>VPN, encryption &amp; wireless technology</h3>
-      <ul class="gloss">
-        <li><b>VPN</b> (Virtual Private Network) — secure, encrypted connection to a private network.</li>
-        <li><b>Remote computer (e.g. AnyDesk)</b> — you <span class="reveal">control another computer remotely</span>; versus VPN which only makes a <span class="reveal">secure connection to a network</span>.</li>
-        <li><b>Wireless technologies:</b> <span class="reveal">WiFi, Bluetooth, Satellite, Cellular (3G/4G/5G), WiMAX</span>. <span class="cite">Nov 2024 Q3.2.1</span></li>
-        <li><b>Connect to a wireless network:</b> <span class="reveal">switch WiFi on, choose the network name, type the correct password</span>. <span class="cite">Nov 2024 Q3.2.2</span></li>
-      </ul>
-      <h3>Cables: Fibre vs UTP ⭐</h3>
-      <table>
-        <tr><th></th><th>Fibre-optic</th><th>UTP (Unshielded Twisted Pair)</th></tr>
-        <tr><td>Signal</td><td><span class="reveal">Light pulses</span></td><td><span class="reveal">Electrical signals</span></td></tr>
-        <tr><td>Speed</td><td>Much faster</td><td>Slower</td></tr>
-        <tr><td>Distance</td><td><span class="reveal">Long distances</span>, little loss</td><td>Short distances</td></tr>
-        <tr><td>Interference</td><td><span class="reveal">Immune</span></td><td>Prone</td></tr>
-        <tr><td>Cost</td><td>More expensive</td><td>Cheaper</td></tr>
-      </table>
-      <h3>Thin vs Fat Client ⭐</h3>
-      <table>
-        <tr><th></th><th>Thin client</th><th>Fat client</th></tr>
-        <tr><td>Processing</td><td><span class="reveal">Little locally</span> — on the server</td><td><span class="reveal">Locally</span></td></tr>
-        <tr><td>Hardware</td><td>Cheap</td><td>Powerful/expensive</td></tr>
-        <tr><td>Server-dependent</td><td><span class="reveal">High</span></td><td>Low — can work offline</td></tr>
-        <tr><td>Maintenance</td><td>Easy (central)</td><td>Hard (each separately)</td></tr>
-      </table>
-      <h3>Bandwidth, streaming &amp; speed</h3>
-      <ul class="gloss">
-        <li><b>Buffering</b> — <span class="reveal">weak/far signal from the access point, interference, too few access points for many users, everyone shares the same bandwidth</span>.</li>
-        <li><b>Throttling</b> — provider makes your <span class="reveal">overall speed slower</span>. <b>Shaping</b> — makes <span class="reveal">important traffic</span> faster.</li>
-        <li><b>Streaming</b> — plays <span class="reveal">in real time</span>. <b>On-demand</b> — <span class="reveal">pre-recorded, any time</span>. <span class="cite">Nov 2024 Q3.5.1</span></li>
-        <li><b>VoIP</b> (Voice over Internet Protocol) — voice calls over the internet; drawbacks: needs a stable connection, latency.</li>
-        <li><b>BitTorrent</b> — P2P (peer-to-peer): file in pieces from many users.</li>
-      </ul>
-      <h3>E-communication terms</h3>
-      <ul class="gloss">
-        <li><b>SMS</b> (Short Message Service) — short text messages (±160 characters) via mobile network. <b>IM</b> (Instant Messaging) — <span class="reveal">real-time text</span> (WhatsApp, Teams).</li>
-        <li><b>Blog</b> — regular articles; <b>Microblog</b> — short posts (X); <b>Vlog</b> — video blog.</li>
-        <li><b>Podcast</b> — audio programme (episodes); <b>Vodcast</b> — podcast in video.</li>
-        <li><b>Videoconference</b> — <span class="reveal">real-time video + audio</span> with many participants.</li>
-        <li><b>e-learning</b> — learning via <span class="reveal">digital platforms, at a distance</span>.</li>
-      </ul>
-      <h3>Websites &amp; web services</h3>
-      <ul class="gloss">
-        <li><b>Static website</b> — same for everyone, updated by hand. <b>Dynamic website</b> — content from a database; benefits: <span class="reveal">personal content, always up to date, interactive</span>. <span class="cite">Nov 2024 Q3.3.1</span></li>
-        <li><b>Cookie</b> — a small text file that <span class="reveal">tracks your activity/preferences</span>; benefits: <span class="reveal">remember preferences, save time, personal recommendations</span>. <span class="cite">Nov 2024 Q3.3.2</span></li>
-        <li><b>Invisible data collection:</b> <span class="reveal">cookies, tracking pixels, device fingerprinting</span>.</li>
-        <li><b>SEO</b> (Search Engine Optimization): <span class="reveal">keywords, meta-descriptions, quality content, backlinks</span>.</li>
-        <li><b>Web 1.0 vs Web 3.0:</b> Web 1.0 = <span class="reveal">static, you just read</span>; Web 2.0 = social; Web 3.0 = <span class="reveal">semantic + decentralised</span>.</li>
-        <li><b>Semantic search</b> — understands <span class="reveal">meaning</span> → more accurate.</li>
-        <li><b>Mediated search</b> — results <span class="reveal">first chosen by people/editors</span>.</li>
-        <li><b>QR code (Quick Response) benefits:</b> <span class="reveal">contactless, more secure (unique per ticket), easier organisation, saves paper, links to more data</span>. <span class="cite">Nov 2024 Q3.4.2</span></li>
-      </ul>
-      <h3>Security &amp; behaviour</h3>
-      <ul class="gloss">
-        <li><b>DDoS</b> (Distributed Denial of Service). <span class="cite">Nov 2024 Q3.5.2</span> <b>Prevent:</b> <span class="reveal">more bandwidth, upgrade network, queueing system, traffic management, bot prevention</span>. <span class="cite">Nov 2024 Q3.5.2(b)</span></li>
-        <li><b>OTP</b> (One-Time Password) — one-time PIN; effective because: <span class="reveal">valid only once, short time, sent to YOUR phone, hard to steal</span>.</li>
-        <li><b>Security token</b> — a small device that <span class="reveal">generates a new code every few seconds</span>.</li>
-        <li><b>Social engineering</b> — attacker <span class="reveal">deceives PEOPLE</span> into giving information.</li>
-        <li><b>Recognise a phishing email:</b> <span class="reveal">sender address, suspicious links, urgent language, spelling errors, request for personal info</span>.</li>
-        <li><b>How to tell a website is secure:</b> <span class="reveal">https, security symbol, green address bar, SSL/digital certificate</span>. <span class="cite">Nov 2024 Q6.1.1</span></li>
-        <li><b>SSL encryption:</b> <span class="reveal">public key encrypts, private key decrypts</span>. <span class="cite">Nov 2024 Q6.1.2</span></li>
-      </ul>
-    </div>
-  </details>
-
-  <!-- ============ SECTION D ============ -->
-  <details id="sD">
-    <summary><span class="tag">D · 20–24</span>Databases &amp; Information management<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="D">Mastered</span></summary>
-    <div class="inner">
-      <h3>Number systems</h3>
-      <ul class="gloss">
-        <li><b>Binary</b> (base 2) — 0/1. <b>Denary</b> (base 10) — 0–9. <b>Hexadecimal</b> (base 16) — 0–9 + <span class="reveal">A–F</span>.</li>
-        <li>"1D1" has a letter → <span class="reveal">hexadecimal</span>.</li>
-      </ul>
-      <h3>Keys &amp; integrity ⭐</h3>
-      <ul class="gloss">
-        <li><b>Primary key (PK)</b> — <span class="reveal">uniquely</span> identifies each record; not empty, not duplicated. <span class="cite">Nov 2023 Q4.1.1</span></li>
-        <li><b>Foreign key (FK)</b> — field that <span class="reveal">refers to the PK of another table</span>.</li>
-        <li><b>Referential integrity</b> — the FK <span class="reveal">must match an existing PK</span>.</li>
-        <li><b>Alternate key</b> — another field that is also unique (could have been the PK). <span class="cite">Nov 2024 Q4.3.2</span></li>
-        <li><b>Relational database</b> — data in <span class="reveal">several related tables</span>.</li>
-        <li><b>Composite key</b> — a PK made of <span class="reveal">two or more fields</span>.</li>
-        <li><b>Entity integrity</b> — the PK cannot be <span class="reveal">null</span>. <b>Referential integrity</b> — the FK must <span class="reveal">refer to an existing PK</span>.</li>
-      </ul>
-      <h3>Data properties &amp; data types</h3>
-      <ul class="gloss">
-        <li><b>Currency</b> — data is <span class="reveal">up to date</span>. <b>Relevance</b> — <span class="reveal">useful for the purpose</span>.</li>
-        <li><b>Accuracy</b> — data must be <span class="reveal">precise</span>. <span class="cite">Nov 2024 Q4.1.5</span></li>
-        <li><b>Consistency</b> — data must have <span class="reveal">the same format</span> everywhere. <span class="cite">Nov 2024 Q4.1.5</span></li>
-        <li><b>Choosing a data type:</b> a field you must <span class="reveal">sort or calculate</span> (e.g. "Experience") → <span class="reveal">integer</span>, not text. <span class="cite">Nov 2025 Q4.1.1</span></li>
-        <li><b>CellNumber → text/string</b> (a phone number is not a number to calculate with). <span class="cite">Nov 2024 Q4.1.2(b)</span></li>
-        <li><b>Metadata</b> — <span class="reveal">data about data</span>; adds value by <span class="reveal">giving context, easing interpretation, supporting decisions</span>. <span class="cite">Nov 2024 Q4.4</span></li>
-      </ul>
-      <h3>Normalisation ⭐</h3>
-      <ul class="gloss">
-        <li><b>Purpose</b> — <span class="reveal">remove redundancy</span>; split into logical tables. <span class="cite">Nov 2023 Q4.3.1 · Nov 2024 Q4.3.1</span></li>
-        <li><b>Recognise:</b> repeating fields (Item1, Item2, Item3) or a field that depends on a non-key field = unnormalised.</li>
-        <li><b>Solution:</b> <span class="reveal">move the dependent fields to a separate table, link with an FK</span>. <span class="cite">Nov 2023 Q4.1.3(b)</span></li>
-      </ul>
-      <h3>Anomalies ⭐</h3>
-      <table>
-        <tr><th>Type</th><th>Description</th></tr>
-        <tr><td>Insert</td><td>Cannot add new data without <span class="reveal">unnecessary other data</span>.</td></tr>
-        <tr><td>Delete</td><td>Deleting one record loses <span class="reveal">other data by accident</span>.</td></tr>
-        <tr><td>Update</td><td>Same data <span class="reveal">in many places</span> → inconsistent.</td></tr>
-        <tr><td>Redundancy</td><td>Data <span class="reveal">unnecessarily repeated</span>.</td></tr>
-      </table>
-      <h3>ERD — draw a database diagram ⭐</h3>
-      <ul class="gloss">
-        <li><b>1:1</b> — one-to-one. <b>1:N</b> — one has <span class="reveal">many</span>. <b>M:N</b> — needs a <span class="reveal">linking table</span>.</li>
-        <li><b>Step-by-step:</b> (1) <span class="reveal">a box per table</span> with the name on top, (2) list <span class="reveal">field names</span>, (3) <span class="reveal">underline or ★ the PK</span>, (4) mark each FK, (5) <span class="reveal">line between the FK side and the PK side</span> with cardinality (1 / ∞).</li>
-      </ul>
-      <pre>┌───────────────┐         ┌──────────────────┐
-│  TBSellers    │         │  TBAdverts       │
-├───────────────┤         ├──────────────────┤
-│ ★ SellerID    │1        │ AdvertID         │
-│ SellerName    │─────────│ ★ AdvertID       │
-│ ContactNumber │         │ FK SellerID      │
-└───────────────┘         └──────────────────┘
-  (1 at the PK side; ∞/many at the FK side)</pre>
-      <h3>SQL core statements</h3>
-      <ul class="gloss">
-        <li><b>SELECT fields FROM table WHERE condition</b> — retrieve data.</li>
-        <li><b>ORDER BY</b> — sort (ASC/DESC). <b>GROUP BY</b> — group for totals (COUNT, SUM).</li>
-        <li><b>HAVING</b> filters <span class="reveal">after</span> GROUP BY; <b>WHERE</b> filters <span class="reveal">before</span> grouping. <span class="cite">Nov 2024 Q1.3.5</span></li>
-      </ul>
-      <h3>Validation vs Verification ⭐</h3>
-      <table>
-        <tr><th>Validation (system, automatic)</th><th>Verification (human, double-check)</th></tr>
-        <tr><td>Range: value in range (0–120)</td><td rowspan="6" style="vertical-align:middle">Double entry; visual proofreading; user confirms data is correct</td></tr>
-        <tr><td>Format: correct pattern (yyyy/mm/dd)</td></tr>
-        <tr><td>Presence: not empty</td></tr>
-        <tr><td>Type: correct data type</td></tr>
-        <tr><td>Length: number of characters</td></tr>
-        <tr><td>Check digit: catches typing errors</td></tr>
-      </table>
-      <ul class="gloss">
-        <li><b>Why validation does not replace verification:</b> valid data is only <span class="reveal">in the correct format</span>, not necessarily <span class="reveal">factually correct</span>. <span class="cite">Nov 2023 Q4.2</span></li>
-        <li><b>DateTimePicker</b> already does validation (format is right). Verification still needed: the user <span class="reveal">visually checks the date is correct</span>.</li>
-      </ul>
-      <h3>Database management</h3>
-      <ul class="gloss">
-        <li><b>Audit trail</b> — records <span class="reveal">WHO, WHAT, WHEN</span> changes were made. <span class="cite">Nov 2023 Q4.4.1</span></li>
-        <li><b>Server database needed when</b> <span class="reveal">many users from many places need simultaneous access</span>. <span class="cite">Nov 2023 Q4.3.2</span></li>
-        <li><b>DBA</b> (Database Administrator) — security, backup, performance, design, integrity.</li>
-        <li><b>Security methods:</b> <span class="reveal">access control (passwords/biometrics), encryption, backups, firewall</span>. <span class="cite">Nov 2023 Q4.4.2</span></li>
-        <li><b>Open-source DBMS:</b> <span class="reveal">MySQL, PostgreSQL</span>. Proprietary: SQL Server, Oracle, Access.</li>
-        <li><b>Data mining</b> — <span class="reveal">finding patterns</span>. <b>Data warehouse</b> — <span class="reveal">centralised store</span>.</li>
-        <li><b>Expert system vs decision-support system:</b> expert system <span class="reveal">gives a solution</span>; decision-support system only gives <span class="reveal">information to decide yourself</span>. <span class="cite">Nov 2024 Q4.5</span></li>
-        <li><b>DBMS types:</b> Desktop (Access) · <span class="reveal">Server/centralised</span> (MySQL, Oracle, SQL Server) · <span class="reveal">Distributed</span> (MongoDB, Cassandra).</li>
-        <li><b>Database careers:</b> DBA (manage + backup) · <span class="reveal">Programmer (writes SQL/code)</span> · <span class="reveal">Analyst (interprets data for decisions)</span> · Project manager (coordinates).</li>
-        <li><b>Record locking</b> — <span class="reveal">locks a record</span> so two users cannot change it at once. <b>Rollback</b> — <span class="reveal">undoes changes</span> after an error. <span class="cite">Nov 2024 Q1.2.1</span> <b>Parallel datasets</b> — <span class="reveal">copies kept in sync</span>.</li>
-        <li><b>Data → information → knowledge → decision-making:</b> raw data is <span class="reveal">processed into information</span>, which enables understanding (knowledge) and decisions.</li>
-      </ul>
-    </div>
-  </details>
-
-  <!-- ============ SECTION E ============ -->
-  <details id="sE">
-    <summary><span class="tag">E · 22–30</span>Solution development (Delphi)<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="E">Mastered</span></summary>
-    <div class="inner">
-      <h3>Data types</h3>
-      <ul class="gloss">
-        <li><b>Integer</b> — whole numbers. <b>Real</b> — decimals. <b>String</b> — text. <b>Char</b> — one character. <b>Boolean</b> — True/False.</li>
-        <li><b>CASE statement:</b> works only with <span class="reveal">ordinal types: Integer, Char, Boolean</span> — <span class="reveal">NOT String or Real</span>. <span class="cite">Nov 2024 Q5.1.2(a)</span></li>
-      </ul>
-      <h3>Error types ⭐</h3>
-      <table>
-        <tr><th>Type</th><th>Description</th><th>Example</th></tr>
-        <tr><td>Syntax</td><td>Code <span class="reveal">does not even compile</span>.</td><td>Missing <code>;</code></td></tr>
-        <tr><td>Runtime</td><td>Compiles, but <span class="reveal">fails while running</span>.</td><td>Divide by zero, range check</td></tr>
-        <tr><td>Logical</td><td>Runs, but <span class="reveal">wrong answer</span>.</td><td><code>&gt;</code> instead of <code>&lt;</code></td></tr>
-      </table>
-      <div class="note"><b>Range check error:</b> array index/value outside bounds. Check your bounds and loop conditions; add a conditional check.</div>
-      <div class="note blue"><b>Defensive programming:</b> writing code that <span class="reveal">anticipates and handles invalid input/errors</span> to prevent logical errors. <span class="cite">EC Sept 2024 Q5.1.2</span></div>
-      <h3>Division: / vs DIV vs MOD ⭐</h3>
-      <table>
-        <tr><th>Operation</th><th>Gives</th><th>Note</th></tr>
-        <tr><td><code>/</code></td><td><span class="reveal">Real</span> (decimal)</td><td><span class="reveal">Cannot be assigned to an Integer</span> → error.</td></tr>
-        <tr><td><code>DIV</code></td><td><span class="reveal">Integer</span> (whole-number division)</td><td>17 DIV 5 = 3</td></tr>
-        <tr><td><code>MOD</code></td><td><span class="reveal">Integer</span> (the remainder)</td><td>17 MOD 5 = 2 · works only with <span class="reveal">Integer</span></td></tr>
-      </table>
-      <h3>Math functions ⭐</h3>
-      <ul class="gloss">
-        <li><b>CEIL(x)</b> — rounds <span class="reveal">UP</span>: CEIL(−2.3) = <span class="reveal">−2</span>; CEIL(2.3) = 3. <span class="cite">Nov 2025 Q5.1.1</span></li>
-        <li><b>TRUNC(x)</b> — <span class="reveal">chops the decimals off</span>: TRUNC(−2.3) = <span class="reveal">−2</span>. <span class="cite">Nov 2025 Q5.1.2</span></li>
-        <li><b>ROUND(x)</b> — normal rounding: ROUND(2.5) = 3.</li>
-        <li><b>Random(N)</b> — 0..N−1; <b>RandomRange(A,B)</b> — A..B−1 (<span class="reveal">B NOT included</span>).</li>
-        <li><b>ABS</b> (absolute value); <b>SQRT</b> (square root); <b>POWER</b> (exponent).</li>
-        <li><b>FLOOR(x)</b> — rounds <span class="reveal">DOWN</span> to the nearest whole number: FLOOR(10.4) = 10. <span class="cite">EC Sept 2025 Q1.2.3</span></li>
-      </ul>
-      <h3>String functions ⭐</h3>
-      <ul class="gloss">
-        <li><b>UpCase</b> works with <span class="reveal">Char (ONE letter)</span>: UpCase('a') = 'A'. <b>UpperCase</b> works with <span class="reveal">String</span>: UpperCase('abc') = 'ABC'.</li>
-        <li><b>ERROR:</b> <code>sString := UpCase(sString)</code> — UpCase cannot take a String. <span class="cite">Nov 2025 Q1.1.9</span></li>
-        <li><b>Length</b> — number of characters; <b>Copy(s, pos, n)</b> — part of a string; <b>Pos</b> — where a substring is. <span class="cite">Nov 2024 Q5.1.1</span></li>
-      </ul>
-      <h3>Boolean logic (evaluate from inside out) ⭐</h3>
-      <table>
-        <tr><th>Operation</th><th>Rule</th></tr>
-        <tr><td>AND</td><td>TRUE only if <span class="reveal">BOTH true</span>.</td></tr>
-        <tr><td>OR</td><td>TRUE if <span class="reveal">at least ONE</span> true.</td></tr>
-        <tr><td>NOT</td><td><span class="reveal">Reverses</span>.</td></tr>
-      </table>
-      <ul class="gloss">
-        <li>Example: <code>TRUE AND (FALSE OR TRUE)</code> = TRUE. <span class="cite">Nov 2025 Q1.1.10</span></li>
-        <li>Example: <code>(-4 = 12 MOD 5) AND NOT FALSE OR (5-(-4)=1)</code> → FALSE AND TRUE OR FALSE → FALSE. <span class="cite">Nov 2024 Q5.3</span></li>
-      </ul>
-      <h3>Control structures</h3>
-      <ul class="gloss">
-        <li><b>IF … THEN … ELSE</b> — choice. <b>CASE</b> — many options (ordinal types only).</li>
-        <li><b>FOR</b> — you <span class="reveal">know exactly how many times</span>. <b>WHILE</b> — number <span class="reveal">unknown</span>. <b>REPEAT … UNTIL</b> — loops at least once.</li>
-        <li><b>FOR → WHILE conversion:</b> <span class="reveal">initialise counter, WHILE condition, inc(counter)</span>. <span class="cite">Nov 2023 Q5.1.4</span></li>
-      </ul>
-      <h3>Functions vs Procedures</h3>
-      <ul class="gloss">
-        <li><b>Function</b> — returns <span class="reveal">a value</span>: Length, Copy, Random, CEIL, TRUNC.</li>
-        <li><b>Procedure</b> — returns <span class="reveal">NO value</span>: Writeln, ShowMessage, CloseFile.</li>
-      </ul>
-      <h3>Arrays</h3>
-      <ul class="gloss">
-        <li><b>1D</b> (one-dimensional) — single list. <b>2D</b> (two-dimensional) — grid (rows + columns); GUI (Graphical User Interface) component: TStringGrid.</li>
-        <li><b>Parallel arrays:</b> two arrays that match at the same <span class="reveal">index</span>.</li>
-        <li><b>Don't add names to a 2D array:</b> different <span class="reveal">data types</span>; arrays must store the same type.</li>
-        <li><b>Insert a value at position i:</b> <span class="reveal">loop from bottom up, shift each element up one, insert new value, increment counter</span>. <span class="cite">Nov 2024 Q5.4</span></li>
-      </ul>
-      <h3>Text file (Delphi)</h3>
-      <pre>{ Declaration: var sFile: TextFile; }
-AssignFile(sFile,'staff.txt'); // link to file
-Reset(sFile);                  // open for READING
-While not eof(sFile) do
-Begin
-  Readln(sFile, sStaff);
-  redOutput.Lines.Add(sStaff);
-End;
-CloseFile(sFile);</pre>
-      <h3>Reset vs Rewrite vs Append ⭐</h3>
-      <table>
-        <tr><th>Statement</th><th>Effect</th></tr>
-        <tr><td>Reset</td><td>Opens for <span class="reveal">READING</span>.</td></tr>
-        <tr><td>Rewrite</td><td>Creates a <span class="reveal">NEW file</span> (wipes existing) for writing. <span class="cite">Nov 2025 Q5.4.2</span></td></tr>
-        <tr><td>Append</td><td>Adds <span class="reveal">at the end</span>.</td></tr>
-      </table>
-      <ul class="gloss">
-        <li><b>Why <code>while not eof</code>?</b> you don't know in advance how many lines there are.</li>
-      </ul>
-      <h3>Draw a UML class diagram ⭐</h3>
-      <ul class="gloss">
-        <li><b>+</b> public; <b>−</b> private. <b>Accessor</b> — reads back (Get); <b>Mutator</b> — changes (Set); <b>Constructor (Create)</b> — creates + initialises; <b>toString</b> — string representation; <b>Auxiliary (helper) method</b> — a supporting method that helps the main methods. <span class="cite">EC Sept 2025 Q5.4.4</span></li>
-        <li><b>Encapsulation</b> — <span class="reveal">restricting direct access to an object's fields</span>; data is accessed via methods. <span class="cite">EC Sept 2025 Q1.2.1</span></li>
-        <li><b>Step-by-step:</b> (1) <span class="reveal">THREE boxes on top of each other</span>, (2) class name, (3) attributes with data types, (4) methods with data types, (5) <span class="reveal">+ or − before EVERY member</span>.</li>
-      </ul>
-      <pre>┌──────────────────────────────────┐
-│            TSighting             │  ← box 1: class name
-├──────────────────────────────────┤
-│ - sAnimal : String               │  ← box 2: attributes
-│ - sLocation : String             │     (− = private)
-│ - dDate : TDateTime              │
-│ - iDuration : Integer            │
-│ - bConfirmed : Boolean           │
-├──────────────────────────────────┤
-│ + Create()                       │  ← box 3: methods
-│ + GetAnimal() : String           │     (+ = public)
-│ + SetDuration(iNew : Integer)    │
-│ + ToString() : String            │
-└──────────────────────────────────┘</pre>
-      <h3>Components</h3>
-      <ul class="gloss">
-        <li><b>DateTimePicker</b> — pick a date in the right format (does validation). <b>ComboBox / RadioGroup</b> — fixed list of options.</li>
-      </ul>
-      <h3>Writing algorithms (6–8 marks!) ⭐</h3>
-      <ul class="gloss">
-        <li><b>Structure:</b> (1) declare variables, (2) <span class="reveal">read file via while not eof</span>, (3) split lines with Copy/Pos, (4) store in arrays, (5) <span class="reveal">compare in a loop</span> for highest/lowest, (6) display the answer.</li>
-        <li><b>Find highest value:</b> Max = first; for each next: if value &gt; Max then Max = value.</li>
-        <li><b>Binary search</b> needs a <span class="reveal">SORTED array</span> (splits in half each time); use <span class="reveal">linear search</span> on an unsorted array. <span class="cite">EC Sept 2024 Q5.2</span></li>
-        <li><b>Trace table:</b> a column per variable + condition + output; work line-by-line; test the condition every time. <span class="cite">Nov 2023 Q5.2</span></li>
-        <li><b>Logical-error lesson:</b> loop doesn't run at all? Check <span class="reveal">the comparison operator first</span>.</li>
-      </ul>
-    </div>
-  </details>
-
-  <!-- ============ SECTION F ============ -->
-  <details id="sF">
-    <summary><span class="tag f">F · 30–40</span>Integrated scenario<span class="chev">▸</span><span class="master"><input type="checkbox" class="c" data-s="F">Mastered</span></summary>
-    <div class="inner">
-      <div class="note"><b>F framework:</b> give the <span class="reveal">definition + apply it to the scenario</span>. Write full sentences, one fact per sentence, refer to the scenario to get full marks.</div>
-      <h3>Data &amp; information</h3>
-      <ul class="gloss">
-        <li><b>GIGO</b> (Garbage In, Garbage Out) — bad input → bad output. Prevent: validation, training, double-checking.</li>
-        <li><b>Big Data "V's"</b> — <span class="reveal">Volume, Velocity, Variety, Veracity</span>.</li>
-        <li><b>Information overload</b> — <span class="reveal">overwhelming amount of information</span> → hard to process/decide. <span class="cite">Nov 2024 Q6.5</span></li>
-        <li><b>Data security:</b> strong passwords/MFA, firewalls, antivirus, encryption, backups, access rights, updates.</li>
-      </ul>
-      <h3>Society &amp; ethics</h3>
-      <ul class="gloss">
-        <li><b>Digital divide</b> — inequality in access/skills; bridge with free internet/devices + training.</li>
-        <li><b>Digital citizenship</b> — responsible, ethical, safe use.</li>
-        <li><b>Digital footprint</b> — your data trail online; used for: <span class="reveal">employers screening you, adverts, identity theft</span>. <span class="cite">Nov 2024 Q4.6</span></li>
-        <li><b>Gig economy</b> — short-term work; no security/benefits.</li>
-        <li><b>4IR</b> (Fourth Industrial Revolution) — AI, IoT, automation.</li>
-      </ul>
-      <h3>Workplace &amp; technology</h3>
-      <ul class="gloss">
-        <li><b>Robots:</b> productive, 24/7, safe for dangerous tasks; drawbacks: job loss, cost.</li>
-        <li><b>AI (Artificial Intelligence) / GenAI:</b> fast, 24/7, creative; drawbacks: hallucinations, no real understanding, ethics, job losses, plagiarism.</li>
-        <li><b>3D printer</b> — adds material layer by layer. <span class="cite">Nov 2024 Q1.2.3</span></li>
-        <li><b>Office automation</b> — using <span class="reveal">software/hardware to automate routine office tasks</span> (email, scheduling, document handling). <span class="cite">EC Sept 2025 Q6.5.1</span></li>
-        <li><b>Decentralisation of labour</b> — spreading work <span class="reveal">across locations/workers</span> (remote); drawbacks: <span class="reveal">less control, communication issues, security risk</span>. <span class="cite">EC Sept 2025 Q6.4</span></li>
-      </ul>
-      <h3>IPTV &amp; media</h3>
-      <ul class="gloss">
-        <li><b>IPTV</b> (Internet Protocol Television) — TV via the internet.</li>
-        <li><b>Compression vs quality vs speed:</b> more compression → <span class="reveal">smaller file → faster but LOWER quality</span>; less → better quality but <span class="reveal">more data → slower</span>.</li>
-      </ul>
-      <h3>Finance &amp; technology</h3>
-      <ul class="gloss">
-        <li><b>Cryptocurrency:</b> decentralised, lower cost; drawbacks: volatile, no regulation, hacking, high energy.</li>
-        <li><b>Blockchain:</b> <span class="reveal">decentralised digital ledger</span>; records cannot be changed afterwards. <span class="cite">Nov 2024 Q1.1.8</span></li>
-        <li><b>Why criminals want ransom in crypto:</b> <span class="reveal">cannot be traced / anonymous</span>. <span class="cite">Nov 2024 Q6.6.2</span></li>
-      </ul>
-      <h3>IoT, RFID &amp; security</h3>
-      <ul class="gloss">
-        <li><b>IoT</b> (Internet of Things) — smart devices, fitness monitors, cameras. Challenge: weak security, hacking, privacy.</li>
-        <li><b>RFID (Radio Frequency Identification) — passive vs active:</b> <span class="reveal">passive = no battery, gets power from the reader</span>; <span class="reveal">active = own battery, sends its own signal</span>.</li>
-        <li><b>How RFID works:</b> the tag has a microchip + antenna with a unique ID; <span class="reveal">the reader sends a radio signal, the tag replies with its ID</span>. <span class="cite">Nov 2024 Q6.2.1</span></li>
-        <li><b>RFID vs barcode:</b> RFID — <span class="reveal">no line-of-sight needed, read several at once, more data, reusable</span>; barcode — <span class="reveal">needs line-of-sight, one at a time</span>. <span class="cite">EC Sept 2024 Q4.3.2</span></li>
-        <li><b>GPS (Global Positioning System):</b> uses <span class="reveal">satellite signals</span> to determine location. Ethical issues: <span class="reveal">privacy invasion, data security, misuse of location</span>. <span class="cite">Nov 2024 Q6.3</span></li>
-        <li><b>DoS</b> (Denial of Service) — overload a system. <b>DDoS</b> (Distributed Denial of Service) — many devices (botnet) together.</li>
-      </ul>
-      <h3>Web &amp; mobile</h3>
-      <ul class="gloss">
-        <li><b>AR app:</b> info on top of the <span class="reveal">camera image</span>.</li>
-        <li><b>Web 1.0 URL</b> with <span class="reveal">sessionid</span> = older, static technology.</li>
-        <li><b>Distributed processing for wearable devices:</b> <span class="reveal">link to external servers, collect data, AI capability, real-time info, share battery load</span>. <span class="cite">Nov 2024 Q6.3.4</span></li>
-      </ul>
-    </div>
-  </details>
-
-  <!-- ============ §3: ANSWER FORMULAS ============ -->
-  <details id="s3">
-    <summary><span class="tag p">🧭</span>Answer formulas per question type<span class="chev">▸</span></summary>
-    <div class="inner">
-      <div class="note blue">How to answer each <b>command word</b> so you get <b>every mark</b>. (From the memo structure of Nov 2020–2025.)</div>
-      <table>
-        <tr><th>Command word</th><th>Formula (what the memo wants)</th><th>Example</th></tr>
-        <tr><td><b>State / Name / Give / List</b></td><td>Just the <b>fact</b>, NO explanation. (2) = 2 separate facts.</td><td>"State TWO functions of a motherboard" → 2 functions, 1 mark each.</td></tr>
-        <tr><td><b>Define</b></td><td><b>1 core fact</b> in a full sentence (short, precise).</td><td>"Bandwidth = amount of data sent over a network in a specific time."</td></tr>
-        <tr><td><b>Explain</b></td><td><b>Fact + reason/expansion</b>. (2) = 1 concept + 1 expansion, NOT 2 loose facts.</td><td>"Explain why bus is slower" → "bus is a SHARED path (fact) → only one device at a time (reason)."</td></tr>
-        <tr><td><b>Discuss</b></td><td><b>Facts + expansion / both sides</b>. (2) = 2 concepts; (3) = 1 fact + 2 expansions.</td><td>"Discuss cache" → "high-speed memory (fact) + close to CPU + stores frequent data (2 expansions)."</td></tr>
-        <tr><td><b>Differentiate / Compare / Distinguish</b></td><td><b>BOTH sides</b> — "A is …, whereas B is …". 2 marks = 1 for A + 1 for B.</td><td>"Compare RAM and VRAM" → "RAM stores data for CPU; VRAM stores images for GPU."</td></tr>
-        <tr><td><b>Motivate / Justify</b></td><td><b>Statement + reason (why)</b>. Each point must have a "because".</td><td>"Motivate cloud use" → "cost saving (fact) BECAUSE processing is in the cloud (reason)."</td></tr>
-        <tr><td><b>Suggest</b></td><td>A <b>practical example/solution</b> — any reasonable answer is accepted.</td><td>"Suggest ONE mobile technology" → "GPS / RFID / tracking app."</td></tr>
-        <tr><td><b>Describe</b></td><td>"How it works" — <b>step-by-step</b> or features.</td><td>"Describe how GPS works" → "uses signals from satellites to determine location."</td></tr>
-        <tr><td><b>Identify</b></td><td><b>Name/recognise</b> the term from the scenario (short answer).</td><td>"Identify the network type" → "LAN".</td></tr>
-      </table>
-
-      <h3>SQL query templates</h3>
-      <pre>-- Retrieve data (filter + sort):
-SELECT  field1, field2
-FROM    table
-WHERE   condition
-ORDER BY  field  ASC/DESC;
-
--- Totals / counts (group):
-SELECT  field, COUNT(*) / SUM(field)
-FROM    table
-GROUP BY  field
-HAVING    condition_after_grouping;
-
--- Join two tables (FK → PK):
-SELECT  a.field, b.field
-FROM    tableA a, tableB b
-WHERE   a.fk = b.pk;</pre>
-      <div class="formula"><span class="f-name">Rule:</span> <b>WHERE</b> filters <i>before</i> grouping, <b>HAVING</b> filters <i>after</i> GROUP BY. <b>ORDER BY</b> sorts, <b>GROUP BY</b> groups for COUNT/SUM.</div>
-
-      <h3>Trace-table method</h3>
-      <ul class="gloss">
-        <li><b>1.</b> Make a <span class="reveal">column for each variable + the condition + the output</span>.</li>
-        <li><b>2.</b> Work <span class="reveal">line-by-line</span> through the code; fill a new row for each step.</li>
-        <li><b>3.</b> Test the <span class="reveal">condition every time</span> (TRUE/FALSE) — it decides whether the loop runs.</li>
-        <li><b>4.</b> Write the <span class="reveal">output (Display)</span> in the correct order.</li>
-        <li><b>5.</b> Stop when the condition becomes FALSE. <span class="cite">Nov 2023 Q5.2</span></li>
-      </ul>
-
-      <h3>Algorithm-writing method (6–8 marks)</h3>
-      <ul class="gloss">
-        <li><b>1.</b> <span class="reveal">Declare variables</span> (arrays, counters).</li>
-        <li><b>2.</b> <span class="reveal">Read the file</span> via <code>while not eof</code>; split lines (Copy/Pos).</li>
-        <li><b>3.</b> <span class="reveal">Store in arrays</span>.</li>
-        <li><b>4.</b> <span class="reveal">Compare in a loop</span> to find highest/lowest.</li>
-        <li><b>5.</b> <span class="reveal">Display the answer</span>.</li>
-      </ul>
-
-      <h3>Calculations (rare, but know the formulas)</h3>
-      <div class="formula"><span class="f-name">Data-transfer time:</span> time = data size ÷ bandwidth. <span class="f-in">File in MB, speed in Mbps → convert (×8 for byte→bit).</span></div>
-      <div class="formula"><span class="f-name">Storage space:</span> total = number of records × size per record. <span class="f-in">Image: resolution × colour depth (bits) × frames × seconds.</span></div>
-      <div class="formula"><span class="f-name">Bandwidth:</span> how much data per second (bps/Mbps/Gbps). <span class="f-in">1 byte = 8 bits.</span></div>
-    </div>
-  </details>
-
-  <!-- ============ §4: MARKS PER QUESTION ============ -->
-  <details id="s4">
-    <summary><span class="tag p">🎯</span>Marks per question: how much to give<span class="chev">▸</span></summary>
-    <div class="inner">
-      <div class="note green">The golden rule: <b>1 mark = 1 fact</b>. Look at the number in brackets and give exactly that many facts.</div>
-      <table>
-        <tr><th>Marks</th><th>How much to give</th><th>Example</th></tr>
-        <tr><td><b>(1)</b></td><td>1 fact / 1 term / 1 letter (A–D)</td><td>"Name the protocol" → "SMTP".</td></tr>
-        <tr><td><b>(2)</b></td><td><b>2 facts</b>, or (for explain/motivate) <b>1 fact + 1 reason</b></td><td>"State TWO" = 2 separate facts; "Explain why" = fact + reason.</td></tr>
-        <tr><td><b>(3)</b></td><td><b>3 facts</b>, or 1 fact + 2 reasons/expansions</td><td>"Discuss cache" = 1 definition + 2 features.</td></tr>
-        <tr><td><b>(4)</b></td><td><b>4 facts</b>, or 2 facts + 2 reasons</td><td>Boolean expression, or "explain + motivate + example".</td></tr>
-        <tr><td><b>(5–8)</b></td><td><b>Step-by-step</b> (algorithm/trace) — each step is a mark</td><td>Loop (1) + condition (1) + increment (1) …</td></tr>
-      </table>
-      <ul class="gloss">
-        <li><b>"Give TWO / State TWO"</b> — exactly <span class="reveal">two</span> complete facts; one fact = 1 mark, don't over-explain.</li>
-        <li><b>"Any TWO of"</b> (in the memo) — there are 4–6 possible answers; <span class="reveal">any 2 correct</span> get the marks.</li>
-        <li><b>Explain with (2)</b> — <span class="reveal">fact + reason</span>; just the fact = 1 mark (not 2).</li>
-        <li><b>Scenario question (F)</b> — <span class="reveal">definition (1) + scenario application (1)</span>; refer to the scenario.</li>
-        <li><b>Acronym</b> — write it <span class="reveal">in full</span>: "URL (Uniform Resource Locator)".</li>
-        <li><b>MCQ (1.1)</b> — just the letter (A–D); no explanation.</li>
-      </ul>
-    </div>
-  </details>
-
-  <!-- ============ §5: COMMON MISTAKES ============ -->
-  <details id="s5">
-    <summary><span class="tag w">⚠️</span>Common mistakes that cost marks<span class="chev">▸</span></summary>
-    <div class="inner">
-      <ul class="gloss">
-        <li><b>Acronym not in full</b> — "RAM" instead of "Random Access Memory" = no mark. Always write it in full.</li>
-        <li><b>Firewall "prevents viruses"</b> — FALSE. A firewall filters network traffic; <span class="reveal">antivirus</span> handles viruses.</li>
-        <li><b>RandomRange(A,B)</b> — you think B is included. <span class="reveal">B is NOT included</span>: RandomRange(10,13) = 10, 11, 12.</li>
-        <li><b>UpCase on a String</b> — UpCase works only with <span class="reveal">Char</span>; use <span class="reveal">UpperCase</span> for a String.</li>
-        <li><b>MOD with Real</b> — MOD/DIV work only with <span class="reveal">Integer</span>.</li>
-        <li><b>CEIL of a negative</b> — CEIL(−2.3) = <span class="reveal">−2</span> (not −3). "Up" = towards the larger number.</li>
-        <li><b>CASE with String/Real</b> — CASE works only with <span class="reveal">ordinal types (Integer/Char/Boolean)</span>.</li>
-        <li><b>PK duplicate/null</b> — a primary key cannot be <span class="reveal">null or duplicate</span>.</li>
-        <li><b>Validation = verification</b> — validation is <span class="reveal">automatic (format/range)</span>; verification is <span class="reveal">human (double-check)</span>.</li>
-        <li><b>ERD cardinality reversed</b> — the <span class="reveal">"1" at the PK side</span>, "many/∞" at the FK side.</li>
-        <li><b>PK not underlined / FK not marked</b> in ERD and UML — loses marks.</li>
-        <li><b>Explain without a reason</b> — "explain why" asks <span class="reveal">for a reason</span>, not just the fact.</li>
-        <li><b>1 long sentence for 3 marks</b> — the marker counts <span class="reveal">separate facts</span>; break it up.</li>
-        <li><b>Scenario ignored (F)</b> — give the definition but <span class="reveal">don't apply it to the scenario</span> = half the marks.</li>
-        <li><b>Trace table skips steps</b> — work <span class="reveal">line-by-line</span>; test the condition every loop.</li>
-        <li><b>"Compare" gives only one side</b> — give <span class="reveal">BOTH</span> (A is …; B is …).</li>
-        <li><b>Too few or too many points</b> — "give TWO" but you give <span class="reveal">one</span> (or three). Give exactly the number asked.</li>
-        <li><b>Bandwidth unit wrong</b> — bandwidth is measured in <span class="reveal">bps/Mbps/Gbps</span>, not in "metres" (that's range).</li>
-      </ul>
-    </div>
-  </details>
-
-  <!-- ============ §6: QUESTION BANK ============ -->
-  <details id="s6">
-    <summary><span class="tag p">📚</span>Question bank: real questions + memo answers<span class="chev">▸</span></summary>
-    <div class="inner">
-      <div class="note blue">Real questions from NSC Nov 2023–2025 with the <b>memo answer</b> and marks. See how the memo awards marks: each ✓ = 1 fact.</div>
-
-      <h3>Solution development (Delphi)</h3>
-      <div class="qbank"><div class="q">Calculate: <code>iResult := CEIL(-2.3)</code> <span class="cite">Nov 2025 Q5.1.1</span></div><div class="a"><b>Answer:</b> <span class="reveal">-2</span> (CEIL rounds up, to the larger whole number).</div></div>
-      <div class="qbank"><div class="q">Calculate: <code>iResult := TRUNC(-2.3)</code> <span class="cite">Nov 2025 Q5.1.2</span></div><div class="a"><b>Answer:</b> <span class="reveal">-2</span> (TRUNC chops the decimals off).</div></div>
-      <div class="qbank"><div class="q">Which procedure creates a NEW text file after <code>AssignFile</code>? <span class="cite">Nov 2025 Q5.4.2</span></div><div class="a"><b>Answer:</b> <span class="reveal">Rewrite()</span> (Reset = read, Append = add at end).</div></div>
-      <div class="qbank"><div class="q">Why does <code>sString := UpCase(sString)</code> give an error? <span class="cite">Nov 2025 Q1.1.9</span></div><div class="a"><b>Answer:</b> <span class="reveal">UpCase works only with a Char (one letter); use UpperCase for a String</span>.</div></div>
-      <div class="qbank"><div class="q">Value of <code>TRUE AND (FALSE OR TRUE)</code> <span class="cite">Nov 2025 Q1.1.10</span></div><div class="a"><b>Answer:</b> <span class="reveal">TRUE</span> (brackets first: FALSE OR TRUE = TRUE; TRUE AND TRUE = TRUE).</div></div>
-      <div class="qbank"><div class="q">Calculate: <code>(-4 = 12 MOD 5) AND NOT FALSE OR (5-(-4)=1)</code> <span class="cite">Nov 2024 Q5.3</span></div><div class="a"><b>Answer:</b> <span class="reveal">FALSE</span> → (-4=2)=FALSE AND TRUE OR (9=1)=FALSE → FALSE OR FALSE = FALSE.</div></div>
-      <div class="qbank"><div class="q">Why is <code>sMonth</code> (String) in a CASE statement a syntax error? <span class="cite">Nov 2024 Q5.1.2</span></div><div class="a"><b>Answer:</b> <span class="reveal">CASE works only with ordinal types (Integer, Char, Boolean)</span>; convert the String to Integer first.</div></div>
-      <div class="qbank"><div class="q">Convert <code>for iCol := 1 to 5 do</code> to WHILE. <span class="cite">Nov 2023 Q5.1.4</span></div><div class="a"><b>Answer:</b> <span class="reveal">iCol := 1; while iCol &lt;= 5 do begin … inc(iCol); end;</span> (initialise + condition + increment).</div></div>
-      <div class="qbank"><div class="q">Name an accessor AND a mutator method for a class. <span class="cite">Nov 2024 Q5.5.3</span></div><div class="a"><b>Answer:</b> Accessor = <span class="reveal">Function getNumMarathons : Integer</span> (reads back); Mutator = <span class="reveal">setQualify</span> (changes the value).</div></div>
-
-      <h3>Databases &amp; SQL</h3>
-      <div class="qbank"><div class="q">What is a primary key? <span class="cite">Nov 2023 Q4.1.1</span></div><div class="a"><b>Answer:</b> <span class="reveal">a field that uniquely identifies each record in the table</span>. (Cannot be null/duplicate.)</div></div>
-      <div class="qbank"><div class="q">Name a design error where Teacher repeats in every record. <span class="cite">Nov 2023 Q4.1.3</span></div><div class="a"><b>Answer:</b> <span class="reveal">Data redundancy / not normalised</span>. Solution: <span class="reveal">move Teacher + RegisterClass to a separate table, link with a FK</span>.</div></div>
-      <div class="qbank"><div class="q">Why does validation NOT replace verification? <span class="cite">Nov 2023 Q4.2</span></div><div class="a"><b>Answer:</b> <span class="reveal">Valid data is only in the correct format, not necessarily factually correct</span>. Verification checks against the source.</div></div>
-      <div class="qbank"><div class="q">What does an audit trail record? <span class="cite">Nov 2023 Q4.4.1</span></div><div class="a"><b>Answer:</b> <span class="reveal">WHO, WHAT and WHEN</span> changes were made.</div></div>
-      <div class="qbank"><div class="q">Two ways metadata adds value. <span class="cite">Nov 2024 Q4.4</span></div><div class="a"><b>Answer:</b> <span class="reveal">(1) Gives context so data is easier to find/interpret; (2) helps understand where data comes from and its purpose</span>.</div></div>
-      <div class="qbank"><div class="q">Two hardware devices for physical data integrity. <span class="cite">Nov 2024 Q4.2.2</span></div><div class="a"><b>Answer:</b> <span class="reveal">UPS, RAID, access control (biometric), electronic locks, surge protectors</span>.</div></div>
-      <div class="qbank"><div class="q">Why should "Experience" be integer, not text? <span class="cite">Nov 2025 Q4.1.1</span></div><div class="a"><b>Answer:</b> <span class="reveal">So you can sort and calculate with it</span> — text cannot be sorted/calculated.</div></div>
-
-      <h3>Networks &amp; Communication</h3>
-      <div class="qbank"><div class="q">Define bandwidth + give ONE unit. <span class="cite">Nov 2024 Q3.1.2</span></div><div class="a"><b>Answer:</b> <span class="reveal">How much data is sent over a network in a specific time</span>; unit: <span class="reveal">bps / Mbps / Gbps</span>.</div></div>
-      <div class="qbank"><div class="q">What is the purpose of an IP address? <span class="cite">Nov 2024 Q3.1.4</span></div><div class="a"><b>Answer:</b> <span class="reveal">Uniquely identifies a device on the network so devices can communicate</span>.</div></div>
-      <div class="qbank"><div class="q">Motivate why a STAR topology is suitable. <span class="cite">Nov 2024 Q3.1.5</span></div><div class="a"><b>Answer:</b> <span class="reveal">If one cable fails the other devices still work (1), because each has its own cable (1)</span>.</div></div>
-      <div class="qbank"><div class="q">Name TWO wireless technologies. <span class="cite">Nov 2024 Q3.2.1</span></div><div class="a"><b>Answer:</b> <span class="reveal">WiFi, Bluetooth, Satellite, Cellular (3G/4G/5G), WiMAX</span>.</div></div>
-      <div class="qbank"><div class="q">What is a cookie + TWO benefits to the user. <span class="cite">Nov 2024 Q3.3.2</span></div><div class="a"><b>Answer:</b> <span class="reveal">a small text file that tracks your activity/preferences</span>. Benefits: <span class="reveal">remember preferences (autofill), save time, personal recommendations</span>.</div></div>
-      <div class="qbank"><div class="q">What does DDoS stand for + TWO preventions. <span class="cite">Nov 2024 Q3.5.2</span></div><div class="a"><b>Answer:</b> <span class="reveal">Distributed Denial of Service</span>. Prevent: <span class="reveal">more bandwidth, upgrade network, queueing system, bot prevention</span>.</div></div>
-
-      <h3>Systems technologies</h3>
-      <div class="qbank"><div class="q">Name TWO functions of a motherboard. <span class="cite">Nov 2025 Q2.1.1</span></div><div class="a"><b>Answer:</b> <span class="reveal">(1) Connects all the components; (2) distributes power; (3) provides slots/ports; (4) carries data via buses</span>.</div></div>
-      <div class="qbank"><div class="q">Explain what virtual memory is. <span class="cite">Nov 2025 Q2.2.2</span></div><div class="a"><b>Answer:</b> <span class="reveal">an area on secondary storage used as RAM when RAM is full</span> (slower, goes through storage).</div></div>
-      <div class="qbank"><div class="q">Define cloud computing. <span class="cite">Nov 2024 Q2.5.1</span></div><div class="a"><b>Answer:</b> <span class="reveal">Use of shared resources offered as services over the internet</span>.</div></div>
-      <div class="qbank"><div class="q">Name TWO functions of the BIOS. <span class="cite">Nov 2024 Q2.3.2</span></div><div class="a"><b>Answer:</b> <span class="reveal">(1) Controls hardware at the lowest level; (2) POST (checks hardware); (3) finds and loads the OS</span>.</div></div>
-      <div class="qbank"><div class="q">Why is the BIOS stored on non-volatile memory? <span class="cite">Nov 2024 Q2.3.3</span></div><div class="a"><b>Answer:</b> <span class="reveal">So it keeps data when power is off and settings can reload next time</span>.</div></div>
-
-      <h3>Integrated scenario / social implications</h3>
-      <div class="qbank"><div class="q">How does an RFID tag determine an athlete's time? <span class="cite">Nov 2024 Q6.2.1</span></div><div class="a"><b>Answer:</b> <span class="reveal">The tag has a unique ID; the reader captures the ID at the start and finish → calculates the time</span>.</div></div>
-      <div class="qbank"><div class="q">Explain the term "spoofing". <span class="cite">Nov 2024 Q6.6.1</span></div><div class="a"><b>Answer:</b> <span class="reveal">an email/website that looks like it comes from a legitimate organisation, but is only a replica to steal personal info</span>.</div></div>
-      <div class="qbank"><div class="q">Explain information overload + give an example. <span class="cite">Nov 2024 Q6.5</span></div><div class="a"><b>Answer:</b> <span class="reveal">Overwhelming amount of information that makes it hard to process/decide</span>; e.g. <span class="reveal">too many sources for your PAT research</span>.</div></div>
-      <div class="qbank"><div class="q">TWO ways to tell a website is secure. <span class="cite">Nov 2024 Q6.1.1</span></div><div class="a"><b>Answer:</b> <span class="reveal">https, security symbol, green address bar, SSL/digital certificate</span>.</div></div>
-      <div class="qbank"><div class="q">Why do criminals want ransom in cryptocurrency? <span class="cite">Nov 2024 Q6.6.2</span></div><div class="a"><b>Answer:</b> <span class="reveal">It cannot be traced / anonymous</span>.</div></div>
-    </div>
-  </details>
-
-  <footer>
-    IT Paper 2 · Exam Pack · Based on NSC Nov 2020–2025 + Sept 2024/2025 (DBE + Stanmorephysics)
-    <div class="footer-note">Self-test: switch the mode on and tap blurred answers. Your progress is stored on this device.</div>
-  </footer>
+<h3>2.3 Nasien-reëls wat jou punte spaar (uit die amptelike nasienriglyne)</h3>
+<div class="tip">
+<ul style="margin-bottom:0">
+  <li>Spel- en taalfoute word in Afdeling A <b>nie</b> gepenaliseer nie (tensy dit die betekenis verander).</li>
+  <li>Vir oop vrae: <b>geen punte vir net "Ja/Nee/Ek stem saam" nie</b> — die rede tel.</li>
+  <li>As 'n aanhaling vereis word, word aanhalingstekens NIE vereis nie (maar die woorde moet presies wees).</li>
+  <li>Meervoudigekeuse: die letter <b>EN/OF</b> die uitgeskrewe antwoord word aanvaar.</li>
+  <li>As jy 'n volsin gee waar een woord gevra word, onderstreep die korrekte woord.</li>
+  <li>Dialektiese variasies (streeksvorme) word aanvaar.</li>
+</ul>
 </div>
 
-<script>
-(function(){
-  var testBtn=document.getElementById('testBtn');
-  var resetBtn=document.getElementById('resetBtn');
-  var q=document.getElementById('q');
-  var bar=document.getElementById('bar');
-  var barLabel=document.getElementById('barLabel');
-  var boxes=[].slice.call(document.querySelectorAll('.c'));
-  var KEY='itv2_master2';
+<h2>3. AFDELING B — OPSOMMING (10 punte)</h2>
+<h3>3.1 Die formaat (identies in elke jaar)</h3>
+<ul>
+  <li><b>7 punte vir 7 feite</b> (1 punt elk) + <b>3 punte vir taal</b> = 10.</li>
+  <li>Skryf in <b>jou eie woorde</b>, in <b>volsinne</b>, in <b>een samehangende paragraaf</b>.</li>
+  <li>Maksimum ±90 woorde (die opdrag sê dit elke jaar — bv. "nie meer as 90 woorde nie").</li>
+  <li><b>Geen titel nodig nie.</b> Dui die <b>getal woorde</b> aan die einde aan.</li>
+  <li>Geen punte word afgetrek as jy die getal woorde vergeet of verkeerd tel nie — maar jy MÓÉT dit aandui.</li>
+  <li>Feite kan in <b>enige volgorde</b> wees. Slegs feite wat met die opdrag ooreenstem, tel.</li>
+</ul>
+<h3>3.2 Die "taal"-punte (waar leerders 3 gratis punte weggooi)</h3>
+<table>
+  <tr><th>Aantal direkte aanhalings</th><th>Taalpunte wat jy kry</th></tr>
+  <tr><td>0 direkte aanhalings (alles eie woorde)</td><td class="tick">3 taal</td></tr>
+  <tr><td>2–3 direkte aanhalings</td><td>maks. 2</td></tr>
+  <tr><td>4–5 direkte aanhalings</td><td>maks. 1</td></tr>
+  <tr><td>6–7 direkte aanhalings</td><td>0</td></tr>
+</table>
+<div class="warn"><b>Die grootste fout:</b> leerders haal die teks woordeliks aan en verloor al 3 taalpunte. <b>Herformuleer elke feit in jou eie woorde.</b> As jy 7 feite korrek het in eie woorde, kry jy volle 10.</div>
+<h3>3.3 Stap-vir-stap metode (60 sekondes om dit reg te doen)</h3>
+<ol>
+  <li>Lees die OPDRAG (nie die hele teks eerste nie) — dit sê presies watter aspek om te soek (bv. "SEWE positiewe uitwerkings").</li>
+  <li>Soek 7 feite in die teks en <b>onderstreep</b> hulle.</li>
+  <li>Skryf elke feit as 'n volsin in jou eie woorde.</li>
+  <li>Tel die woorde. As jy oor 90 is, skrap oorbodige woorde.</li>
+  <li>Skryf "[Getal woorde: 82]" aan die einde.</li>
+</ol>
+<p class="small">As jy oor die woordlimiet skryf, lees die nasieners net tot by die sin waar die 90ste woord voorkom en ignoreer die res — jy verloor dus net wat ná daardie punt val, nie vooraf nie.</p>
 
-  var saved={};try{saved=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){}
-  boxes.forEach(function(b){b.checked=!!saved[b.dataset.s];});
-  function update(){
-    var n=boxes.filter(function(b){return b.checked}).length;
-    var pct=Math.round(n/boxes.length*100);
-    bar.style.width=pct+'%';
-    barLabel.textContent=n+' / '+boxes.length+' sections mastered ('+pct+'%)';
-  }
-  boxes.forEach(function(b){
-    b.addEventListener('change',function(){
-      saved[b.dataset.s]=b.checked;
-      localStorage.setItem(KEY,JSON.stringify(saved));
-      update();
-    });
-  });
+<h2>4. AFDELING C — TAALSTRUKTURE EN -KONVENSIES (30 punte) ★ FOKUS ★</h2>
+<p>Drie vrae, elkeen 10 punte, elkeen met 'n ander tekssoort:</p>
+<table>
+  <tr><th>Vraag</th><th>Tekstipe</th><th>Wat dit toets</th></tr>
+  <tr><td><b>V3</b></td><td>Advertensie</td><td>Oorredingstegnieke, lettertipe, emosiewoorde, retoriese vraag, denotasie/konnotasie, visuele plasing</td></tr>
+  <tr><td><b>V4</b></td><td>Strokiesprent</td><td>Emosie, liggaamstaal, raam-analise, toon (sarkasme/ironie), sinsoorte, sinsleer, evalueer</td></tr>
+  <tr><td><b>V5</b></td><td>Artikel</td><td><b>Suiwer taal:</b> sinonieme, homofone/homonieme, klankleer, intensiewe vorme, meervoud, lydende vorm, sinverbinding, woordsoorte, afkortings, samestellings/afleidings</td></tr>
+</table>
 
-  var on=false;
-  testBtn.addEventListener('click',function(){
-    on=!on;
-    document.body.classList.toggle('self-test',on);
-    testBtn.textContent=on?'👁 Self-test mode OFF':'👁 Self-test mode ON';
-    testBtn.classList.toggle('on',on);
-  });
-  document.addEventListener('click',function(e){
-    var t=e.target;
-    if(t.classList && t.classList.contains('reveal')){
-      t.classList.add('shown');
-    }
-  });
-  resetBtn.addEventListener('click',function(){
-    document.querySelectorAll('.reveal.shown').forEach(function(r){r.classList.remove('shown');});
-  });
+<h3>4.1 Die taal-konsepte wat JAARLIKS herhaal (patroontabel)</h3>
+<p class="small">✓ = getoets in daardie jaar (met vraagverwysing). Hierdie is jou trefsekerste lys.</p>
+<table>
+  <tr><th>Taalkonsep</th><th>Nov 2022</th><th>Nov 2024</th><th>Nov 2025</th><th>MJ 2026</th><th>Frekwensie</th></tr>
+  <tr><td><b>Sinonieme</b> (gee 'n sinoniem)</td><td>✓ (5.1, 5.5)</td><td>✓ (5.2)</td><td>✓ (5.3)</td><td>✓ (5.1, 5.6)</td><td class="tick">4/4</td></tr>
+  <tr><td><b>Klankleer</b> (vokaal/diftong/klankverskynsel/uitspraak)</td><td>✓ (5.1 vokaal)</td><td>✓ (5.1 diftong, 5.3 assimilasie)</td><td>✓ (3.6 vokaalreduksie)</td><td>✓ (5.5 uitspraak)</td><td class="tick">4/4</td></tr>
+  <tr><td><b>Intensiewe vorme</b></td><td>—</td><td>—</td><td>✓ (5.5.2 seepglad)</td><td>✓ (5.3, 5.7)</td><td>2/4 (neiging stygend)</td></tr>
+  <tr><td><b>Afkortings</b></td><td>✓ (5.6 hektaar)</td><td>—</td><td>✓ (5.6 Apr.)</td><td>—</td><td>2/4</td></tr>
+  <tr><td><b>Lydende vorm</b></td><td>—</td><td>✓ (5.7)</td><td>✓ (4.4)</td><td>—</td><td>2/4</td></tr>
+  <tr><td><b>Woordsoorte</b> (voornaamwoord, voegwoord, hulpwerkwoord, bywoord)</td><td>✓ (5.3 voorwerpsin)</td><td>✓ (5.8 besitlike vnw)</td><td>✓ (5.2 "maar", 5.5.1 hulpww)</td><td>✓</td><td class="tick">4/4</td></tr>
+  <tr><td><b>Samestelling / afleiding</b> (stamme)</td><td>✓ (5.7 opsioneel)</td><td>✓ (5.4 vredeliewend)</td><td>✓ (3.3 fees-seisoen)</td><td>✓ (5.8 kameel, 5.7 jare daarna)</td><td class="tick">4/4</td></tr>
+  <tr><td><b>Sinverbinding / voegwoorde</b> (newe- &amp; onderskikkend)</td><td>✓ (5.2)</td><td>✓ (5.6.1, 5.6.2)</td><td>✓ (5.2)</td><td>—</td><td>3/4</td></tr>
+  <tr><td><b>Homofone / homonieme</b></td><td>—</td><td>✓ (5.2 verseker/vir seker)</td><td>—</td><td>✓ (3.6 loon)</td><td>2/4</td></tr>
+  <tr><td><b>Meervoud</b></td><td>—</td><td>—</td><td>—</td><td>✓ (5.4 motors/motore)</td><td>1/4</td></tr>
+  <tr><td><b>Verlede tyd</b></td><td>—</td><td>—</td><td>✓ (5.4 ge-)</td><td>—</td><td>1/4</td></tr>
+  <tr><td><b>Leengoed</b></td><td>—</td><td>—</td><td>—</td><td>✓ (5.2)</td><td>1/4</td></tr>
+  <tr><td><b>Ontkennende / bevestigende vorm</b></td><td>—</td><td>✓ (5.5)</td><td>—</td><td>—</td><td>1/4</td></tr>
+  <tr><td><b>Sinsoorte</b> (bevelsin, voorwerpsin)</td><td>✓ (5.3)</td><td>—</td><td>—</td><td>✓ (4.7 bevelsin)</td><td>2/4</td></tr>
+  <tr><td><b>Trappe van vergelyking</b></td><td>—</td><td>—</td><td>✓ (3.2 oortreffend)</td><td>—</td><td>1/4</td></tr>
+</table>
 
-  q.addEventListener('input',function(){
-    var term=q.value.trim().toLowerCase();
-    var gloss=[].slice.call(document.querySelectorAll('ul.gloss li'));
-    var rows=[].slice.call(document.querySelectorAll('table tr'));
-    if(!term){
-      document.querySelectorAll('details').forEach(function(d){d.style.display='';});
-      document.querySelectorAll('details .inner > *').forEach(function(el){el.style.display='';});
-      return;
-    }
-    document.querySelectorAll('details').forEach(function(d){d.style.display='';});
-    gloss.forEach(function(li){
-      li.style.display=(li.textContent.toLowerCase().indexOf(term)>-1)?'':'none';
-    });
-    rows.forEach(function(tr){
-      tr.style.display=(tr.textContent.toLowerCase().indexOf(term)>-1)?'':'none';
-    });
-    document.querySelectorAll('details h3').forEach(function(h){
-      var parent=h.parentElement;
-      var visible=[].slice.call(parent.querySelectorAll('li,tr')).filter(function(el){return el.style.display!=='none'}).length;
-      h.style.display=visible?'':'none';
-    });
-  });
+<div class="tip"><b>Die trefsekerste 6 (kom feitlik elke jaar voor):</b> sinonieme · klankleer (diftong/klankverskynsel) · woordsoorte · samestelling/afleiding · sinverbinding/voegwoorde · afkortings. Ken hierdie ses koud.</div>
 
-  var lastY=window.pageYOffset||0;
-  var headerEl=document.querySelector('header');
-  window.addEventListener('scroll',function(){
-    var y=window.pageYOffset||0;
-    if(y>80 && y>lastY){headerEl.classList.add('hidden');}
-    else{headerEl.classList.remove('hidden');}
-    lastY=y;
-  },{passive:true});
+<h3>4.2 VRAAG 3 — ADVERTENSIE (wat gevra word en hoe)</h3>
+<ul>
+  <li><b>Lettertipe / vetdruk / hoofletters:</b> "Watter tegniek gebruik die kopieskrywer om aandag te trek?" → Noem die konkrete tegniek (vetdruk, groter lettertipe, hoofletters, skuinsdruk) én die effek.</li>
+  <li><b>Emotiewe woorde / manipulering:</b> identifiseer die woord (bv. "lekkerste", "gratis") en sê hoe dit die leser oorreed.</li>
+  <li><b>Retoriese vraag:</b> dit betrek die leser en dwing hom om te dink — dit is 'n oorredingstegniek.</li>
+  <li><b>Denotasie vs konnotasie:</b> letterlike betekenis vs gevoelswaarde/bymekaar-betekenis.</li>
+  <li><b>Persoonlike voornaamwoord "jy"/"jou":</b> maak die leser persoonlik deel.</li>
+  <li><b>Opskrif / weglating van opskrif:</b> evalueer of dit geslaagd is (motiveer Ja óf Nee — albei word aanvaar as jy motiveer).</li>
+  <li><b>Alliterasie / assonansie / klankeffek:</b> noem die stylfiguur en die uitwerking.</li>
+  <li><b>Stamme / samestelling / klankverskynsel</b> word óók hier getoets (bv. vokaalreduksie Nov 2025).</li>
+</ul>
 
-  update();
-})();
-</script>
+<h3>4.3 VRAAG 4 — STROKIESPRENT (wat gevra word en hoe)</h3>
+<ul>
+  <li><b>Emosie:</b> identifiseer die emosie van 'n karakter (skok, verbasing, jammerte, sarkasme) en wys na die <b>visuele leidraad</b> (gesigsuitdrukking, vetdruk, uitroepteken).</li>
+  <li><b>Liggaamstaal / raam-analise:</b> "Watter visuele tegnieke in RAAMPIE X ...?" → beskryf hande, houding, oë, mond, grootte.</li>
+  <li><b>Toon (sarkasties, onheilspellend):</b> kies uit meervoudigekeuse en staaf met 'n raam.</li>
+  <li><b>Ironie / antiklimaks:</b> gee beide kante (verwagting + werklikheid).</li>
+  <li><b>Taal ingeweef:</b> byvoeglike bysin, voorsetsel, bevelsin, lydende vorm, bywoord van modaliteit — dieselfde grammatika as V5, net in strokiesprent-konteks.</li>
+  <li><b>Evalueer geskiktheid/gepastheid:</b> "Evalueer die gepastheid van die strokiesprent in die samelewing." → jou eie gemotiveerde mening.</li>
+</ul>
+
+<h3>4.4 VRAAG 5 — ARTIKEL (die suiwer taal-vraag)</h3>
+<p>Dit is waar jy die volle taalteorie toepas. Die vrae vra gewoonlik dat jy 'n konsep <b>identifiseer</b>, <b>toepas</b> (skryf in 'n sin), of <b>omskep</b> (bv. na lydende vorm). Kyk deurgaans na die woord/spelling wat <b>uitdruklik</b> getoets word — daar word gereeld gesê <i>"Die kandidaat moet die woord korrek spel."</i></p>
+
+<h2>5. VOORSPELLINGS VIR NOVEMBER 2026</h2>
+<div class="pred">
+<p class="small"><b>Hoe om dit te lees:</b> dit is <b>voorbereidingsprioriteite</b>, nie 'n belofte van presiese vrae nie. Die V1-formaat is vas; wat wissel is die TEKSTE en die spesifieke WOORDE wat getoets word — nie die konsepte nie.</p>
+<ul>
+  <li><b>Vlak 1 — byna seker (herhaal in al 4 nasionale vraestelle):</b> sinonieme · klankleer (diftong, assimilasie, vokaalreduksie) · woordsoorte · samestelling/afleiding · sinverbinding (newe-/onderskikkende voegwoorde). <i>Leer dit sodat jy dit in jou slaap ken.</i></li>
+  <li><b>Vlak 2 — sterk moontlik (2/4 jaar, en die neiging is op):</b> intensiewe vorme · afkortings · lydende vorm · homofone/homonieme · sinsoorte. <i>Die intensiewe vorm het in 2025 én 2026 voorgekom — verwag dit weer.</i></li>
+  <li><b>Vlak 3 — syllabus-dekking (ken dit, maar dit is nie 'n waarborg nie):</b> meervoud · verkleinwoorde · trappe van vergelyking · direkte/indirekte rede · leengoed · verlede tyd · ontkennende vorm. <i>Moenie 'n hele papier op hierdie alleen bou nie — hulle kan óf nie verskyn nie.</i></li>
+  <li><b>Struktuur is 100% voorspelbaar:</b> 70 punte, A(30)+B(10)+C(30); V3 advertensie, V4 strokiesprent, V5 artikel; Opsomming = 7 feite + 3 taal, ±90 woorde.</li>
+  <li><b>Die onderwerp van die tekste</b> sal aktueel en "gesonde leefstyl / tegnologie / maatskaplike kwessie"-getint wees (soos die laaste jare) — maar jy kry geen punte vir 'n raaiskoot oor die onderwerp nie; jy kry punte vir die <b>metode</b> hierbo.</li>
+</ul>
+</div>
+
+<hr>
+
+<h2>6. DIE VOLLEDIGE TEORIE — alles wat jy moet ken vir 100%</h2>
+<p class="small">Leer elke afdeling hieronder. Elke konsep word met 'n reël én 'n voorbeeld gegee. Gaan dit deur soos 'n kontrolelys.</p>
+
+<h3>6.1 WOORDLEER (woordstudie)</h3>
+
+<h4>Sinonieme, antonieme, homofone, homonieme, paronieme</h4>
+<table>
+  <tr><th>Begrip</th><th>Definisie</th><th>Voorbeeld</th></tr>
+  <tr><td>Sinoniem</td><td>Woord met (byna) dieselfde betekenis</td><td>kwaad = ontsteld/vies/omgekrap</td></tr>
+  <tr><td>Antoniem</td><td>Woord met teenoorgestelde betekenis</td><td>soet ↔ sout; dag ↔ nag</td></tr>
+  <tr><td>Homofoon</td><td>Klink dieselfde, anders gespel, ander betekenis</td><td>verseker / vir seker; y / jy</td></tr>
+  <tr><td>Homoniem</td><td>Dieselfde spelling, verskillende betekenisse</td><td>loon (salaris) / loon (beloning); verseker (waarborg / verseker teen diefstal)</td></tr>
+  <tr><td>Paroniem</td><td>Lyk amper dieselfde, verskillende betekenis</td><td>vermaak / vermaaklik; gelid / gelyd</td></tr>
+</table>
+
+<h4>Leengoed (leenwoorde)</h4>
+<p>Woorde uit ander tale oorgeneem: <i>broek (Franse oorsprong), fiets, restaurant, polisie, sjokolade, winkel (ook Engels: "cookies", "selfie").</i> Dikwels as meervoudigekeuse: "Watter woord is leengoed?"</p>
+
+<h4>Samestellings &amp; afleidings</h4>
+<ul>
+  <li><b>Samestelling:</b> twee of meer selfstandige woorde saamgevoeg — <i>hand + skoen = handskoen; fees + seisoen = feesseisoen.</i> Die <b>stamme</b> word gevra: "Skryf die stamme van 'vredeliewend' neer" → <b>vrede + lief</b> (samestellende afleiding).</li>
+  <li><b>Afleiding:</b> 'n grondwoord + voorvoegsel (prefiks) en/of agtervoegsel (suffiks) — <i>vriend + -lik = vriendelik; on- + gelukkig = ongelukkig; opsioneel, grasieus.</i></li>
+  <li>Die drie saambind-klanke (bindfoneme): <b>-s-</b> (reddingsboot), <b>-e-</b> (son<u>e</u>blom), <b>-en-</b> (ossewa).</li>
+</ul>
+
+<h4>Intensiewe vorme</h4>
+<p>Versterk 'n byvoeglike naamwoord (dikwels met 'n tweede woord). Daar is 'n vaste lys — leer die algemeenstes:</p>
+<table>
+  <tr><th>Basis</th><th>Intensiewe vorm</th><th>Basis</th><th>Intensiewe vorm</th></tr>
+  <tr><td>koud</td><td>yskoud</td><td>warm</td><td>vuurwarm</td></tr>
+  <tr><td>droog</td><td>kurkdroog / kurkdroog</td><td>nat</td><td>papnat / sopnat</td></tr>
+  <tr><td>glad</td><td>seepglad / spieëlglad / syglad</td><td>diep</td><td>kniediep / afgronddiep</td></tr>
+  <tr><td>dood</td><td>morsdood</td><td>bloedjonk</td><td>jonk</td></tr>
+  <tr><td>bang</td><td>doodbang</td><td>moeë</td><td>doodmoeg</td></tr>
+  <tr><td>vas</td><td>rotsvas</td><td>groen</td><td>grasgroen</td></tr>
+  <tr><td>oud</td><td>stokoud</td><td>donker</td><td>pikdonker</td></tr>
+  <tr><td>wit</td><td>spierwit / sneeuwit</td><td>swart</td><td>pikswart</td></tr>
+  <tr><td>soet</td><td>stroopsoet</td><td>suur</td><td>asynsuur</td></tr>
+  <tr><td>vol</td><td>propvol / stampvol</td><td>leeg</td><td>kraakleeg</td></tr>
+  <tr><td>sterk</td><td>ystersterk</td><td>blou</td><td>hemelblou</td></tr>
+  <tr><td>skaars</td><td>baie skaars</td><td>noodsaaklik</td><td>lewensnoodsaaklik</td></tr>
+</table>
+
+<h4>Meervoude — die belangrikste reëls</h4>
+<ul>
+  <li>Meeste woorde: + <b>e</b> (boek→boeke) of + <b>s</b> (tafel→tafels, ma→ma's met afkappingsteken).</li>
+  <li>Kort klinker + een medeklinker → <b>verdubbel</b> die medeklinker: kat→katte, bus→busse, bed→beddens.</li>
+  <li><b>-f → -we:</b> brief→briewe; <b>-g (lang klinker) → -ë:</b> dag→dae, oog→oë, vliegtuig→vliegtuie.</li>
+  <li><b>-m:</b> kort klinker → -s (wurm→wurms), lang klinker → -e (boom→bome).</li>
+  <li><b>-heid → -hede:</b> geleentheid→geleenthede.</li>
+  <li><b>-is → -isse:</b> krisis→krisisse; <b>-um → -ums/-a:</b> museum→museums, datum→data; <b>-us → -usse/-i:</b> virus→virusse, musikus→musici.</li>
+  <li><b>Klinkerwisseling (umlaut):</b> saak→sake, staat→state, oor→ore, tuig→tuie, kruid→kruie.</li>
+  <li><b>-ee → -eë, -oo → -oë, -ie → -ieë:</b> see→seë, knie→knieë (met deelteken).</li>
+  <li><b>-man → -mense of -manne</b> (sportman→sportmanne, maar 'n "seeman"→seelui).</li>
+  <li>Let op: <b>motors</b> (motorvoertuie) teenoor <b>motore</b> (enjins) — die MJ 2026-vraag 5.4 het juis dit getoets.</li>
+</ul>
+
+<h4>Verkleinwoorde — die reëls</h4>
+<ul>
+  <li>Meeste: + <b>tjie</b> (kat→katjie, hond→hondjie).</li>
+  <li>Eindig op <b>-m</b> (lang klinker): + <b>pie</b> (boom→boompie); kort klinker + -m: -etjie (ram→rammetjie).</li>
+  <li>Eindig op <b>-ng</b>: + <b>kie</b> (koning→koninkie), maar ring→ringetjie.</li>
+  <li>Eindig op <b>-t/-d</b> ná lang klinker: die letter val weg + -tjie (paadjie? nee — <b>kous→kousie</b>, <b>brood→broodjie</b>).</li>
+  <li>Woorde op <b>-l, -m, -n, -r</b> ná lang klinker: dubbelklinker val een weg: skool→skooltjie, kameel→kametjie.</li>
+  <li>Eindig op <b>-u, -a, -o, -i</b> of <b>-ee</b>: afkappingsteken (pa→pa'tjie, ouma→ouma'tjie, motorkap→motorkappie).</li>
+  <li>Verkleinwoorde is ALTYD ondersydig (die + 'n).</li>
+</ul>
+
+<h4>Trappe van vergelyking</h4>
+<table>
+  <tr><th>Stellende</th><th>Vergrotende</th><th>Oortreffende</th></tr>
+  <tr><td>groot</td><td>groter</td><td>grootste</td></tr>
+  <tr><td>lekker</td><td>lekkerder (op -r → -der)</td><td>lekkerste</td></tr>
+  <tr><td>hoog</td><td>hoër (g val weg)</td><td>hoogste</td></tr>
+  <tr><td>doof</td><td>dower (f→w)</td><td>doofste</td></tr>
+  <tr><td>goed</td><td>beter</td><td>beste</td></tr>
+  <tr><td>baie/veel</td><td>meer</td><td>meeste</td></tr>
+  <tr><td>min</td><td>minder</td><td>minste</td></tr>
+  <tr><td>graag</td><td>liewer</td><td>liefste</td></tr>
+  <tr><td>na</td><td>nader</td><td>naaste</td></tr>
+</table>
+
+<h3>6.2 KLANKLEER (fonologie)</h3>
+<ul>
+  <li><b>Klinkers (vokale):</b> enkel (a, e, i, o, u) en lang (aa, ee, ie, oe, uu).</li>
+  <li><b>Diftonge (tweeklanke):</b> ou, au, ei, y, aai, ooi, oei, eeu, ieu, ui. (Nov 2024: die diftong in "koes" → <b>oe</b>.)</li>
+  <li><b>Lettergreepverdeling:</b> oop lettergreep eindig op klinker; geslote eindig op medeklinker. <b>Breëband</b> word met 'n deelteken geskryf: <i>bre-ë-band</i> (MJ 2026 3.4).</li>
+  <li><b>Klemtoon:</b> die lettergreep wat die meeste nadra kry.</li>
+</ul>
+<h4>Klankverskynsels (dikwels 'n 1-punt-vraag)</h4>
+<table>
+  <tr><th>Verskynsel</th><th>Wat gebeur</th><th>Voorbeeld</th></tr>
+  <tr><td>Assimilasie</td><td>Een klank word soos 'n naburige klank</td><td>daardie → daarie; onmoontlik (on+moonlik)</td></tr>
+  <tr><td>Sinkopee / vokaalreduksie</td><td>'n Klinker val weg</td><td>ander → anner; vandag → vanna; eienaar → einaar</td></tr>
+  <tr><td>Metatesis</td><td>Klanke ruil plekke om</td><td>(histories: vrug → vrug)</td></tr>
+  <tr><td>Nasaalering</td><td>'n Klank word nasaal (neus)</td><td>monsieur → meneer</td></tr>
+  <tr><td>Epentese</td><td>'n Klank word bygevoeg</td><td>bees → bees (uit ou vorm); "smaaklik" uit "smakelijk"</td></tr>
+  <tr><td>Palatalisasie</td><td>Ver-hemelruiming (tj-klank)</td><td>(histories in verkleinwoorde: -tjie)</td></tr>
+  <tr><td>Ontronding</td><td>Geronde klinker word ongerond</td><td>(bv. uu → ie in sekere woorde)</td></tr>
+  <tr><td>Klankverskuiwing / uitspraak</td><td>Klank word anders uitgespreek as gespel</td><td>"veearts" — klinkeropeenhoping (MJ 2026 5.5)</td></tr>
+</table>
+
+<h3>6.3 WOORDSOORTE</h3>
+<table>
+  <tr><th>Woordsoort</th><th>Sub-soorte</th><th>Toetsvraag / voorbeeld</th></tr>
+  <tr><td><b>Selfstandige naamwoord</b> (s.nw.)</td><td>soortnaam, eienaam, abstrak (liefde), kollektief/versamel (swerm), maatnaam, stofnaam (goud)</td><td>Noem die s.nw. in die sin.</td></tr>
+  <tr><td><b>Voornaamwoord</b> (vnw.)</td><td>persoonlik (ek, jy, hy, sy, dit, ons, julle, hulle); besitlik (my, jou, sy, haar, ons, julle, hulle); betreklik (wat, wie, waarvan, waarmee); aanwysend (hierdie, daardie, dié); vragend (wie, wat, watter); onbepaald (iemand, iets, almal, menige); wederkerend (-self)</td><td>Nov 2024 5.8: gebruik die besitlike vnw. "jou" as 'n ANDER woordsoort.</td></tr>
+  <tr><td><b>Byvoeglike naamwoord</b> (b.nw.)</td><td>attributief (voor die s.nw.) vs predikatief (ná koppelwerkwoord); verbuiging (die mooi meisie, 'n mooi meisie)</td><td>Gee die attributiewe vorm.</td></tr>
+  <tr><td><b>Werkwoord</b></td><td>hoofwerkwoord; koppelwerkwoord (is, word, blyk, lyk, skyn, heet); hulpwerkwoord van TYD (het, sal, sou, wou), van WYSE/modaliteit (kan, mag, moet, wil), van VORM (word, is)</td><td>Nov 2025 5.5.1: identifiseer die hulpwerkwoord van wyse.</td></tr>
+  <tr><td><b>Bywoord</b> (bw.)</td><td>tyd, plek, wyse, graad, modaliteit (dalk, miskien, seker, tog, net, wel, mos, eintlik)</td><td>Nov 2024 4.1: bywoord van modaliteit wat op negatiewe houding dui ("tog"/"net").</td></tr>
+  <tr><td><b>Voorsetsel</b></td><td>op, in, onder, met, vir, na, teen, deur, sonder, weens, volgens, langs</td><td>Nov 2024 4.6.2: "… my mening" → <b>na</b>/<b>volgens</b> my mening.</td></tr>
+  <tr><td><b>Voegwoord</b></td><td>newe- (en, of, maar, want) vs onderskikkend (dat, omdat, terwyl, nadat, as, toe, alhoewel)</td><td>Nov 2025 5.2: "maar" wat as 'n bywoord (nie voegwoord) gebruik word.</td></tr>
+  <tr><td><b>Lidwoord</b></td><td>bepaalde (die), onbepaalde ('n)</td><td>—</td></tr>
+  <tr><td><b>Telwoord</b></td><td>hooftelwoord (een, twee), rangtelwoord (eerste, tweede), bepaald/onbepaald (baie, min)</td><td>—</td></tr>
+  <tr><td><b>Tussenwerpsel / uitroep</b></td><td>ai, o, eina, sjuut, helaas</td><td>Nov 2025 4.2: die uitroep "Ai".</td></tr>
+</table>
+
+<h3>6.4 SINSLEER</h3>
+
+<h4>Sinstipes</h4>
+<ul>
+  <li><b>Stelsin</b> (mededelend): "Die kind lees."</li>
+  <li><b>Vraagsin</b>: "Lees die kind?"</li>
+  <li><b>Bevelsin</b> (opdrag): "Lees die boek!" (MJ 2026 4.7 het dit getoets).</li>
+  <li><b>Uitroepsin</b>: "Hoe mooi!"</li>
+</ul>
+
+<h4>Sinsoorte (bysinne)</h4>
+<ul>
+  <li><b>Hoofsin:</b> kan alleen staan; die werkwoord (spil) staan in die tweede posisie.</li>
+  <li><b>Byvoeglike bysin:</b> beskryf 'n s.nw.; begin gewoonlik met <i>wat, wie, waar, waarop, waarmee</i>. (Nov 2024 4.6.1: "Kinders van vandag" → "Kinders <b>wat vandag leef</b>".)</li>
+  <li><b>Bywoordelike bysin:</b> gee tyd, plek, wyse, rede; begin met <i>toe, terwyl, omdat, sodat, hoewel</i>.</li>
+  <li><b>Selfstandige bysin (voorwerpsin):</b> tree op as voorwerp; begin met <i>dat</i>. (Nov 2022 5.3.)</li>
+</ul>
+
+<h4>Lydende en bedrywende vorm — die volle reëls</h4>
+<p>Bedrywend: <i>Onderwerp + werkwoord + voorwerp.</i> → Lydend: <i>voorwerp word onderwerp + <b>word</b> + <b>ge-</b>deelwoord + <b>deur</b> + ou onderwerp.</i></p>
+<table>
+  <tr><th>Tyd</th><th>Bedrywend</th><th>Lydend</th></tr>
+  <tr><td>Teenwoordig</td><td>Die hond byt die man.</td><td>Die man word (deur die hond) gebyt.</td></tr>
+  <tr><td>Verlede (met <b>het</b>)</td><td>Die hond het die man gebyt.</td><td>Die man is (deur die hond) gebyt.</td></tr>
+  <tr><td>Toekomend (met <b>sal</b>)</td><td>Die hond sal die man byt.</td><td>Die man sal (deur die hond) gebyt word.</td></tr>
+  <tr><td>Met <b>moet/kan/wil</b></td><td>Die hond moet die man byt.</td><td>Die man moet (deur die hond) gebyt word.</td></tr>
+</table>
+<p><b>Voornaamwoorde verander:</b> ek→my, jy→jou, hy→hom, sy→haar, ons→ons, julle→julle, hulle→hulle, dit→dit. Voorbeeld (Nov 2024 5.7): "niemand gee 'n drukkie" → "'n Drukkie word (deur niemand) gegee."</p>
+
+<h4>Direkte en indirekte rede</h4>
+<ul>
+  <li>Direk: "Ek is moeg," sê hy.</li>
+  <li>Indirek: Hy sê <b>dat</b> hy moeg <b>is</b>. (Voornaamwoorde skuif: ek→hy; die werkwoord beweeg ná die voegwoord.)</li>
+  <li>Tyd skuif: teenwoordig → verlede ("is" → "was"); "nou" → "toe"; "vandag" → "daardie dag".</li>
+  <li>Vraag: "Waar is dit?" → Hy vra <b>waar</b> dit <b>is</b>.</li>
+</ul>
+
+<h4>Ontkennende vorm (dubbele "nie")</h4>
+<ul>
+  <li>Eerste <b>nie</b> ná die eerste werkwoord, tweede <b>nie</b> aan die einde: "Ek eet nie die appel <b>nie</b>."</li>
+  <li>Met <b>het</b>: "Ek het <b>nie</b> die appel geëet <b>nie</b>."</li>
+  <li><b>nooit, nêrens, niemand, niks, geen</b> vervang die tweede nie: "Ek het <b>nooit</b> gekom."</li>
+  <li><b>moet nie</b> = <b>moenie</b>.</li>
+  <li>Bevestigende ↔ ontkennende vorm word omgekeerd getoets (Nov 2024 5.5).</li>
+</ul>
+
+<h4>Woordorde (STOMPI)</h4>
+<p>Die hoofsin se spil (werkwoord 1) is ALTYD in posisie 2. Volgorde: <b>S</b>ubjek – <b>v1</b> – <b>T</b>yd – <b>O</b>nderwerp – <b>M</b>anier – <b>P</b>lek – <b>v2</b> – <b>I</b>nfinitief.</p>
+<pre>Ek  eet  môre  die appel  vinnig  in die kombuis.   (STOMP)
+Ek  sal  môre  die appel  vinnig  in die kombuis  eet.  (sal = v1, eet = v2)</pre>
+<p>In 'n <b>bysin</b> skuif die werkwoord na die einde: "… omdat ek môre die appel sal eet."</p>
+
+<h4>Voegwoorde (newe- &amp; onderskikkend) — die drie groepe</h4>
+<table>
+  <tr><th>Groep</th><th>Woorde</th><th>Effek op woordorde</th></tr>
+  <tr><td>Neweskikkend Gr. 1</td><td>en, of, maar, want, dog</td><td>Geen verandering (S + v bly)</td></tr>
+  <tr><td>Neweskikkend Gr. 2</td><td>daarom, dus, toe, dan, daarna, gevolglik, nogtans, bowendien, anders</td><td><b>Inversie:</b> die werkwoord kom eerste ("…, <b>daarom</b> eet ek")</td></tr>
+  <tr><td>Onderskikkend</td><td>dat, omdat, sodat, nadat, voordat, terwyl, alhoewel, indien, as, toe, aangesien, sedert, of</td><td>Werkwoord na die einde (bysin)</td></tr>
+</table>
+<p class="small">Nov 2024 5.6.1 het gevra hoekom dit effektief is om die neweskikkende voegwoord "want" aan die begin van die sin te plaas → dit beklemtoon die gevolgtrekking/motivering. Nov 2024 5.6.2 het gevra om twee sinne met 'n <b>onderskikkende</b> voegwoord te verbind.</p>
+
+<h3>6.5 LEESTEKENS &amp; SKRYFTEKENS</h3>
+<table>
+  <tr><th>Teken</th><th>Gebruik</th><th>Voorbeeld</th></tr>
+  <tr><td>Punt</td><td>Einde van sin; ná afkortings</td><td>Apr., dr.</td></tr>
+  <tr><td>Komma</td><td>Skei items, aanspreekvorm, bysin</td><td>Ek koop brood, melk, eiers.</td></tr>
+  <tr><td>Kommapunt</td><td>Verbind verwante hoofsinne</td><td>Dit reën; tog gaan ons.</td></tr>
+  <tr><td>Dubbelpunt</td><td>Voor 'n lys/verduideliking</td><td>Bring die volgende: …</td></tr>
+  <tr><td>Vraagteken / Uitroepteken</td><td>Vraag / emosie of bevel</td><td>Wat? / Kyk uit!</td></tr>
+  <tr><td>Aanhalingstekens</td><td>Direkte rede, titels, aanhaling</td><td>Sy sê: "Kom."</td></tr>
+  <tr><td>Beletselteken (…)</td><td>Weglating; spanning/afwagting</td><td>Nov 2024 3.5 het die funksie getoets.</td></tr>
+  <tr><td>Koppelteken</td><td>Verbind woorde/syfers</td><td>nag-uitrusting, 12-uur</td></tr>
+  <tr><td>Afkappingsteken</td><td>Weglating van klanke; verkleinwoorde</td><td>'n, ma's, pa'tjie</td></tr>
+  <tr><td>Deelteken (ë, ï)</td><td>Skei lettergrepe</td><td>breëband, geïnteresseerd</td></tr>
+  <tr><td>Kappie (ê, ô)</td><td>Verleng 'n klinker</td><td>wêreld, môre</td></tr>
+  <tr><td>Akuut (é, ó)</td><td>Nadruk</td><td>dié, nóú</td></tr>
+  <tr><td>Gravis (è)</td><td>Dui op "oop" uitspraak</td><td>nè, appèl</td></tr>
+</table>
+
+<h3>6.6 STYLFIGUUR &amp; BEELDSPRAAK (in Afdeling A en V3/V4)</h3>
+<table>
+  <tr><th>Stylfiguur</th><th>Definisie</th><th>Voorbeeld</th></tr>
+  <tr><td>Vergelyking</td><td>Direkte vergelyk met "soos"/"as"</td><td>Hy is so sterk soos 'n bees.</td></tr>
+  <tr><td>Metafoor</td><td>Vergelyk sonder "soos"</td><td>Die see is 'n spieël.</td></tr>
+  <tr><td>Personifikasie</td><td>Menseienskappe aan nie-menslike</td><td>Die dankbare rivier … (Nov 2022 3.4)</td></tr>
+  <tr><td>Hiperbool</td><td>Oordrywing</td><td>Ek het 'n miljoen keer gesê.</td></tr>
+  <tr><td>Eufemisme</td><td>Versagting</td><td>Hy het heengegaan (in plaas van gesterf).</td></tr>
+  <tr><td>Ironie</td><td>Teendeel van verwagting</td><td>'n brandweerman se huis brand af.</td></tr>
+  <tr><td>Sarkasme</td><td>Bytende spot (soort ironie)</td><td>"Mooi gedoen!" (toe jy dit breek)</td></tr>
+  <tr><td>Alliterasie</td><td>Herhaling van beginklank</td><td>vlieg met vlerke (v-klank)</td></tr>
+  <tr><td>Assonansie</td><td>Herhaling van klinker</td><td>woelige woestyn</td></tr>
+  <tr><td>Onomatopee</td><td>Klanknabootsing</td><td>kraak, plof, sis</td></tr>
+  <tr><td>Retoriese vraag</td><td>Vraag sonder verwagte antwoord</td><td>Wie sal nou só iets glo?</td></tr>
+  <tr><td>Teenstelling / kontras</td><td>Teenoorgesteldes naas mekaar</td><td>slimmer fone, dommer breine</td></tr>
+  <tr><td>Woordspeling</td><td>Dubbelsinnige grappie</td><td>Nov 2024 3.4: denotasie + konnotasie</td></tr>
+  <tr><td>Antiklimaks</td><td>Verwagting loop dood</td><td>Nov 2025 4.6 (Jorik kry pyl-en-boog i.p.v. rekenaar)</td></tr>
+  <tr><td>Paradoks / Oksimoron</td><td>Skynbare teenstrydigheid</td><td>sprankelende duisternis</td></tr>
+</table>
+
+<h3>6.7 DENOTASIE vs KONNOTASIE</h3>
+<ul>
+  <li><b>Denotasie:</b> die letterlike / woordeboekbetekenis van 'n woord.</li>
+  <li><b>Konnotasie:</b> die gevoelswaarde of bybetekenis wat aan die woord kleef.</li>
+  <li>Voorbeeld (Nov 2024 3.4): "sout" dui denotatief op die southappies wat verkoop word; konnotatief beteken dit die besigheid is eerlik/kan vertrou word.</li>
+</ul>
+
+<h3>6.8 ADVERTENSIE &amp; VISUELE GELETTERDHEID (V3 en V4)</h3>
+<ul>
+  <li><b>Oorredingstegnieke:</b> emotiewe woorde, retoriese vraag, persoonlike aanspreekvorm ("jy"), herhaling, alliterasie, oortreffende trap ("die lekkerste"), hoofletters/vetdruk, uitroeptekens.</li>
+  <li><b>Lettertipe/skrif:</b> groot/vet/hoofletters = aandag; skuinsdruk = beweging; klein/fyn = sekondêre inligting.</li>
+  <li><b>Opskrif:</b> vang aandag; die weglating daarvan kan óók doelbewus wees (dwing jou om verder te lees).</li>
+  <li><b>Visuele elemente:</b> kleur, plasing, bewegingstrepies, gesigsuitdrukking, liggaamstaal, grootte-verhoudings.</li>
+  <li><b>Teikenmark / teikenleser:</b> na wie die advertensie gemik is, en hoe die tegnieke daardie groep bereik.</li>
+  <li><b>Raam-analise (strokiesprent):</b> kyk per raampie na woorde, gesigsuitdrukking, liggaamstaal, agtergrond, en hoe die raampies na mekaar bou.</li>
+</ul>
+
+<h2>7. JOU EKSAMEN-DAG STRATEGIE (opsomming)</h2>
+<ol>
+  <li><b>Afdeling A (50 min):</b> Lees die vrae eers vlugtig, dan die teks. Antwoord in die volgorde van die vrae. Vir "motiveer"-vrae: ALTYD 'n rede gee, al is dit net een sin.</li>
+  <li><b>Afdeling B (30 min):</b> Doen dit <b>laaste</b> as jy sukkel — maar moenie dit oorlaat en dan net die teks aanhaal nie (jy verloor die 3 taalpunte). Eie woorde is nie-onderhandelbaar.</li>
+  <li><b>Afdeling C (40 min):</b> Dit is waar jy volpunte kan verdien — dis suiwer reëls, nie opinie nie. Werk deur die kontrolelys in afdeling 6. Skryf elke antwoord in 'n volsin waar gevra, en spel die getoetsde woord reg.</li>
+  <li><b>Nommer presies</b> soos die vraestel (1.1, 1.5.2, ens.), laat 'n reël oop ná elke antwoord, en begin elke afdeling op 'n nuwe bladsy.</li>
+</ol>
+<div class="warn"><b>Die drie dinge wat leerders die meeste punte kos:</b> (1) Ja/Nee sonder motivering, (2) die teks woordeliks aanhaal in die opsomming, (3) 'n aanhaling wat nie 100% presies is nie.</div>
+
+<p class="small">Bronne: amptelike DBE-vraestelle en -nasienriglyne — Afrikaans Huistaal V1, November 2022 / November 2024 / November 2025 / Mei-Junie 2026 (education.gov.za).</p>
+
 </body>
 </html>
